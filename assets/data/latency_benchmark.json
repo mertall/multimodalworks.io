@@ -1,0 +1,68 @@
+{
+  "schema_version": "1",
+  "generated_at": "2026-05-13",
+  "methodology": "First-token latency (TTFT) in milliseconds, warm caches. Cloud values are median TTFT from Artificial Analysis (an independent benchmarking project) for premium chat models. Local values are from llama.cpp / Ollama community benchmarks on AMD Strix Halo (Ryzen AI Max+ 395, 128 GB unified memory) running Qwen3-14B Q4_K_M.",
+  "source_label": "public benchmarks · run scripts/_run_langfuse_export.py to swap in your own Langfuse traces",
+  "sources": [
+    {
+      "name": "Artificial Analysis · cloud TTFT medians",
+      "url": "https://artificialanalysis.ai/models",
+      "captured": "Q1 2026"
+    },
+    {
+      "name": "Ollama + llama.cpp community benchmarks · AMD Strix Halo platform",
+      "url": "https://github.com/ggml-org/llama.cpp/discussions",
+      "captured": "Q1 2026"
+    }
+  ],
+  "datasets": [
+    {
+      "task": "chat",
+      "description": "Short conversational prompt (~200 tokens), no retrieval",
+      "cloud": {
+        "value_ms": 520,
+        "source": "Artificial Analysis · GPT-4o median TTFT"
+      },
+      "local": {
+        "value_ms": 380,
+        "source": "Qwen3-14B Q4 · Ollama · Strix Halo"
+      }
+    },
+    {
+      "task": "RAG 8d",
+      "description": "8-document retrieval, ~4k-token context",
+      "cloud": {
+        "value_ms": 850,
+        "source": "Artificial Analysis · long-context TTFT scaling"
+      },
+      "local": {
+        "value_ms": 1050,
+        "source": "Qwen3-14B Q4 · Ollama · Strix Halo + Qdrant retrieval"
+      }
+    },
+    {
+      "task": "code",
+      "description": "Code prompt with ~1k-token file context",
+      "cloud": {
+        "value_ms": 680,
+        "source": "Artificial Analysis · GPT-4o code traces"
+      },
+      "local": {
+        "value_ms": 620,
+        "source": "Qwen3-14B Q4 · Ollama · Strix Halo"
+      }
+    },
+    {
+      "task": "agent",
+      "description": "Multi-step agent loop, 3 LLM round-trips with tool calls",
+      "cloud": {
+        "value_ms": 2100,
+        "source": "Artificial Analysis · 3× GPT-4o cumulative"
+      },
+      "local": {
+        "value_ms": 2300,
+        "source": "Qwen3-14B Q4 · Hermes agent loop · Strix Halo"
+      }
+    }
+  ]
+}
