@@ -1,0 +1,56 @@
+{
+  "schema_version": "1",
+  "generated_at": "2026-05-13",
+  "methodology": "Cumulative AI cost over 24 months. Cloud usage tiers calibrated to GPT-4o blended pricing (input $2.50/M, output $10/M, typical input-heavy retrieval workloads land around $5/M blended). Local AI Station: one-time hardware (Strix Halo class · 128 GB unified memory) + ongoing electricity at $0.15/kWh, 200W average.",
+  "currency": "USD",
+  "horizon_months": 24,
+  "local_station": {
+    "hardware_cost": 3000,
+    "monthly_opex": 25,
+    "spec": "AMD Strix Halo / Ryzen AI Max+ 395 class · 128 GB unified memory",
+    "notes": "Framework Desktop 128GB lands at ~$2,400; HP Z2 Mini G1a Strix Halo 128 GB at ~$3,000–3,500; custom build ~$2,500. $25/mo opex covers electricity at typical SMB rates."
+  },
+  "cloud_tiers": [
+    {
+      "name": "Light",
+      "monthly_cost": 200,
+      "monthly_tokens_m": 80,
+      "description": "Email helper, basic Q&A · 25-person team · GPT-4o tier",
+      "recommendation": "Stay on cloud. We can help you set this up cheaper than enterprise tools.",
+      "payback_months": 17.1
+    },
+    {
+      "name": "Standard",
+      "monthly_cost": 1000,
+      "monthly_tokens_m": 400,
+      "description": "Internal chatbot + doc analysis · 25–50 people · GPT-4o tier",
+      "recommendation": "Switch to local. Pays back in ~3 months, then you're on $25/mo electricity.",
+      "payback_months": 3.1
+    },
+    {
+      "name": "Heavy",
+      "monthly_cost": 5000,
+      "monthly_tokens_m": 2000,
+      "description": "Multi-agent automation + code assist + RAG over corpus · GPT-4o tier",
+      "recommendation": "Switch yesterday. Pays back in under 3 weeks. Plus zero per-token risk.",
+      "payback_months": 0.6
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI public pricing · GPT-4o",
+      "url": "https://openai.com/api/pricing/",
+      "captured": "Q1 2026"
+    },
+    {
+      "name": "Framework Desktop 128GB pricing",
+      "url": "https://frame.work/desktop",
+      "captured": "Q1 2026"
+    },
+    {
+      "name": "HP Z2 Mini G1a Strix Halo spec",
+      "url": "https://www.hp.com",
+      "captured": "Q1 2026"
+    }
+  ]
+}

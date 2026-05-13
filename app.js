@@ -1425,3 +1425,244 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
     setInterval(nextQuery, 3400);
   }, 600);
 })();
+
+// ---------- Cost projection: cloud-vs-local cumulative cost over 24 months. ----------
+(async function costProjection() {
+  const svg = d3.select("#cost-projection");
+  if (svg.empty()) return;
+  const sourceEl = document.getElementById("cost-projection-source");
+
+  let cfg;
+  try {
+    cfg = await fetch("assets/data/cost_projection.json").then((r) => r.json());
+  } catch (err) {
+    svg
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 30)
+      .attr("fill", "#b31942")
+      .attr("font-family", "ui-monospace, Menlo, monospace")
+      .attr("font-size", 11)
+      .text("· cost_projection.json failed to load ·");
+    return;
+  }
+
+  if (sourceEl) {
+    const names = (cfg.sources || []).map((s) => s.name).join(" · ");
+    sourceEl.textContent = `source · ${names}`;
+  }
+
+  const node = svg.node();
+  const rect = node.getBoundingClientRect();
+  const margin = { top: 22, right: 110, bottom: 36, left: 56 };
+  const w = rect.width - margin.left - margin.right;
+  const h = rect.height - margin.top - margin.bottom;
+  svg.attr("viewBox", `0 0 ${rect.width} ${rect.height}`);
+
+  const horizon = cfg.horizon_months;
+  const months = d3.range(0, horizon + 1);
+
+  // Compute cumulative cost series.
+  const cloudSeries = cfg.cloud_tiers.map((t) => ({
+    name: t.name,
+    monthly: t.monthly_cost,
+    paybackMonths: t.paybackMonths || t.payback_months,
+    values: months.map((m) => m * t.monthly_cost),
+  }));
+  const localSeries = {
+    name: "Local AI Station",
+    values: months.map((m) =>
+      cfg.local_station.hardware_cost + m * cfg.local_station.monthly_opex
+    ),
+  };
+
+  // Scales.
+  const allVals = cloudSeries
+    .flatMap((s) => s.values)
+    .concat(localSeries.values);
+  const x = d3.scaleLinear().domain([0, horizon]).range([0, w]);
+  const y = d3.scaleLinear().domain([0, d3.max(allVals) * 1.05]).range([h, 0]);
+
+  const root = svg
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Gridlines.
+  root
+    .append("g")
+    .attr("color", "#0b122015")
+    .call(d3.axisLeft(y).ticks(5).tickSize(-w).tickFormat(""))
+    .call((g) => g.selectAll(".domain").remove());
+
+  // Local AI Station: flat-ish line (capex + small monthly opex).
+  const line = d3
+    .line()
+    .x((d, i) => x(months[i]))
+    .y((d) => y(d))
+    .curve(d3.curveMonotoneX);
+
+  const localPath = root
+    .append("path")
+    .attr("d", line(localSeries.values))
+    .attr("fill", "none")
+    .attr("stroke", "#b31942")
+    .attr("stroke-width", 2.8);
+  const localLen = localPath.node().getTotalLength();
+  localPath
+    .attr("stroke-dasharray", `${localLen} ${localLen}`)
+    .attr("stroke-dashoffset", localLen)
+    .transition()
+    .duration(900)
+    .attr("stroke-dashoffset", 0);
+
+  // Cloud tiers in shades of ink.
+  const cloudColors = ["#0b122044", "#0b122077", "#0b1220bb"];
+  cloudSeries.forEach((s, i) => {
+    const p = root
+      .append("path")
+      .attr("d", line(s.values))
+      .attr("fill", "none")
+      .attr("stroke", cloudColors[i])
+      .attr("stroke-width", 1.8);
+    const len = p.node().getTotalLength();
+    p.attr("stroke-dasharray", `${len} ${len}`)
+      .attr("stroke-dashoffset", len)
+      .transition()
+      .delay(120 * i)
+      .duration(900)
+      .attr("stroke-dashoffset", 0);
+  });
+
+  // Break-even markers: where each cloud line crosses the local line.
+  cloudSeries.forEach((s, i) => {
+    // Compute crossover month analytically:
+    // cloud(m) = m * monthly = local(m) = hardware + m * opex
+    // m * (monthly - opex) = hardware → m = hardware / (monthly - opex)
+    const m = cfg.local_station.hardware_cost /
+      (s.monthly - cfg.local_station.monthly_opex);
+    if (m <= 0 || m > horizon) return; // off-chart
+    const dollars = m * s.monthly;
+    root
+      .append("circle")
+      .attr("cx", x(m))
+      .attr("cy", y(dollars))
+      .attr("r", 0)
+      .attr("fill", "#fbbf24")
+      .attr("stroke", "#b31942")
+      .attr("stroke-width", 1.4)
+      .transition()
+      .delay(1100 + i * 200)
+      .duration(300)
+      .attr("r", 5);
+
+    // Vertical tick + label.
+    root
+      .append("line")
+      .attr("x1", x(m))
+      .attr("y1", y(dollars))
+      .attr("x2", x(m))
+      .attr("y2", h)
+      .attr("stroke", "#b31942")
+      .attr("stroke-opacity", 0)
+      .attr("stroke-dasharray", "2 3")
+      .transition()
+      .delay(1100 + i * 200)
+      .duration(300)
+      .attr("stroke-opacity", 0.45);
+
+    root
+      .append("text")
+      .attr("x", x(m))
+      .attr("y", h + 18)
+      .attr("text-anchor", "middle")
+      .attr("font-family", "ui-monospace, Menlo, monospace")
+      .attr("font-size", 9)
+      .attr("fill", "#b31942")
+      .attr("opacity", 0)
+      .text(`${m < 1 ? "<1" : m.toFixed(1)} mo`)
+      .transition()
+      .delay(1200 + i * 200)
+      .duration(300)
+      .attr("opacity", 1);
+  });
+
+  // Right-side series labels.
+  const labelOffsets = new Map();
+  cloudSeries.forEach((s, i) => {
+    const yEnd = y(s.values[s.values.length - 1]);
+    labelOffsets.set(`cloud-${i}`, yEnd);
+    root
+      .append("text")
+      .attr("x", w + 8)
+      .attr("y", yEnd + 3)
+      .attr("font-family", "ui-monospace, Menlo, monospace")
+      .attr("font-size", 10)
+      .attr("fill", cloudColors[i])
+      .attr("opacity", 0)
+      .text(`Cloud · ${s.name} · $${s.monthly}/mo`)
+      .transition()
+      .delay(900)
+      .duration(400)
+      .attr("opacity", 1);
+  });
+  const localYEnd = y(localSeries.values[localSeries.values.length - 1]);
+  root
+    .append("text")
+    .attr("x", w + 8)
+    .attr("y", localYEnd + 3)
+    .attr("font-family", "ui-monospace, Menlo, monospace")
+    .attr("font-size", 10)
+    .attr("fill", "#b31942")
+    .attr("font-weight", 600)
+    .attr("opacity", 0)
+    .text("Local AI Station")
+    .transition()
+    .delay(900)
+    .duration(400)
+    .attr("opacity", 1);
+
+  // Axes.
+  const xAxis = d3
+    .axisBottom(x)
+    .tickValues([0, 3, 6, 12, 18, 24])
+    .tickFormat((d) => `${d}mo`);
+  root
+    .append("g")
+    .attr("transform", `translate(0,${h})`)
+    .attr("color", "#0b122099")
+    .attr("font-family", "ui-monospace, Menlo, monospace")
+    .attr("font-size", 9)
+    .call(xAxis)
+    .call((g) => g.selectAll(".domain, line").attr("stroke", "#0b122033"));
+
+  const yAxis = d3
+    .axisLeft(y)
+    .ticks(5)
+    .tickFormat((d) => (d >= 1000 ? `$${(d / 1000).toFixed(0)}k` : `$${d}`));
+  root
+    .append("g")
+    .attr("color", "#0b122099")
+    .attr("font-family", "ui-monospace, Menlo, monospace")
+    .attr("font-size", 9)
+    .call(yAxis)
+    .call((g) => g.selectAll(".domain, line").attr("stroke", "#0b122033"));
+
+  // Axis whisper labels.
+  root
+    .append("text")
+    .attr("x", w)
+    .attr("y", h + 30)
+    .attr("text-anchor", "end")
+    .attr("font-family", "ui-monospace, Menlo, monospace")
+    .attr("font-size", 9)
+    .attr("fill", "#0b122080")
+    .text("months →");
+  root
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -8)
+    .attr("font-family", "ui-monospace, Menlo, monospace")
+    .attr("font-size", 9)
+    .attr("fill", "#0b122080")
+    .text("↑ cumulative $");
+})();
