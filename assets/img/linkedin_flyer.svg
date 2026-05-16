@@ -41,14 +41,14 @@
   <text x="60" y="170" fill="#b31942" font-size="20" letter-spacing="5" font-family="Helvetica, Arial, sans-serif">NOW TAKING ENGAGEMENTS &#183; SMB AI &#183; GREATER CHICAGO</text>
 
   <!-- HEADLINE -->
-  <text x="60" y="270" fill="#0b1220" font-size="74" font-weight="400">Ship production AI in</text>
-  <text x="60" y="355" fill="#0b1220" font-size="74" font-weight="400">3&#8211;6 months. <tspan font-style="italic">One</tspan></text>
-  <text x="60" y="440" fill="#0b1220" font-size="74" font-weight="400">senior engineer.</text>
+  <text x="60" y="280" fill="#0b1220" font-size="90" font-weight="400">Ship production AI</text>
+  <text x="60" y="380" fill="#0b1220" font-size="90" font-weight="400">in <tspan font-style="italic">3&#8211;6 months.</tspan></text>
 
   <!-- SUBHEAD -->
-  <text x="60" y="515" fill="#0b1220" opacity="0.78" font-size="26" font-family="Helvetica, Arial, sans-serif">
+  <text x="60" y="475" fill="#0b1220" opacity="0.78" font-size="26" font-family="Helvetica, Arial, sans-serif">
     <tspan x="60" dy="0">We help small &amp; mid-sized teams stand up retrieval,</tspan>
-    <tspan x="60" dy="36">agents, and on&#8209;prem AI &#8212; without a year&#8209;long hire.</tspan>
+    <tspan x="60" dy="36">agents, and on&#8209;prem AI &#8212; from notebook to a</tspan>
+    <tspan x="60" dy="36">system your team can run, measure, and extend.</tspan>
   </text>
 
   <!-- Two pillars -->
