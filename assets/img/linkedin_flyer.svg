@@ -38,17 +38,17 @@
   </g>
 
   <!-- KICKER -->
-  <text x="60" y="170" fill="#b31942" font-size="20" letter-spacing="5" font-family="Helvetica, Arial, sans-serif">NOW TAKING ENGAGEMENTS &#183; SMB AI &#183; GREATER CHICAGO</text>
+  <text x="60" y="170" fill="#b31942" font-size="20" letter-spacing="5" font-family="Helvetica, Arial, sans-serif">PRODUCTION AI SYSTEMS &#183; ON&#8209;PREM &amp; CLOUD &#183; MULTIMODAL</text>
 
   <!-- HEADLINE -->
-  <text x="60" y="280" fill="#0b1220" font-size="90" font-weight="400">Ship production AI</text>
-  <text x="60" y="380" fill="#0b1220" font-size="90" font-weight="400">in <tspan font-style="italic">3&#8211;6 months.</tspan></text>
+  <text x="60" y="280" fill="#0b1220" font-size="90" font-weight="400">Custom multimodal AI.</text>
+  <text x="60" y="380" fill="#0b1220" font-size="90" font-weight="400">Delivered in <tspan font-style="italic">3&#8211;6 months.</tspan></text>
 
   <!-- SUBHEAD -->
-  <text x="60" y="475" fill="#0b1220" opacity="0.78" font-size="26" font-family="Helvetica, Arial, sans-serif">
-    <tspan x="60" dy="0">We help small &amp; mid-sized teams stand up retrieval,</tspan>
-    <tspan x="60" dy="36">agents, and on&#8209;prem AI &#8212; from notebook to a</tspan>
-    <tspan x="60" dy="36">system your team can run, measure, and extend.</tspan>
+  <text x="60" y="470" fill="#0b1220" opacity="0.78" font-size="26" font-family="Helvetica, Arial, sans-serif">
+    <tspan x="60" dy="0">On-prem AI workstations on your network.</tspan>
+    <tspan x="60" dy="36">Custom multimodal models on AWS &#8212; with bespoke</tspan>
+    <tspan x="60" dy="36">fast-inference kernels. Same team, end to end.</tspan>
   </text>
 
   <!-- Two pillars -->
@@ -56,37 +56,39 @@
     <!-- LOCAL AI card -->
     <rect x="0" y="0" width="525" height="240" rx="20" fill="#b31942"/>
     <text x="30" y="55" fill="#f6f3ec" font-size="14" letter-spacing="4" font-family="Helvetica, Arial, sans-serif">WHAT WE SHIP &#183; A</text>
-    <text x="30" y="115" fill="#f6f3ec" font-size="44">Local AI</text>
+    <text x="30" y="115" fill="#f6f3ec" font-size="42">Local AI workstation</text>
     <text x="30" y="170" fill="#f6f3ec" opacity="0.92" font-size="20" font-family="Helvetica, Arial, sans-serif">
-      <tspan x="30" dy="0">On-prem AI workstations &#183; MCP-wired to</tspan>
-      <tspan x="30" dy="28">email, drive, code, CRM &#183; flat monthly cost</tspan>
+      <tspan x="30" dy="0">Chatbot-grade UX on your own network.</tspan>
+      <tspan x="30" dy="28">Email, drive, code, CRM connectors &#183;</tspan>
+      <tspan x="30" dy="28">half the price of a Mac mini.</tspan>
     </text>
 
     <!-- CLOUD AI card -->
     <g transform="translate(555 0)">
       <rect x="0" y="0" width="525" height="240" rx="20" fill="#0a3161"/>
       <text x="30" y="55" fill="#f6f3ec" font-size="14" letter-spacing="4" font-family="Helvetica, Arial, sans-serif">WHAT WE SHIP &#183; B</text>
-      <text x="30" y="115" fill="#f6f3ec" font-size="44">Cloud AI</text>
+      <text x="30" y="115" fill="#f6f3ec" font-size="42">Multimodal on AWS</text>
       <text x="30" y="170" fill="#f6f3ec" opacity="0.92" font-size="20" font-family="Helvetica, Arial, sans-serif">
-        <tspan x="30" dy="0">Retrieval, routers, federated search &#183;</tspan>
-        <tspan x="30" dy="28">research notebook &#8594; production system</tspan>
+        <tspan x="30" dy="0">Custom vision-search &amp; multimodal models</tspan>
+        <tspan x="30" dy="28">deployed on AWS with bespoke fast-</tspan>
+        <tspan x="30" dy="28">inference kernels. Faster. Cheaper. Yours.</tspan>
       </text>
     </g>
   </g>
 
-  <!-- PROOF strip -->
+  <!-- CAPABILITIES strip -->
   <g transform="translate(60 920)">
     <line x1="0" y1="0" x2="1080" y2="0" stroke="#0b1220" stroke-opacity="0.18" stroke-width="1"/>
-    <text x="0" y="50" fill="#0b1220" font-size="22" font-family="Helvetica, Arial, sans-serif" opacity="0.6" letter-spacing="3">TRACK RECORD</text>
+    <text x="0" y="50" fill="#0b1220" font-size="22" font-family="Helvetica, Arial, sans-serif" opacity="0.6" letter-spacing="3">CAPABILITIES</text>
     <g font-family="Helvetica, Arial, sans-serif">
-      <text x="0" y="105" fill="#0b1220" font-size="40" font-weight="600">+20%</text>
-      <text x="0" y="138" fill="#0b1220" opacity="0.7" font-size="18">Recall@10 after retrieval tuning</text>
+      <text x="0" y="105" fill="#0b1220" font-size="40" font-weight="600">&#189;&#215;</text>
+      <text x="0" y="138" fill="#0b1220" opacity="0.7" font-size="18">Mac mini cost &#183; local AI workstation</text>
 
-      <text x="360" y="105" fill="#0b1220" font-size="40" font-weight="600">4 yrs</text>
-      <text x="360" y="138" fill="#0b1220" opacity="0.7" font-size="18">Accenture Federal MLE Group</text>
+      <text x="360" y="105" fill="#0b1220" font-size="40" font-weight="600">AWS</text>
+      <text x="360" y="138" fill="#0b1220" opacity="0.7" font-size="18">Custom multimodal &#183; fast-inference kernels</text>
 
-      <text x="720" y="105" fill="#0b1220" font-size="40" font-weight="600">1 wk</text>
-      <text x="720" y="138" fill="#0b1220" opacity="0.7" font-size="18">paid scoping sprint to start</text>
+      <text x="720" y="105" fill="#0b1220" font-size="40" font-weight="600">Federal</text>
+      <text x="720" y="138" fill="#0b1220" opacity="0.7" font-size="18">4 yrs Accenture FS &#183; MLE Group</text>
     </g>
   </g>
 
@@ -94,8 +96,8 @@
   <rect x="0" y="1090" width="1200" height="110" fill="url(#darkfade)"/>
   <rect x="0" y="1090" width="1200" height="110" fill="url(#dots)"/>
 
-  <text x="60" y="1140" fill="#f6f3ec" font-size="22" font-family="Helvetica, Arial, sans-serif" opacity="0.6" letter-spacing="3">LET&#8217;S TALK</text>
-  <text x="60" y="1175" fill="#f6f3ec" font-size="28">Mridul Sarkar &#183; Founder</text>
+  <text x="60" y="1140" fill="#f6f3ec" font-size="22" font-family="Helvetica, Arial, sans-serif" opacity="0.6" letter-spacing="3">START A PROJECT</text>
+  <text x="60" y="1175" fill="#f6f3ec" font-size="26">Discovery to deploy &#183; end-to-end ownership</text>
 
   <text x="1140" y="1140" fill="#f6f3ec" font-size="20" font-family="Helvetica, Arial, sans-serif" text-anchor="end" opacity="0.7">mridul@multimodalworks.io</text>
   <text x="1140" y="1175" fill="#f6f3ec" font-size="20" font-family="Helvetica, Arial, sans-serif" text-anchor="end">multimodalworks.io</text>
