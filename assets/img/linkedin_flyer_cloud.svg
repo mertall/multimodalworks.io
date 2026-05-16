@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif">
+  <defs>
+    <pattern id="topo" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <circle cx="60" cy="60" r="56" fill="none" stroke="#0b1220" stroke-width="0.6" opacity="0.10"/>
+      <circle cx="60" cy="60" r="42" fill="none" stroke="#0b1220" stroke-width="0.6" opacity="0.10"/>
+      <circle cx="60" cy="60" r="28" fill="none" stroke="#0b1220" stroke-width="0.6" opacity="0.10"/>
+      <circle cx="60" cy="60" r="14" fill="none" stroke="#0b1220" stroke-width="0.6" opacity="0.10"/>
+    </pattern>
+    <pattern id="dotsNavy" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#f6f3ec" opacity="0.16"/>
+    </pattern>
+  </defs>
+
+  <!-- parchment background -->
+  <rect width="1200" height="1200" fill="#f6f3ec"/>
+  <rect width="1200" height="1200" fill="url(#topo)"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="1200" height="78" fill="#0b1220"/>
+  <text x="60" y="50" fill="#f6f3ec" font-size="22" letter-spacing="2" font-family="Georgia, serif">MULTIMODAL WORKS<tspan font-size="14" fill="#f6f3ec" opacity="0.55" dx="14" letter-spacing="4">LLC</tspan></text>
+  <g transform="translate(1050 28)">
+    <rect width="100" height="52" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.2"/>
+    <g fill="#b31942">
+      <rect y="0" width="100" height="4"/>
+      <rect y="8" width="100" height="4"/>
+      <rect y="16" width="100" height="4"/>
+      <rect y="24" width="100" height="4"/>
+      <rect y="32" width="100" height="4"/>
+      <rect y="40" width="100" height="4"/>
+      <rect y="48" width="100" height="4"/>
+    </g>
+    <rect width="40" height="28" fill="#0a3161"/>
+  </g>
+
+  <!-- KICKER -->
+  <text x="60" y="155" fill="#0a3161" font-size="20" letter-spacing="5" font-family="Helvetica, Arial, sans-serif">DEEP DIVE  |  CLOUD AI  |  AWS MULTIMODAL</text>
+
+  <!-- HEADLINE -->
+  <text x="60" y="240" fill="#0b1220" font-size="86" font-weight="400">Multimodal AI.</text>
+  <text x="60" y="330" fill="#0b1220" font-size="86" font-weight="400">Custom-built.</text>
+  <text x="60" y="420" fill="#0b1220" font-size="86" font-weight="400" font-style="italic">AWS-deployed.</text>
+
+  <!-- SUBHEAD -->
+  <text x="60" y="490" fill="#0b1220" opacity="0.78" font-size="22" font-family="Helvetica, Arial, sans-serif">
+    <tspan x="60" dy="0">Vision-search and multimodal models built for your data,</tspan>
+    <tspan x="60" dy="30">with bespoke fast-inference kernels. Faster and cheaper</tspan>
+    <tspan x="60" dy="30">than off-the-shelf vendor endpoints.</tspan>
+  </text>
+
+  <!-- BIG NAVY PANEL with 4 features -->
+  <g transform="translate(60 620)">
+    <rect width="1080" height="430" rx="22" fill="#0a3161"/>
+    <rect width="1080" height="430" rx="22" fill="url(#dotsNavy)"/>
+
+    <text x="40" y="50" fill="#f6f3ec" opacity="0.7" font-size="14" letter-spacing="4" font-family="Helvetica, Arial, sans-serif">WHAT YOU GET</text>
+
+    <!-- divider lines -->
+    <line x1="540" y1="80" x2="540" y2="410" stroke="#f6f3ec" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="40" y1="245" x2="1040" y2="245" stroke="#f6f3ec" stroke-opacity="0.18" stroke-width="1"/>
+
+    <!-- 01 Custom multimodal -->
+    <g transform="translate(40 100)">
+      <text x="0" y="0" fill="#f6f3ec" opacity="0.55" font-size="14" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">01</text>
+      <text x="0" y="44" fill="#f6f3ec" font-size="32">Custom multimodal models.</text>
+      <text x="0" y="90" fill="#f6f3ec" opacity="0.88" font-size="18" font-family="Helvetica, Arial, sans-serif">
+        <tspan x="0" dy="0">Vision-search, embeddings, retrieval,</tspan>
+        <tspan x="0" dy="26">contrastive fine-tunes. Built for your data.</tspan>
+      </text>
+    </g>
+
+    <!-- 02 Fast-inference kernels -->
+    <g transform="translate(580 100)">
+      <text x="0" y="0" fill="#f6f3ec" opacity="0.55" font-size="14" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">02</text>
+      <text x="0" y="44" fill="#f6f3ec" font-size="32">Fast-inference kernels.</text>
+      <text x="0" y="90" fill="#f6f3ec" opacity="0.88" font-size="18" font-family="Helvetica, Arial, sans-serif">
+        <tspan x="0" dy="0">Bespoke kernel-level optimizations.</tspan>
+        <tspan x="0" dy="26">Cheaper per request than vendor endpoints.</tspan>
+      </text>
+    </g>
+
+    <!-- 03 AWS-native deployment -->
+    <g transform="translate(40 265)">
+      <text x="0" y="0" fill="#f6f3ec" opacity="0.55" font-size="14" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">03</text>
+      <text x="0" y="44" fill="#f6f3ec" font-size="32">AWS-native deployment.</text>
+      <text x="0" y="90" fill="#f6f3ec" opacity="0.88" font-size="18" font-family="Helvetica, Arial, sans-serif">
+        <tspan x="0" dy="0">SageMaker, Lambda, GPU EC2, ECR.</tspan>
+        <tspan x="0" dy="26">Autoscale to demand. IaC and runbooks included.</tspan>
+      </text>
+    </g>
+
+    <!-- 04 Federal-scale reliability -->
+    <g transform="translate(580 265)">
+      <text x="0" y="0" fill="#f6f3ec" opacity="0.55" font-size="14" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">04</text>
+      <text x="0" y="44" fill="#f6f3ec" font-size="32">Federal-scale reliability.</text>
+      <text x="0" y="90" fill="#f6f3ec" opacity="0.88" font-size="18" font-family="Helvetica, Arial, sans-serif">
+        <tspan x="0" dy="0">4 years Accenture Federal MLE Group.</tspan>
+        <tspan x="0" dy="26">SLA-grade engineering, evals, and monitoring.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- TIMELINE strip -->
+  <g transform="translate(60 1070)">
+    <text x="0" y="0" fill="#0b1220" opacity="0.55" font-size="14" letter-spacing="4" font-family="Helvetica, Arial, sans-serif">TIMELINE</text>
+    <text x="0" y="32" fill="#0b1220" font-size="28">Prototype delivered in <tspan font-style="italic">one month.</tspan> Notebook to production, end-to-end ownership.</text>
+  </g>
+
+  <!-- FOOTER bar -->
+  <rect x="0" y="1140" width="1200" height="60" fill="#0b1220"/>
+  <text x="60" y="1180" fill="#f6f3ec" opacity="0.7" font-size="18" font-family="Helvetica, Arial, sans-serif">START A PROJECT</text>
+  <text x="1140" y="1180" fill="#f6f3ec" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="end">mridul@multimodalworks.io   |   multimodalworks.io</text>
+</svg>
