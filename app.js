@@ -292,12 +292,12 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
   svg.attr("viewBox", `0 0 ${w} ${h}`);
 
   const stages = [
-    { id: "user", label: "user", sub: "prompt" },
-    { id: "hermes", label: "Hermes", sub: "agent" },
-    { id: "recall", label: "recall", sub: "AGE · Qdrant" },
-    { id: "router", label: "LiteLLM", sub: "routing" },
-    { id: "llm", label: "Qwen3", sub: "Ollama · APU" },
-    { id: "stream", label: "stream", sub: "tokens" },
+    { id: "asks", label: "asks", sub: "your team" },
+    { id: "remembers", label: "remembers", sub: "your data" },
+    { id: "intelligent", label: "intelligent", sub: "picks the model" },
+    { id: "explainable", label: "explainable", sub: "every step traceable" },
+    { id: "private", label: "private", sub: "never leaves" },
+    { id: "answers", label: "answers", sub: "streamed back" },
   ];
 
   const pad = 16;
@@ -437,7 +437,7 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
       .duration(240)
       .attr("r", 2.6);
   });
-  // Langfuse label.
+  // Observer-lane label (audit trail).
   g.append("text")
     .attr("x", obsX1 - 8)
     .attr("y", obsY + 4)
@@ -447,7 +447,7 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
     .attr("font-weight", 600)
     .attr("fill", "#0a3161")
     .attr("opacity", 0)
-    .text("Langfuse")
+    .text("audit trail")
     .transition()
     .delay(stages.length * 180 + 600)
     .duration(300)
@@ -459,7 +459,7 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
     .attr("font-size", 9)
     .attr("fill", "#0a3161")
     .attr("opacity", 0)
-    .text("traces · latency · tokens")
+    .text("what · when · why")
     .transition()
     .delay(stages.length * 180 + 700)
     .duration(300)

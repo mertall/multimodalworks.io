@@ -24,3 +24,7 @@ venv/
 *.tmp
 *~
 app.js.new
+
+# Generated PDF artifacts (regeneratable from the site)
+*.pdf
+!docs/*.pdf

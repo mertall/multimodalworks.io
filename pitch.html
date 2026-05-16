@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Multimodal Works · what we do</title>
+    <meta
+      name="description"
+      content="AI consulting. Three ways to ship AI in your business: Local AI, Cloud AI, Custom application. Initial consultation free."
+    />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink-soft: #2c3340;
+        --ink-mute: #5a6271;
+        --paper: #ffffff;
+        --paper-soft: #faf9f5;
+        --rule: #d4d4d8;
+        --red: #b31942;
+        --navy: #0a3161;
+        --ivory: #f5f2e8;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      .page {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 24px 20px 56px;
+      }
+      h1, h2, h3 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 1.1;
+      }
+      h2 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        margin-bottom: 12px;
+      }
+      h3 {
+        font-size: 17px;
+        line-height: 1.25;
+        margin-bottom: 4px;
+      }
+      p { margin: 0; }
+      .mono {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-mute); }
+      a:hover { color: var(--red); border-color: var(--red); }
+
+      /* Header: brand + flag */
+      header.top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid var(--ink);
+      }
+      header.top .wordmark {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      header.top .wordmark .llc {
+        color: var(--ink-mute);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+      header.top .flag {
+        height: 22px;
+        width: auto;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Accent bar between sections */
+      .accent-bar {
+        height: 3px;
+        margin: 22px 0 18px;
+        background: linear-gradient(
+          to right,
+          var(--red) 0 25%,
+          var(--paper) 25% 50%,
+          var(--navy) 50% 75%,
+          var(--paper) 75% 100%
+        );
+      }
+
+      section { margin-top: 4px; }
+
+      /* Hero block */
+      .hero {
+        margin-top: 22px;
+        margin-bottom: 6px;
+      }
+      .hero .eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .hero .tagline {
+        margin-top: 10px;
+        font-size: 17px;
+        line-height: 1.45;
+        color: var(--ink-soft);
+      }
+      .hero .tagline strong { color: var(--ink); font-weight: 600; }
+      .hero .cta {
+        margin-top: 18px;
+      }
+      .hero .cta a.primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+      }
+      .hero .cta a.primary:hover {
+        background: var(--red);
+        color: var(--paper);
+      }
+
+      /* Workflow list */
+      .workflows ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .workflows li {
+        display: flex;
+        gap: 14px;
+        padding: 12px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .workflows li:first-child { border-top: none; }
+      .workflows .icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(179, 25, 66, 0.08);
+        color: var(--red);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .workflows .icon svg { width: 18px; height: 18px; }
+      .workflows .name {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 15px;
+      }
+      .workflows .desc {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 2px;
+        line-height: 1.4;
+      }
+
+      /* Two delivery modes */
+      .modes {
+        display: grid;
+        gap: 14px;
+      }
+      .mode {
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 18px 18px 16px;
+      }
+      .mode.local { border-left: 4px solid var(--red); }
+      .mode.cloud { border-left: 4px solid var(--navy); }
+      .mode.custom { border-left: 4px solid var(--ink); }
+      .mode .lead {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .mode .lead .tag {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        color: var(--ink-mute);
+        letter-spacing: 0.04em;
+      }
+      .mode.local .lead .tag { color: var(--red); }
+      .mode.cloud .lead .tag { color: var(--navy); }
+      .mode ul {
+        list-style: none;
+        margin: 6px 0 0;
+        padding: 0;
+      }
+      .mode li {
+        display: flex;
+        gap: 8px;
+        padding: 4px 0;
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.45;
+      }
+      .mode li::before {
+        content: "·";
+        color: var(--red);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .mode.cloud li::before { color: var(--navy); }
+      .mode.custom li::before { color: var(--ink); }
+
+      /* Stat tiles row */
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      .stat {
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        padding: 14px 12px;
+        text-align: left;
+        background: var(--paper-soft);
+      }
+      .stat .n {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .stat .l {
+        font-size: 11px;
+        color: var(--ink-mute);
+        margin-top: 6px;
+        line-height: 1.35;
+      }
+
+      /* Engagement stages */
+      .stages {
+        display: grid;
+        gap: 10px;
+      }
+      .stage {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: baseline;
+        padding: 12px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .stage:first-child { border-top: none; padding-top: 4px; }
+      .stage .when {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--red);
+        white-space: nowrap;
+      }
+      .stage .what {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+      }
+      .stage .what strong { color: var(--ink); font-weight: 600; }
+
+      /* Contact block */
+      .contact-card {
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 18px;
+        background: var(--paper-soft);
+      }
+      .contact-card .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+      .contact-card .row + .row { border-top: 1px solid var(--rule); }
+      .contact-card .label {
+        color: var(--ink-mute);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 32px;
+        padding-top: 18px;
+        border-top: 1px solid var(--rule);
+        font-size: 12px;
+        color: var(--ink-mute);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      footer a { font-size: 12px; }
+
+      @media (max-width: 480px) {
+        .page { padding: 18px 18px 48px; }
+        h1 { font-size: 26px; }
+        .stats { grid-template-columns: 1fr; }
+        .stat .n { font-size: 20px; }
+      }
+
+      @media print {
+        body { font-size: 11pt; }
+        .page { max-width: none; padding: 0; }
+        a { border-bottom: none; }
+        .hero .cta { display: none; }
+        @page { size: letter; margin: 0.5in; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div class="wordmark">
+          Multimodal Works<span class="llc">LLC</span>
+        </div>
+        <!-- USA flag SVG -->
+        <svg
+          viewBox="0 0 1235 650"
+          class="flag"
+          role="img"
+          aria-label="Made in the USA"
+        >
+          <rect width="1235" height="650" fill="#ffffff" />
+          <g fill="#b31942">
+            <rect y="0" width="1235" height="50" />
+            <rect y="100" width="1235" height="50" />
+            <rect y="200" width="1235" height="50" />
+            <rect y="300" width="1235" height="50" />
+            <rect y="400" width="1235" height="50" />
+            <rect y="500" width="1235" height="50" />
+            <rect y="600" width="1235" height="50" />
+          </g>
+          <rect width="494" height="350" fill="#0a3161" />
+        </svg>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">
+          AI consulting · Local AI · Cloud AI · Custom application
+        </p>
+        <h1>Three ways to ship Multimodal Works into your business.</h1>
+        <p class="tagline">
+          Pick the engagement shape that fits your data, your timeline, and
+          your budget. <strong>Initial consultation is free.</strong>
+        </p>
+        <div class="cta">
+          <a
+            class="primary"
+            href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro"
+          >
+            mridul@multimodalworks.io
+            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>What we do</h2>
+        <div class="modes">
+          <div class="mode local">
+            <div class="lead">
+              <h3>Local AI · custom-built workstation</h3>
+              <span class="tag">$3,000 station</span>
+            </div>
+            <ul>
+              <li>We custom-build a 128 GB unified-memory workstation at $3,000 flat.</li>
+              <li>Open-source AI pipelines that run entirely on your hardware.</li>
+              <li>Examples: inbox triage, calendar automation, invoice tracking, payment monitoring, estimate follow-up — and anything else that fits a workflow.</li>
+              <li>No data egress · no per-token bills · predictable cost line.</li>
+            </ul>
+          </div>
+          <div class="mode cloud">
+            <div class="lead">
+              <h3>Cloud AI · managed services</h3>
+              <span class="tag">faster to ship</span>
+            </div>
+            <ul>
+              <li>Pre-built integrations with managed AI services (OpenAI, Anthropic, Google).</li>
+              <li>Same workflow categories as Local AI — delivered through managed AI, faster to stand up.</li>
+              <li>Endpoint-by-endpoint map: you know which service sees which part of your data.</li>
+              <li>PII stripped or pseudonymized before egress · plain-SQL audit log of every cloud call.</li>
+            </ul>
+          </div>
+          <div class="mode custom">
+            <div class="lead">
+              <h3>Custom application · full-stack build</h3>
+              <span class="tag">3–6 mo · production</span>
+            </div>
+            <ul>
+              <li>When your problem doesn't fit a workflow template — you need a real application.</li>
+              <li>Full-stack cloud apps: backend (Node / Python · GraphQL / FastAPI), frontend (React), AI service.</li>
+              <li>Auth, RBAC, audit trails, observability — the boring parts nobody else finishes.</li>
+              <li>SLOs and runbooks handed off at the end so your team owns it cleanly.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>The numbers</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="n">$3,000</div>
+            <div class="l">Custom-built local AI station · 128 GB unified memory</div>
+          </div>
+          <div class="stat">
+            <div class="n">~3 mo</div>
+            <div class="l">Typical local-AI payback vs a $1k/mo cloud LLM bill</div>
+          </div>
+          <div class="stat">
+            <div class="n">3–6 mo</div>
+            <div class="l">Prototype to production · full handoff</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>Engagement model</h2>
+        <div class="stages">
+          <div class="stage">
+            <span class="when">30 min</span>
+            <span class="what"><strong>Initial consultation. Free.</strong> 30-minute call · scope clarification · is-this-a-fit check.</span>
+          </div>
+          <div class="stage">
+            <span class="when">1 wk</span>
+            <span class="what"><strong>Paid scoping sprint · $5,000 flat.</strong> Working demo against your real data, architecture diagram, hard cost estimate, written runbook if you want to stop here and DIY.</span>
+          </div>
+          <div class="stage">
+            <span class="when">4–6 wk</span>
+            <span class="what"><strong>Prototype.</strong> Customer-shippable, instrumented, in your environment.</span>
+          </div>
+          <div class="stage">
+            <span class="when">~3 mo</span>
+            <span class="what"><strong>MVP shipped.</strong> Production patterns, deployment story your team can run.</span>
+          </div>
+          <div class="stage">
+            <span class="when">~6 mo</span>
+            <span class="what"><strong>Production-hardened.</strong> SLOs, observability, rollback paths, runbooks, handoff.</span>
+          </div>
+        </div>
+        <p style="margin-top: 18px; font-size: 13px; color: var(--ink-mute); line-height: 1.5;">
+          Initial consultation is free. The 1-week scoping sprint is
+          <strong style="color: var(--ink);">$5,000 flat</strong> — the only
+          paid commitment before a full engagement is quoted.
+        </p>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>Get in touch</h2>
+        <div class="contact-card">
+          <div class="row">
+            <span class="label">Email</span>
+            <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a>
+          </div>
+          <div class="row">
+            <span class="label">GitHub</span>
+            <a href="https://github.com/mertall">github.com/mertall</a>
+          </div>
+          <div class="row">
+            <span class="label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/mridul-s-56738a149">mridul-s</a>
+          </div>
+          <div class="row">
+            <span class="label">Based</span>
+            <span>Greater Chicago Area</span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Multimodal Works LLC · © 2026</span>
+        <a href="https://multimodalworks.io">multimodalworks.io →</a>
+      </footer>
+    </div>
+  </body>
+</html>
