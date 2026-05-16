@@ -41,14 +41,15 @@
   <text x="60" y="170" fill="#b31942" font-size="20" letter-spacing="5" font-family="Helvetica, Arial, sans-serif">PRODUCTION AI SYSTEMS &#183; ON&#8209;PREM &amp; CLOUD &#183; MULTIMODAL</text>
 
   <!-- HEADLINE -->
-  <text x="60" y="280" fill="#0b1220" font-size="90" font-weight="400">Custom multimodal AI.</text>
-  <text x="60" y="380" fill="#0b1220" font-size="90" font-weight="400">Delivered in <tspan font-style="italic">3&#8211;6 months.</tspan></text>
+  <text x="60" y="255" fill="#0b1220" font-size="78" font-weight="400">Custom multimodal AI.</text>
+  <text x="60" y="340" fill="#0b1220" font-size="78" font-weight="400">Prototype delivered</text>
+  <text x="60" y="425" fill="#0b1220" font-size="78" font-weight="400">in <tspan font-style="italic">one month.</tspan></text>
 
   <!-- SUBHEAD -->
-  <text x="60" y="470" fill="#0b1220" opacity="0.78" font-size="26" font-family="Helvetica, Arial, sans-serif">
+  <text x="60" y="500" fill="#0b1220" opacity="0.78" font-size="24" font-family="Helvetica, Arial, sans-serif">
     <tspan x="60" dy="0">On-prem AI workstations on your network.</tspan>
-    <tspan x="60" dy="36">Custom multimodal models on AWS &#8212; with bespoke</tspan>
-    <tspan x="60" dy="36">fast-inference kernels. Same team, end to end.</tspan>
+    <tspan x="60" dy="32">Custom multimodal models on AWS &#8212; with bespoke</tspan>
+    <tspan x="60" dy="32">fast-inference kernels. Same team, end to end.</tspan>
   </text>
 
   <!-- Two pillars -->
