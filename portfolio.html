@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio · Multimodal Works</title>
+    <meta
+      name="description"
+      content="Sample work from Multimodal Works LLC. Local AI stations, multimodal retrieval on AWS, edge ML, quantum tensor networks."
+    />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink-soft: #2c3340;
+        --ink-mute: #5a6271;
+        --paper: #ffffff;
+        --paper-soft: #faf9f5;
+        --rule: #d4d4d8;
+        --red: #b31942;
+        --navy: #0a3161;
+        --ivory: #f5f2e8;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      .page {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 24px 20px 56px;
+      }
+      h1, h2, h3 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      h1 { font-size: 30px; line-height: 1.1; }
+      h2 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        margin-bottom: 12px;
+      }
+      h3 { font-size: 16px; line-height: 1.25; margin-bottom: 4px; }
+      p { margin: 0; }
+      .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+      a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-mute); }
+      a:hover { color: var(--red); border-color: var(--red); }
+
+      header.top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid var(--ink);
+      }
+      header.top .wordmark {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      header.top .wordmark a {
+        color: var(--ink);
+        border-bottom: none;
+      }
+      header.top .wordmark a:hover { color: var(--red); }
+      header.top .wordmark .llc {
+        color: var(--ink-mute);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+      header.top .flag {
+        height: 22px;
+        width: auto;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+      }
+
+      .accent-bar {
+        height: 3px;
+        margin: 22px 0 18px;
+        background: linear-gradient(
+          to right,
+          var(--red) 0 25%,
+          var(--paper) 25% 50%,
+          var(--navy) 50% 75%,
+          var(--paper) 75% 100%
+        );
+      }
+
+      section { margin-top: 4px; }
+
+      .hero { margin-top: 22px; margin-bottom: 6px; }
+      .hero .eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .hero .tagline {
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 1.45;
+        color: var(--ink-soft);
+      }
+      .hero .tagline strong { color: var(--ink); font-weight: 600; }
+      .hero .back {
+        margin-top: 14px;
+        display: inline-block;
+        font-size: 13px;
+        color: var(--ink-mute);
+        border-bottom: 1px solid var(--rule);
+      }
+      .hero .back:hover { color: var(--red); border-color: var(--red); }
+
+      /* Project list */
+      .group { display: grid; gap: 0; }
+      .project {
+        padding: 14px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .project:first-child { border-top: none; padding-top: 4px; }
+      .project .head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 4px;
+      }
+      .project .tag {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 10.5px;
+        color: var(--ink-mute);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .project.local .tag { color: var(--red); }
+      .project.cloud .tag { color: var(--navy); }
+      .project p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 4px;
+        line-height: 1.45;
+      }
+      .project .meta {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        font-size: 12px;
+        color: var(--ink-mute);
+      }
+      .project .meta a {
+        font-size: 12px;
+        color: var(--ink-mute);
+        border-bottom: 1px dashed var(--ink-mute);
+      }
+      .project .meta .pill {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 10.5px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        color: var(--ink-mute);
+        border: 1px solid var(--rule);
+        background: var(--paper-soft);
+      }
+
+      /* Section accent border */
+      .section-box {
+        border-left: 4px solid var(--rule);
+        padding-left: 14px;
+      }
+      .section-box.local { border-left-color: var(--red); }
+      .section-box.cloud { border-left-color: var(--navy); }
+      .section-box.research { border-left-color: var(--ink); }
+
+      /* Deeper write-ups CTA */
+      .deeper {
+        background: var(--paper-soft);
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 18px;
+      }
+      .deeper h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+      }
+      .deeper p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+      .deeper a.primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+      }
+      .deeper a.primary:hover {
+        background: var(--red);
+        color: var(--paper);
+      }
+
+      footer {
+        margin-top: 32px;
+        padding-top: 18px;
+        border-top: 1px solid var(--rule);
+        font-size: 12px;
+        color: var(--ink-mute);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      footer a { font-size: 12px; }
+
+      @media (max-width: 480px) {
+        .page { padding: 18px 18px 48px; }
+        h1 { font-size: 26px; }
+        .project .head { flex-direction: column; align-items: flex-start; gap: 2px; }
+      }
+
+      @media print {
+        body { font-size: 11pt; }
+        .page { max-width: none; padding: 0; }
+        a { border-bottom: none; }
+        @page { size: letter; margin: 0.5in; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div class="wordmark">
+          <a href="index.html">Multimodal Works</a><span class="llc">LLC</span>
+        </div>
+        <svg
+          viewBox="0 0 1235 650"
+          class="flag"
+          role="img"
+          aria-label="Made in the USA"
+        >
+          <rect width="1235" height="650" fill="#ffffff" />
+          <g fill="#b31942">
+            <rect y="0" width="1235" height="50" />
+            <rect y="100" width="1235" height="50" />
+            <rect y="200" width="1235" height="50" />
+            <rect y="300" width="1235" height="50" />
+            <rect y="400" width="1235" height="50" />
+            <rect y="500" width="1235" height="50" />
+            <rect y="600" width="1235" height="50" />
+          </g>
+          <rect width="494" height="350" fill="#0a3161" />
+        </svg>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">Sample work · 2018 → 2026</p>
+        <h1>Portfolio.</h1>
+        <p class="tagline">
+          Selected projects across local AI stations, multimodal retrieval on
+          AWS, edge ML, and quantum tensor networks. Some are public on GitHub,
+          some are private to clients. <strong>All shipped.</strong>
+        </p>
+        <a class="back" href="index.html">← Back to home</a>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section class="section-box local">
+        <h2>Local AI</h2>
+        <div class="group">
+          <div class="project local">
+            <div class="head">
+              <h3>Local AI Station</h3>
+              <span class="tag">private · local-ai-station</span>
+            </div>
+            <p>
+              A serious local AI stack. Full agent layer, three-tier memory,
+              trace-level observability, and multi-model routing — wired into
+              the same data sources a cloud chatbot would touch. Runs entirely
+              on a 128 GB unified-memory workstation, with cloud-grade
+              first-token latency.
+            </p>
+            <div class="meta">
+              <span class="pill">$3,000 station</span>
+              <span class="pill">no egress</span>
+              <span class="pill">multi-model routing</span>
+            </div>
+          </div>
+
+          <div class="project local">
+            <div class="head">
+              <h3>Hardware Agent</h3>
+              <span class="tag">github.com/mertall/Hardware-Agent</span>
+            </div>
+            <p>
+              Privacy-first bootstrapper for a Local AI Station. Detects the
+              hardware ladder, picks the right quantization and model size,
+              and provisions the agent stack with zero cloud calls.
+            </p>
+            <div class="meta">
+              <a href="https://github.com/mertall/Hardware-Agent">github.com/mertall/Hardware-Agent →</a>
+            </div>
+          </div>
+
+          <div class="project local">
+            <div class="head">
+              <h3>HOSVD on a Raspberry Pi</h3>
+              <span class="tag">edge · tensor decomposition</span>
+            </div>
+            <p>
+              Facial-expression recognition via Higher-Order Singular Value
+              Decomposition instead of a neural net — Pi camera + IR sensor +
+              tensor decomposition. Edge-hardware proof point with no GPU and
+              no cloud call.
+            </p>
+            <div class="meta">
+              <a href="https://github.com/mertall">github.com/mertall →</a>
+            </div>
+          </div>
+
+          <div class="project local">
+            <div class="head">
+              <h3>News Agent</h3>
+              <span class="tag">local · agent</span>
+            </div>
+            <p>
+              Daily-brief agent that watches sources, classifies salience, and
+              writes digests. Runs locally — no cloud LLM bills, no token
+              meter, no data leaving the box.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section class="section-box cloud">
+        <h2>Cloud AI</h2>
+        <div class="group">
+          <div class="project cloud">
+            <div class="head">
+              <h3>VisionSearch</h3>
+              <span class="tag">github.com/mertall/VisionSearch</span>
+            </div>
+            <p>
+              Multimodal retrieval that pays for itself. CLIP on SageMaker,
+              HNSW index, FastAPI router. Embedding-based retrieval over
+              generative RAG — picked deliberately for latency, determinism,
+              and a price tag the CFO understands.
+            </p>
+            <div class="meta">
+              <span class="pill">≤80 ms p50</span>
+              <span class="pill">+20% Recall@10</span>
+              <span class="pill">text ↔ image</span>
+              <a href="https://github.com/mertall/VisionSearch">github.com/mertall/VisionSearch →</a>
+            </div>
+          </div>
+
+          <div class="project cloud">
+            <div class="head">
+              <h3>PatchTST + HNSW</h3>
+              <span class="tag">github.com/mertall/patchtst_and_hnsw</span>
+            </div>
+            <p>
+              Transformer training for time series, paired with an HNSW
+              retrieval index — retrievable time-series embeddings for
+              similarity search across long horizons.
+            </p>
+            <div class="meta">
+              <a href="https://github.com/mertall/patchtst_and_hnsw">github.com/mertall/patchtst_and_hnsw →</a>
+            </div>
+          </div>
+
+          <div class="project cloud">
+            <div class="head">
+              <h3>deep-agent-cognee</h3>
+              <span class="tag">github.com/mertall</span>
+            </div>
+            <p>
+              Long-horizon agent built on Cognee's knowledge-graph memory.
+              Persistent context across sessions, structured recall, and a
+              routing layer that explains every step it takes.
+            </p>
+            <div class="meta">
+              <a href="https://github.com/mertall">github.com/mertall →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section class="section-box research">
+        <h2>Research</h2>
+        <div class="group">
+          <div class="project">
+            <div class="head">
+              <h3>Quantum on a laptop</h3>
+              <span class="tag">tensor networks · 60q peak</span>
+            </div>
+            <p>
+              BlueQubit Hackathon entry. 60-qubit peak circuit simulated via
+              tensor-network contraction on consumer hardware — proof that
+              quantum-adjacent work fits inside tight hardware budgets when
+              the math is chosen carefully.
+            </p>
+            <div class="meta">
+              <span class="pill">Quimb</span>
+              <span class="pill">cotengra</span>
+              <span class="pill">qsharp-community</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>Deeper write-ups</h2>
+        <div class="deeper">
+          <h3>The full engineering site</h3>
+          <p>
+            Architecture diagrams, latency benchmarks, recall curves, cost
+            projections, and the math behind every case study above —
+            laid out on the detailed engineering site.
+          </p>
+          <a class="primary" href="home.html">
+            Open the detailed site
+            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <span>Multimodal Works LLC · © 2026 · Greater Chicago Area</span>
+        <a href="https://github.com/mertall">github.com/mertall →</a>
+      </footer>
+    </div>
+  </body>
+</html>
