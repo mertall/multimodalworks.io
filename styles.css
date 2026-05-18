@@ -119,3 +119,61 @@ svg#recall-curve {
     transparent 100%
   );
 }
+
+/* ============================================
+   Print stylesheet — used when exporting PDF
+   ============================================ */
+@media print {
+  /* Force background and color rendering. Without this Chrome strips dark
+     backgrounds on print, which kills the brand. */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Sticky chrome and decorative animation surfaces — irrelevant in print. */
+  header,
+  .bg-decor,
+  #hero-canvas {
+    display: none !important;
+  }
+
+  /* Keep cards intact across page breaks. */
+  article,
+  .rounded-xl,
+  .rounded-2xl,
+  section > div > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Section headings shouldn't be orphaned at the bottom of a page. */
+  h1, h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Tighter section padding so more content fits per page. */
+  section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Render full-color SVG charts (latency, recall, cost projection). */
+  svg {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* CTAs render as solid blocks; underline links inline so they read clearly. */
+  a {
+    text-decoration: none;
+  }
+}
+
+@page {
+  size: letter;
+  margin: 0.5in;
+}

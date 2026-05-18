@@ -3,2162 +3,523 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Multimodal Works — ML & quantum engineering on constrained hardware</title>
+    <title>Multimodal Works · AI consulting for SMBs</title>
     <meta
       name="description"
-      content="Multimodal Works LLC is a founder-led tech consulting practice building production ML, edge AI, and quantum-adjacent systems that run inside tight hardware budgets."
+      content="AI consulting. Three ways to ship AI in your business: Local AI, Cloud AI, Custom application. Initial consultation free."
     />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              ink: "#0b1220",
-              parchment: "#f6f3ec",
-              flag: {
-                navy: "#0a3161",
-                red: "#b31942",
-                ivory: "#f5f2e8",
-              },
-              accent: "#3b82f6",
-            },
-            fontFamily: {
-              display: [
-                '"Iowan Old Style"',
-                '"Apple Garamond"',
-                "Georgia",
-                "Cambria",
-                '"Times New Roman"',
-                "serif",
-              ],
-              sans: [
-                "-apple-system",
-                "BlinkMacSystemFont",
-                '"Segoe UI"',
-                "Inter",
-                "Roboto",
-                "Helvetica",
-                "Arial",
-                "sans-serif",
-              ],
-              mono: [
-                '"JetBrains Mono"',
-                "ui-monospace",
-                "SFMono-Regular",
-                "Menlo",
-                "monospace",
-              ],
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="stylesheet" href="styles.css?v=2026-05-13c" />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink-soft: #2c3340;
+        --ink-mute: #5a6271;
+        --paper: #ffffff;
+        --paper-soft: #faf9f5;
+        --rule: #d4d4d8;
+        --red: #b31942;
+        --navy: #0a3161;
+        --ivory: #f5f2e8;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      .page {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 24px 20px 56px;
+      }
+      h1, h2, h3 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 1.1;
+      }
+      h2 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        margin-bottom: 12px;
+      }
+      h3 {
+        font-size: 17px;
+        line-height: 1.25;
+        margin-bottom: 4px;
+      }
+      p { margin: 0; }
+      .mono {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-mute); }
+      a:hover { color: var(--red); border-color: var(--red); }
+
+      /* Header: brand + flag */
+      header.top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid var(--ink);
+      }
+      header.top .wordmark {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      header.top .wordmark .llc {
+        color: var(--ink-mute);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+      header.top .flag {
+        height: 22px;
+        width: auto;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Accent bar between sections */
+      .accent-bar {
+        height: 3px;
+        margin: 22px 0 18px;
+        background: linear-gradient(
+          to right,
+          var(--red) 0 25%,
+          var(--paper) 25% 50%,
+          var(--navy) 50% 75%,
+          var(--paper) 75% 100%
+        );
+      }
+
+      section { margin-top: 4px; }
+
+      /* Hero block */
+      .hero {
+        margin-top: 22px;
+        margin-bottom: 6px;
+      }
+      .hero .eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .hero .tagline {
+        margin-top: 10px;
+        font-size: 17px;
+        line-height: 1.45;
+        color: var(--ink-soft);
+      }
+      .hero .tagline strong { color: var(--ink); font-weight: 600; }
+      .hero .cta {
+        margin-top: 18px;
+      }
+      .hero .cta a.primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+      }
+      .hero .cta a.primary:hover {
+        background: var(--red);
+        color: var(--paper);
+      }
+
+      /* Workflow list */
+      .workflows ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .workflows li {
+        display: flex;
+        gap: 14px;
+        padding: 12px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .workflows li:first-child { border-top: none; }
+      .workflows .icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(179, 25, 66, 0.08);
+        color: var(--red);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .workflows .icon svg { width: 18px; height: 18px; }
+      .workflows .name {
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 15px;
+      }
+      .workflows .desc {
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 2px;
+        line-height: 1.4;
+      }
+
+      /* Two delivery modes */
+      .modes {
+        display: grid;
+        gap: 14px;
+      }
+      .mode {
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 18px 18px 16px;
+      }
+      .mode.local { border-left: 4px solid var(--red); }
+      .mode.cloud { border-left: 4px solid var(--navy); }
+      .mode.custom { border-left: 4px solid var(--ink); }
+      .mode .lead {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .mode .lead .tag {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        color: var(--ink-mute);
+        letter-spacing: 0.04em;
+      }
+      .mode.local .lead .tag { color: var(--red); }
+      .mode.cloud .lead .tag { color: var(--navy); }
+      .mode ul {
+        list-style: none;
+        margin: 6px 0 0;
+        padding: 0;
+      }
+      .mode li {
+        display: flex;
+        gap: 8px;
+        padding: 4px 0;
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.45;
+      }
+      .mode li::before {
+        content: "·";
+        color: var(--red);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .mode.cloud li::before { color: var(--navy); }
+      .mode.custom li::before { color: var(--ink); }
+
+      /* Stat tiles row */
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      .stat {
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        padding: 14px 12px;
+        text-align: left;
+        background: var(--paper-soft);
+      }
+      .stat .n {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .stat .l {
+        font-size: 11px;
+        color: var(--ink-mute);
+        margin-top: 6px;
+        line-height: 1.35;
+      }
+
+      /* Engagement stages */
+      .stages {
+        display: grid;
+        gap: 10px;
+      }
+      .stage {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: baseline;
+        padding: 12px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .stage:first-child { border-top: none; padding-top: 4px; }
+      .stage .when {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--red);
+        white-space: nowrap;
+      }
+      .stage .what {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+      }
+      .stage .what strong { color: var(--ink); font-weight: 600; }
+
+      /* Contact block */
+      .contact-card {
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 18px;
+        background: var(--paper-soft);
+      }
+      .contact-card .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+      .contact-card .row + .row { border-top: 1px solid var(--rule); }
+      .contact-card .label {
+        color: var(--ink-mute);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 32px;
+        padding-top: 18px;
+        border-top: 1px solid var(--rule);
+        font-size: 12px;
+        color: var(--ink-mute);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      footer a { font-size: 12px; }
+
+      @media (max-width: 480px) {
+        .page { padding: 18px 18px 48px; }
+        h1 { font-size: 26px; }
+        .stats { grid-template-columns: 1fr; }
+        .stat .n { font-size: 20px; }
+      }
+
+      @media print {
+        body { font-size: 11pt; }
+        .page { max-width: none; padding: 0; }
+        a { border-bottom: none; }
+        .hero .cta { display: none; }
+        @page { size: letter; margin: 0.5in; }
+      }
+    </style>
   </head>
-  <body class="bg-parchment text-ink font-sans antialiased">
-    <a
-      href="#work"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-ink focus:text-parchment focus:px-3 focus:py-1"
-      >Skip to work</a
-    >
+  <body>
+    <div class="page">
+      <header class="top">
+        <div class="wordmark">
+          Multimodal Works<span class="llc">LLC</span>
+        </div>
+        <!-- USA flag SVG -->
+        <svg
+          viewBox="0 0 1235 650"
+          class="flag"
+          role="img"
+          aria-label="Made in the USA"
+        >
+          <rect width="1235" height="650" fill="#ffffff" />
+          <g fill="#b31942">
+            <rect y="0" width="1235" height="50" />
+            <rect y="100" width="1235" height="50" />
+            <rect y="200" width="1235" height="50" />
+            <rect y="300" width="1235" height="50" />
+            <rect y="400" width="1235" height="50" />
+            <rect y="500" width="1235" height="50" />
+            <rect y="600" width="1235" height="50" />
+          </g>
+          <rect width="494" height="350" fill="#0a3161" />
+        </svg>
+      </header>
 
-    <header class="border-b border-ink/10 bg-parchment/80 backdrop-blur sticky top-0 z-40">
-      <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6">
-        <a href="#top" class="flex items-baseline gap-2 group">
-          <span class="font-display text-xl tracking-tight">Multimodal Works</span>
-          <span class="text-xs uppercase tracking-[0.18em] text-ink/50">LLC</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-7 text-sm">
-          <a href="#edge" class="hover:text-flag-red transition-colors">Local AI</a>
-          <a href="#enterprise" class="hover:text-flag-red transition-colors">Cloud AI</a>
-          <a href="#the-math" class="hover:text-flag-red transition-colors">The math</a>
-          <a href="#engineering" class="hover:text-flag-red transition-colors">Engineering</a>
-          <a href="#capabilities" class="hover:text-flag-red transition-colors">Capabilities</a>
-          <a href="#experience" class="hover:text-flag-red transition-colors">Experience</a>
-          <a href="#contact" class="hover:text-flag-red transition-colors">Contact</a>
-        </nav>
-        <div class="flex items-center gap-3">
+      <section class="hero">
+        <p class="eyebrow">
+          AI consulting · Local AI · Cloud AI · Custom application
+        </p>
+        <h1>Three ways to ship Multimodal Works into your business.</h1>
+        <p class="tagline">
+          Pick the engagement shape that fits your data, your timeline, and
+          your budget. <strong>Initial consultation is free.</strong>
+        </p>
+        <div class="cta">
           <a
-            href="#contact"
-            class="hidden sm:inline-flex text-sm px-3 py-1.5 rounded-full border border-ink/20 hover:border-flag-red hover:text-flag-red transition-colors"
-            >Start a project</a
+            class="primary"
+            href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro"
           >
-          <span
-            class="inline-flex items-center"
-            aria-label="Made in the USA"
-            title="Made in the USA"
-          >
-            <svg
-              viewBox="0 0 1235 650"
-              class="h-7 w-auto rounded-sm shadow-sm ring-1 ring-black/10"
-              role="img"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern
-                  id="stripes"
-                  width="1235"
-                  height="50"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <rect width="1235" height="50" fill="#b31942" />
-                </pattern>
-              </defs>
-              <rect width="1235" height="650" fill="#ffffff" />
-              <g fill="#b31942">
-                <rect y="0" width="1235" height="50" />
-                <rect y="100" width="1235" height="50" />
-                <rect y="200" width="1235" height="50" />
-                <rect y="300" width="1235" height="50" />
-                <rect y="400" width="1235" height="50" />
-                <rect y="500" width="1235" height="50" />
-                <rect y="600" width="1235" height="50" />
-              </g>
-              <rect width="494" height="350" fill="#0a3161" />
-              <g fill="#ffffff" id="stars"></g>
+            mridul@multimodalworks.io
+            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
             </svg>
-          </span>
-        </div>
-      </div>
-    </header>
-
-    <main id="top">
-      <!-- HERO -->
-      <section class="relative overflow-hidden">
-        <!-- Topographic contour rings on the left, soft hex lattice on the right -->
-        <div class="bg-decor opacity-[0.08] text-ink hidden md:block">
-          <div class="absolute -left-32 top-10 w-[640px] h-[480px] bg-topo"></div>
-          <div class="absolute right-0 bottom-0 w-[60%] h-[60%] bg-hex opacity-60"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 pt-16 pb-20 grid lg:grid-cols-12 gap-10 items-end content-front">
-          <div class="lg:col-span-7">
-            <p
-              class="text-xs uppercase tracking-[0.22em] text-flag-red font-medium mb-5"
-            >
-              Owner-operated AI consulting · for SMBs · Greater Chicago Area
-            </p>
-            <h1
-              class="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight"
-            >
-              AI consulting for SMBs. <span class="italic">Local AI</span>
-              when the token bill bites. <span class="italic">Cloud AI</span>
-              when it doesn't yet.
-            </h1>
-            <p class="mt-6 text-lg text-ink/75 max-w-2xl">
-              Multimodal Works LLC is an owner-operated AI consultancy
-              <strong>built for SMBs</strong>. We help small and mid-sized
-              teams stop bleeding on per-token cloud bills — by shipping
-              local-first AI workstations that match cloud chatbot UX on
-              your own network, plus the cloud-side ML that's actually worth
-              renting. Predictable cost. Same engineer end-to-end.
-              <strong>Prototype to production in 3–6 months.</strong>
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#edge"
-                class="inline-flex items-center gap-2 bg-ink text-parchment px-5 py-3 rounded-full text-sm hover:bg-flag-navy transition-colors"
-              >
-                Local AI work
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="h-4 w-4"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-              <a
-                href="#enterprise"
-                class="inline-flex items-center gap-2 border border-ink/25 px-5 py-3 rounded-full text-sm hover:border-flag-red hover:text-flag-red transition-colors"
-              >
-                Cloud AI work
-              </a>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5">
-            <div
-              class="relative aspect-square bg-ink rounded-2xl ring-1 ring-ink/10 overflow-hidden shadow-xl group cursor-pointer"
-              id="hero-canvas"
-              role="button"
-              tabindex="0"
-              aria-label="Click to fire a forward pass"
-            >
-              <svg id="hero-network" class="absolute inset-0 w-full h-full" aria-hidden="true"></svg>
-              <div
-                class="absolute inset-x-0 top-0 p-4 text-parchment/70 text-[10px] font-mono uppercase tracking-[0.22em] flex justify-between"
-              >
-                <span>forward pass · live</span>
-                <span id="hero-ticker">▌</span>
-              </div>
-              <div
-                class="absolute inset-x-0 bottom-0 p-4 text-parchment/80 text-xs font-mono flex justify-between items-end"
-              >
-                <span class="text-parchment/45">click to fire ↵</span>
-                <span class="text-parchment/45">Multimodal Works</span>
-              </div>
-            </div>
-            <p class="mt-3 text-xs text-ink/55 font-mono">
-              A small inference pulse. Each output snippet is something we
-              actually ship — local or cloud.
-            </p>
-          </div>
-        </div>
-        <div class="border-t border-ink/10">
-          <div
-            class="mx-auto max-w-6xl px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm"
-          >
-            <div>
-              <div class="font-mono text-2xl">½ Mac Studio</div>
-              <div class="text-ink/60">
-                local AI workstation hardware · 128 GB unified memory
-              </div>
-            </div>
-            <div>
-              <div class="font-mono text-2xl">~3 mo</div>
-              <div class="text-ink/60">
-                payback vs a $1k/mo cloud LLM bill · then $25/mo electricity
-              </div>
-            </div>
-            <div>
-              <div class="font-mono text-2xl">$0/token</div>
-              <div class="text-ink/60">
-                after the hardware lands · no surprise bills, no rate limits
-              </div>
-            </div>
-            <div>
-              <div class="font-mono text-2xl">3–6 mo</div>
-              <div class="text-ink/60">
-                prototype to production · custom software engineering
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- CHOOSE YOUR PATH · primary decision moment   -->
-      <!-- ============================================ -->
-      <section id="paths" class="relative overflow-hidden bg-parchment">
-        <!-- Split background: red dot grid on the left, navy scatter on the right -->
-        <div class="bg-decor hidden md:block">
-          <div class="absolute left-0 top-0 w-1/2 h-full bg-dot-grid text-flag-red opacity-[0.08]"></div>
-          <div class="absolute right-0 top-0 w-1/2 h-full bg-scatter text-flag-navy opacity-[0.10]"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 py-16 content-front">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <p class="text-xs uppercase tracking-[0.22em] text-ink/55 mb-2">
-              Choose your path
-            </p>
-            <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
-              Two ways to work with us.
-            </h2>
-            <p class="mt-3 text-ink/70">
-              Pick the one that matches your constraint. Same engineer behind
-              both — different stack, different vocabulary, different success
-              metric.
-            </p>
-          </div>
+      <div class="accent-bar"></div>
 
-          <div class="grid md:grid-cols-2 gap-5">
-            <!-- PATH A · LOCAL & EDGE -->
-            <a
-              href="#edge"
-              class="group relative rounded-2xl bg-white ring-1 ring-ink/10 p-8 hover:ring-flag-red hover:shadow-xl transition-all flex flex-col"
-            >
-              <div class="flex items-center gap-3 mb-4">
-                <span
-                  class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-flag-red/10 text-flag-red"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5">
-                    <rect x="3" y="6" width="18" height="12" rx="2" />
-                    <path d="M9 18v2M15 18v2M9 4v2M15 4v2" />
-                    <circle cx="9" cy="12" r="1" fill="currentColor" />
-                    <circle cx="15" cy="12" r="1" fill="currentColor" />
-                  </svg>
-                </span>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-red font-medium">
-                  Path A
-                </p>
-              </div>
-              <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                Local AI
-              </h3>
-              <p class="mt-3 text-ink/70 text-sm">
-                A proper local AI workstation — <strong>128 GB unified memory</strong>
-                at roughly half the cost of a Mac Studio, the same data
-                sources a cloud chatbot would touch, the same first-token
-                latency. None of it leaves your network. None of it bills
-                per token.
-              </p>
-
-              <div class="mt-5 text-xs font-mono uppercase tracking-[0.18em] text-ink/45">
-                Good fit if…
-              </div>
-              <ul class="mt-2 space-y-1.5 text-sm text-ink/80">
-                <li class="flex gap-2">
-                  <span class="text-flag-red mt-0.5">✓</span> You want cloud
-                  chatbot UX — but the data can't leave
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-red mt-0.5">✓</span> Your LLM bill is
-                  outrunning the value
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-red mt-0.5">✓</span> You need the
-                  same MCPs / connectors a SaaS chatbot has
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-red mt-0.5">✓</span> You also have
-                  edge / embedded hardware in the mix
-                </li>
-              </ul>
-
-              <div class="mt-5 text-xs font-mono text-ink/50">
-                Sample work · Local AI Station (128 GB unified memory stack) · Hardware
-                Agent · HOSVD on a Pi · 60-qubit tensor networks · audio
-                classification
-              </div>
-
-              <div class="mt-6 flex items-center justify-between pt-5 border-t border-ink/10">
-                <span class="text-sm font-medium text-flag-red">
-                  Explore Local AI
-                </span>
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="w-5 h-5 text-flag-red group-hover:translate-x-1 transition-transform"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </a>
-
-            <!-- PATH B · ENTERPRISE -->
-            <a
-              href="#enterprise"
-              class="group relative rounded-2xl bg-flag-navy text-parchment ring-1 ring-flag-navy p-8 hover:shadow-xl hover:ring-flag-ivory transition-all flex flex-col"
-            >
-              <div class="flex items-center gap-3 mb-4">
-                <span
-                  class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-flag-ivory/15 text-flag-ivory"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5">
-                    <path d="M4 17a4 4 0 014-4h.5A6 6 0 0120 9.5 4.5 4.5 0 0118 18H8a4 4 0 01-4-1z" />
-                    <path d="M9 21v-3M15 21v-3M12 21v-3" />
-                  </svg>
-                </span>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-ivory/80 font-medium">
-                  Path B
-                </p>
-              </div>
-              <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                Cloud AI
-              </h3>
-              <p class="mt-3 text-parchment/75 text-sm">
-                Build &amp; ship ML on AWS. SageMaker endpoints, vector stores,
-                federated search, FastAPI routers, latency budgets legal and
-                security both sign off on.
-              </p>
-
-              <div class="mt-5 text-xs font-mono uppercase tracking-[0.18em] text-parchment/55">
-                Good fit if…
-              </div>
-              <ul class="mt-2 space-y-1.5 text-sm text-parchment/85">
-                <li class="flex gap-2">
-                  <span class="text-flag-ivory mt-0.5">✓</span> You have a
-                  notebook and need a production endpoint
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-ivory mt-0.5">✓</span> You need
-                  retrieval / RAG / vector search at user scale
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-ivory mt-0.5">✓</span> You're behind
-                  a procurement / compliance review
-                </li>
-                <li class="flex gap-2">
-                  <span class="text-flag-ivory mt-0.5">✓</span> You'd hire a
-                  senior MLE if the cycle weren't a year long
-                </li>
-              </ul>
-
-              <div class="mt-5 text-xs font-mono text-parchment/55">
-                Sample work · VisionSearch on SageMaker · CLIP fine-tune ·
-                PatchTST + HNSW · federated search at AFS (100k+ users)
-              </div>
-
-              <div class="mt-6 flex items-center justify-between pt-5 border-t border-white/20">
-                <span class="text-sm font-medium text-flag-ivory">
-                  Explore Cloud AI
-                </span>
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="w-5 h-5 text-flag-ivory group-hover:translate-x-1 transition-transform"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </a>
-          </div>
-
-          <p class="mt-8 text-center text-sm text-ink/55">
-            Not sure?
-            <a href="#capabilities" class="underline decoration-ink/30 hover:text-flag-red">
-              See full capabilities
-            </a>
-            or
-            <a href="#contact" class="underline decoration-ink/30 hover:text-flag-red">
-              just write us
-            </a>
-            — we'll figure it out together.
-          </p>
-        </div>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- PRACTICE 1 · LOCAL & EDGE AI                 -->
-      <!-- ============================================ -->
-      <section id="edge" class="relative overflow-hidden bg-white border-t-4 border-flag-red">
-        <!-- Hex circuit-board lattice fading off to the right -->
-        <div class="bg-decor opacity-[0.07]">
-          <div class="absolute -right-20 top-0 w-[55%] h-full bg-hex"></div>
-          <div class="absolute left-0 bottom-0 w-[40%] h-[60%] bg-wave opacity-50"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 pt-20 pb-6 content-front">
-          <div class="grid lg:grid-cols-12 gap-10 items-end">
-            <div class="lg:col-span-7">
-              <div class="flex items-center gap-3 mb-3">
-                <span class="inline-block w-2 h-2 rounded-full bg-flag-red"></span>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-red font-medium">
-                  Path A · Local AI
-                </p>
-              </div>
-              <h2 class="font-display text-3xl sm:text-5xl tracking-tight">
-                Cloud chatbot UX. None of it leaves your network.
-              </h2>
-              <p class="mt-4 text-ink/70 max-w-2xl">
-                The headline build is a properly-architected local AI
-                workstation — <strong>128 GB unified memory</strong> at roughly
-                <strong>half the cost of a Mac Studio</strong>, hooked up to
-                the same data sources a SaaS chatbot would touch (email,
-                calendar, files, code, CRM), delivering the same first-token
-                latency, with none of the data egress and none of the
-                per-token bill. When the cloud isn't an option — or just
-                isn't worth it anymore — this is the work.
-              </p>
-              <div class="mt-5 grid sm:grid-cols-3 gap-3 max-w-2xl">
-                <div class="rounded-lg ring-1 ring-flag-red/25 bg-flag-red/5 p-3">
-                  <div class="font-mono text-2xl text-flag-red">≤1s</div>
-                  <div class="text-xs text-ink/65 mt-1">
-                    first-token latency target — parity with cloud chatbots
-                  </div>
-                </div>
-                <div class="rounded-lg ring-1 ring-flag-red/25 bg-flag-red/5 p-3">
-                  <div class="font-mono text-2xl text-flag-red">128 GB</div>
-                  <div class="text-xs text-ink/65 mt-1">
-                    unified memory — Qwen3 30B+ with long context
-                  </div>
-                </div>
-                <div class="rounded-lg ring-1 ring-flag-red/25 bg-flag-red/5 p-3">
-                  <div class="font-mono text-2xl text-flag-red">½ Mac Studio</div>
-                  <div class="text-xs text-ink/65 mt-1">
-                    hardware cost · unified-memory APU build · then $0/token
-                  </div>
-                </div>
-              </div>
+      <section>
+        <h2>What we do</h2>
+        <div class="modes">
+          <div class="mode local">
+            <div class="lead">
+              <h3>Local AI · custom-built workstation</h3>
+              <span class="tag">$3,000 station</span>
             </div>
-            <div class="lg:col-span-5">
-              <div class="rounded-xl ring-1 ring-flag-red/30 bg-flag-red/5 p-5">
-                <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-flag-red mb-3">
-                  Is this you?
-                </div>
-                <ul class="space-y-2 text-sm text-ink/80">
-                  <li class="flex gap-2">
-                    <span class="text-flag-red font-mono">›</span> "We love
-                    ChatGPT — we just can't send our data there."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-red font-mono">›</span> "Our LLM
-                    bill is outrunning the value."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-red font-mono">›</span> "We need it
-                    connected to email, calendar, drive, code."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-red font-mono">›</span> "Whatever
-                    we run has to feel as fast as the cloud."
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- LOCAL AI STATION · featured spotlight (mirrors Cloud · VisionSearch) -->
-      <section class="relative overflow-hidden bg-white">
-        <div class="bg-decor opacity-[0.06] text-flag-red">
-          <div class="absolute left-0 top-0 w-full h-full bg-dot-grid-tight"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 pt-16 pb-20 content-front">
-          <div class="rounded-2xl ring-1 ring-flag-red/30 bg-flag-red/[0.04] p-8">
-            <div class="flex items-baseline justify-between mb-8 flex-wrap gap-4">
-              <div>
-                <p
-                  class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2"
-                >
-                  Case Study 01 · Local AI Station
-                </p>
-                <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                  The local stack. Cloud chatbot UX, on your own network.
-                </h3>
-                <p class="mt-2 text-ink/75 max-w-2xl">
-                  Hermes agent, OpenWork, LiteLLM model routing, Ollama-backed
-                  Qwen3 / Gemma 3n / Llama 3.2, Postgres + Apache AGE for graph
-                  recall, Qdrant for vectors,
-                  <strong>Langfuse for trace-level latency &amp; token
-                  observability</strong>, Caddy + Playwright at the edges. Eight
-                  Compose profiles, hardened systemd, GraphRAG built in. The
-                  bill of materials a serious local AI deployment actually
-                  needs.
-                </p>
-              </div>
-              <span
-                class="text-[10px] font-mono px-2 py-1 ring-1 ring-flag-red/30 rounded-full text-flag-red"
-                >private · local-ai-station</span
-              >
-            </div>
-
-            <div class="grid lg:grid-cols-5 gap-8 items-stretch">
-              <div class="lg:col-span-3 flex flex-col">
-                <div class="text-xs font-mono text-ink/55 mb-2">
-                  architecture · request flow on a 128 GB unified memory workstation
-                </div>
-                <div
-                  class="relative flex-1 min-h-[280px] rounded-xl ring-1 ring-flag-red/20 overflow-hidden bg-parchment"
-                >
-                  <svg id="local-arch" class="w-full h-full"></svg>
-                </div>
-                <p class="mt-3 text-xs text-ink/60 font-mono">
-                  user query → Hermes agent → graph recall (Apache AGE) +
-                  vector recall (Qdrant) → LiteLLM router → Ollama-served LLM
-                  on local APU → streamed back. Every stage instrumented
-                  through Langfuse — the latency chart on the right is what
-                  Langfuse measures on this exact deployment.
-                </p>
-              </div>
-
-              <div class="lg:col-span-2 flex flex-col">
-                <div class="text-xs font-mono text-ink/55 mb-2">
-                  first-token latency · local vs cloud chatbot
-                </div>
-                <div
-                  class="rounded-xl ring-1 ring-flag-red/20 p-4 bg-parchment flex-1 min-h-[220px]"
-                >
-                  <svg id="local-latency" class="w-full h-full"></svg>
-                </div>
-                <div class="mt-3 flex items-center gap-4 text-xs text-ink/70">
-                  <span class="inline-flex items-center gap-1">
-                    <span class="w-3 h-2 bg-ink/30 inline-block rounded-sm"></span>
-                    cloud chatbot
-                  </span>
-                  <span class="inline-flex items-center gap-1">
-                    <span class="w-3 h-2 bg-flag-red inline-block rounded-sm"></span>
-                    local AI station
-                  </span>
-                </div>
-                <p class="mt-2 text-[11px] font-mono text-ink/55">
-                  p50 first-token, warm caches · source:
-                  <span id="local-latency-caption" class="text-flag-red">loading…</span>
-                  ·
-                  <a
-                    href="assets/data/latency_benchmark.json"
-                    class="underline decoration-ink/20 hover:text-flag-red"
-                    >view raw JSON</a
-                  >
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-6 grid sm:grid-cols-3 gap-3 text-xs">
-              <div class="rounded-lg ring-1 ring-flag-red/20 bg-white p-3">
-                <div class="font-mono text-flag-red uppercase tracking-[0.15em] mb-1">
-                  Privacy
-                </div>
-                <p class="text-ink/70">
-                  Zero egress. Prompts, retrieval, agent memory, audit log —
-                  all on prem, all yours.
-                </p>
-              </div>
-              <div class="rounded-lg ring-1 ring-flag-red/20 bg-white p-3">
-                <div class="font-mono text-flag-red uppercase tracking-[0.15em] mb-1">
-                  Cost
-                </div>
-                <p class="text-ink/70">
-                  Capex, not opex. A unified-memory APU build lands at
-                  <strong>~half the cost of a Mac Studio</strong> with the same
-                  128 GB — breaks even on most teams inside the first quarter
-                  of cloud-LLM spend.
-                </p>
-              </div>
-              <div class="rounded-lg ring-1 ring-flag-red/20 bg-white p-3">
-                <div class="font-mono text-flag-red uppercase tracking-[0.15em] mb-1">
-                  Sources
-                </div>
-                <p class="text-ink/70">
-                  Same MCP connectors a cloud chatbot uses — email, calendar,
-                  drive, GitHub, Slack — wired into Hermes' graph memory.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- THE MATH · SMB cost projection -->
-      <section id="the-math" class="relative overflow-hidden bg-parchment">
-        <div class="bg-decor opacity-[0.07] text-flag-red">
-          <div class="absolute right-0 top-0 w-[40%] h-full bg-dot-grid"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 py-20 content-front">
-          <div class="grid lg:grid-cols-12 gap-10 items-end mb-10">
-            <div class="lg:col-span-7">
-              <p class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2">
-                The math · for SMB operators
-              </p>
-              <h2 class="font-display text-3xl sm:text-5xl tracking-tight">
-                What a year of AI actually costs you.
-              </h2>
-              <p class="mt-4 text-ink/70 max-w-2xl">
-                Cloud LLMs are an operating expense that scales with usage —
-                that's how a $500 quarter becomes a $5,000 quarter.
-                Local AI is a one-time capital expense that doesn't. For most
-                SMBs running anything beyond "email helper," the math flips
-                fast.
-              </p>
-            </div>
-            <div class="lg:col-span-5">
-              <div class="rounded-xl ring-1 ring-flag-red/30 bg-flag-red/5 p-5">
-                <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-flag-red mb-3">
-                  Pricing inputs · real numbers
-                </div>
-                <ul class="space-y-2 text-sm text-ink/80">
-                  <li>
-                    <span class="font-mono text-flag-red">Cloud</span> · GPT-4o
-                    blended ≈ $5 / 1M tokens
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-red">Hardware</span> ·
-                    128 GB unified memory build ≈ $3,000
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-red">Power</span> ·
-                    ~200 W × $0.15/kWh ≈ $25/mo
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-red">Sources</span> ·
-                    <a
-                      href="assets/data/cost_projection.json"
-                      class="underline decoration-flag-red/30 hover:text-flag-red"
-                      >cost_projection.json</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- COST PROJECTION CHART -->
-          <div class="rounded-2xl ring-1 ring-flag-red/20 bg-white p-6 sm:p-8">
-            <div class="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-              <p class="text-xs uppercase tracking-[0.22em] text-flag-red">
-                Cumulative cost · 24 months
-              </p>
-              <span
-                class="text-[10px] font-mono text-ink/55"
-                id="cost-projection-source"
-                >loading sources…</span
-              >
-            </div>
-            <div class="relative aspect-[2/1] min-h-[280px]">
-              <svg id="cost-projection" class="w-full h-full"></svg>
-            </div>
-            <p class="mt-3 text-[11px] font-mono text-ink/55">
-              y-axis: cumulative dollars spent · x-axis: months since adopting AI ·
-              break-even markers show when local hardware pays back vs each cloud tier
-            </p>
-          </div>
-
-          <!-- 3-TIER HONEST RECOMMENDATION -->
-          <div class="mt-10 grid md:grid-cols-3 gap-5">
-            <div class="rounded-xl ring-1 ring-ink/15 bg-white p-6">
-              <div class="flex items-baseline justify-between mb-2">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-ink/55">
-                  Light
-                </p>
-                <span class="font-mono text-2xl text-ink/80">$200/mo</span>
-              </div>
-              <h3 class="font-display text-xl">Stay on cloud.</h3>
-              <p class="mt-2 text-sm text-ink/70">
-                Email helper, basic Q&amp;A for a 25-person team —
-                ~80M tokens/month. Local payback is ~17 months. Not worth it.
-                We'll help you set it up cheaper than enterprise tools.
-              </p>
-              <div class="mt-3 text-[11px] font-mono text-ink/45">
-                ≈ 80M tokens · GPT-4o tier
-              </div>
-            </div>
-            <div class="rounded-xl ring-2 ring-flag-red/40 bg-white p-6">
-              <div class="flex items-baseline justify-between mb-2">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-flag-red">
-                  Standard · sweet spot
-                </p>
-                <span class="font-mono text-2xl text-flag-red">$1k/mo</span>
-              </div>
-              <h3 class="font-display text-xl">Switch to local.</h3>
-              <p class="mt-2 text-sm text-ink/75">
-                Internal chatbot + doc analysis · 25–50 people · ~400M
-                tokens/month. Pays back in <strong>~3 months</strong>, then
-                you're on $25/mo electricity for the lifetime of the hardware.
-              </p>
-              <div class="mt-3 text-[11px] font-mono text-flag-red/70">
-                ≈ 400M tokens · GPT-4o tier
-              </div>
-            </div>
-            <div class="rounded-xl ring-1 ring-ink/15 bg-white p-6">
-              <div class="flex items-baseline justify-between mb-2">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-ink/55">
-                  Heavy
-                </p>
-                <span class="font-mono text-2xl text-ink/80">$5k/mo</span>
-              </div>
-              <h3 class="font-display text-xl">Switch yesterday.</h3>
-              <p class="mt-2 text-sm text-ink/70">
-                Multi-agent automation, code assist, RAG over a corpus —
-                ~2B tokens/month. Local payback in
-                <strong>under 3 weeks</strong>. Plus zero per-token risk on
-                runaway agent loops.
-              </p>
-              <div class="mt-3 text-[11px] font-mono text-ink/45">
-                ≈ 2B tokens · GPT-4o tier
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 text-sm text-ink/65 max-w-3xl">
-            We don't sell Local AI Station to light-tier customers — they'd
-            churn. The honest answer is "stay on cloud, here's how to do it
-            cheaper." Where we add the most value is the standard-and-up
-            range: that's where the math flips and the privacy / sovereignty
-            wins come for free.
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURED WORK: QUANTUM -->
-      <section class="bg-ink text-parchment">
-        <div class="mx-auto max-w-6xl px-6 py-20">
-          <div class="flex items-baseline justify-between mb-10 flex-wrap gap-4">
-            <div>
-              <p
-                class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-2"
-              >
-                Case Study 02 · Quantum on a laptop
-              </p>
-              <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
-                Solving a 60-qubit peak circuit on a laptop
-              </h2>
-              <p class="mt-3 text-parchment/75 max-w-2xl">
-                BlueQubit Hackathon. The brute-force statevector died at ~30
-                qubits. We rebuilt the problem as a tensor network, ran
-                <span class="font-mono">ADCRS</span> simplification, and used
-                <span class="font-mono">cotengra</span> to find a contraction
-                path that fits in RAM. Gate-by-gate sampling pulled the hidden
-                bitstring out via majority vote.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid lg:grid-cols-5 gap-8 items-start">
-            <div class="lg:col-span-3">
-              <div
-                class="relative aspect-[4/3] rounded-xl ring-1 ring-white/15 overflow-hidden bg-flag-navy/40"
-              >
-                <svg id="tensor-graph" class="w-full h-full"></svg>
-              </div>
-              <p class="mt-3 text-xs text-parchment/55 font-mono">
-                live · 8-qubit × 4-layer network simplifying itself in
-                real time. Bond dimension thickens as nodes merge — the same
-                process <span class="font-mono">cotengra</span> drives at 60q
-                scale. Drag any tensor.
-              </p>
-            </div>
-
-            <div class="lg:col-span-2 space-y-5">
-              <div class="rounded-xl ring-1 ring-white/15 bg-white/5 p-5">
-                <h3 class="font-display text-xl">ADCRS simplification</h3>
-                <ul class="mt-3 space-y-2 text-sm text-parchment/80">
-                  <li>
-                    <span class="font-mono text-flag-ivory">A</span> · antidiagonal gauge
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-ivory">D</span> · diagonal reduction
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-ivory">C</span> · column reduction
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-ivory">R</span> · rank simplification
-                  </li>
-                  <li>
-                    <span class="font-mono text-flag-ivory">S</span> · split simplification
-                  </li>
-                </ul>
-                <p class="mt-3 text-xs text-parchment/55">
-                  Order matters. Each pass changes which contractions are cheap
-                  next.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-white/15 bg-white/5 p-5 font-mono text-xs leading-relaxed">
-                <div class="text-parchment/55">// final bitstrings</div>
-                <div>
-                  <span class="text-flag-ivory/70">C1</span> 111101001101110101000110100100
-                </div>
-                <div class="break-all">
-                  <span class="text-flag-ivory/70">C2</span> 110111100011100000101100001110101010011111
-                </div>
-                <div class="break-all">
-                  <span class="text-flag-ivory/70">C3</span> 110101001011010101111001011100001110101101111010100110110001
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-12 grid sm:grid-cols-3 gap-4">
-            <figure class="space-y-2">
-              <img
-                src="assets/img/30qubit_tensor_network.png"
-                alt="30-qubit tensor network"
-                class="rounded-lg ring-1 ring-white/15 bg-white"
-                loading="lazy"
-              />
-              <figcaption class="text-xs text-parchment/55 font-mono">
-                30q raw tensor network
-              </figcaption>
-            </figure>
-            <figure class="space-y-2">
-              <img
-                src="assets/img/42qubit_tensor_network.png"
-                alt="42-qubit tensor network"
-                class="rounded-lg ring-1 ring-white/15 bg-white"
-                loading="lazy"
-              />
-              <figcaption class="text-xs text-parchment/55 font-mono">
-                42q raw tensor network
-              </figcaption>
-            </figure>
-            <figure class="space-y-2">
-              <img
-                src="assets/img/ADCRS.png"
-                alt="60-qubit network after ADCRS simplification"
-                class="rounded-lg ring-1 ring-white/15 bg-white"
-                loading="lazy"
-              />
-              <figcaption class="text-xs text-parchment/55 font-mono">
-                60q after ADCRS — what we actually contract
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASE STUDY 03 · Hardware Agent · privacy-first bootstrapper -->
-      <section class="relative overflow-hidden bg-parchment">
-        <div class="bg-decor opacity-[0.07] text-flag-red">
-          <div class="absolute right-0 top-0 w-[50%] h-full bg-dot-grid-tight"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 py-20 content-front">
-          <div class="rounded-2xl ring-1 ring-flag-red/30 bg-white p-8">
-            <div class="flex items-baseline justify-between mb-6 flex-wrap gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2">
-                  Case Study 03 · Hardware Agent
-                </p>
-                <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                  Privacy-first bootstrapper for a Local AI Station
-                </h3>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-1 ring-1 ring-flag-red/30 rounded-full text-flag-red">
-                github.com/mertall · Hardware-Agent
-              </span>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-5 text-sm">
-              <div class="rounded-xl ring-1 ring-flag-red/20 bg-flag-red/[0.03] p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-red mb-2">
-                  Problem
-                </div>
-                <p class="text-ink/80">
-                  How does a team bootstrap a private on-device AI workstation
-                  when the "right stack" depends entirely on whatever hardware
-                  they happen to own?
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-red/20 bg-flag-red/[0.03] p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-red mb-2">
-                  Approach
-                </div>
-                <p class="text-ink/80">
-                  LangChain agent autonomously inspects CPU / GPU / RAM /
-                  storage / OS, then prescribes a tiered Spotlight-style
-                  chat-search stack — LEANN + EmbeddingGemma for retrieval,
-                  Llama 3.2 / Gemma 3n / Qwen3 sized to capability tier.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-red/20 bg-flag-red/[0.03] p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-red mb-2">
-                  Outcome
-                </div>
-                <p class="text-ink/80">
-                  Cross-platform install (macOS / Windows / Linux), local file
-                  indexing across Documents / Desktop / Downloads, chat over
-                  personal data with zero cloud calls. The entry rung of the
-                  Local AI Station ladder.
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-5 flex flex-wrap gap-1.5 text-[10px] font-mono text-ink/60">
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">LangChain</span>
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">Ollama</span>
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">LEANN</span>
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">EmbeddingGemma</span>
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">Llama 3.2 / Gemma 3n / Qwen3</span>
-              <span class="px-2 py-0.5 ring-1 ring-ink/15 rounded-full">multi-OS</span>
-            </div>
-          </div>
-
-          <!-- SELECTED OTHER LOCAL AI WORK -->
-          <div class="mt-12 rounded-2xl ring-1 ring-ink/10 bg-white/60 p-6">
-            <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
-              <p class="text-xs uppercase tracking-[0.22em] text-ink/55">
-                Selected other Local AI work
-              </p>
-              <span class="text-[10px] font-mono text-ink/40">
-                github.com/mertall
-              </span>
-            </div>
-            <ul class="grid md:grid-cols-2 gap-5 text-sm text-ink/80">
-              <li class="rounded-xl ring-1 ring-ink/10 bg-white p-4">
-                <div class="font-display text-base mb-1">HOSVD on a Raspberry Pi</div>
-                <p class="text-ink/70 text-[13px]">
-                  Facial-expression recognition via Higher-Order Singular Value
-                  Decomposition instead of a neural net — Pi camera + IR
-                  sensor + tensor decomposition. Edge-hardware proof point.
-                </p>
-              </li>
-              <li class="rounded-xl ring-1 ring-ink/10 bg-white p-4">
-                <div class="font-display text-base mb-1">News Agent</div>
-                <p class="text-ink/70 text-[13px]">
-                  Daily-brief agent that watches sources, classifies salience,
-                  writes digests — runs locally, no cloud LLM bills.
-                </p>
-              </li>
+            <ul>
+              <li>We custom-build a 128 GB unified-memory workstation at $3,000 flat.</li>
+              <li>Open-source AI pipelines that run entirely on your hardware.</li>
+              <li>Examples: inbox triage, calendar automation, invoice tracking, payment monitoring, estimate follow-up — and anything else that fits a workflow.</li>
+              <li>No data egress · no per-token bills · predictable cost line.</li>
             </ul>
           </div>
-
-          <!-- Path A · closing CTA -->
-          <div class="mt-14 rounded-2xl bg-flag-red text-parchment p-8 sm:p-10 flex flex-col sm:flex-row sm:items-end gap-6 justify-between">
-            <div>
-              <p class="text-[11px] uppercase tracking-[0.22em] text-parchment/70 mb-2">
-                End of Path A
-              </p>
-              <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                Bring us in for the Local AI work.
-              </h3>
-              <p class="mt-2 text-parchment/85 max-w-xl text-sm">
-                One-week paid scoping sprint, deliverable on day five. We come
-                out with a hardware spec, an architecture diagram, and a
-                latency / cost / privacy trade-off table you can take to the
-                CFO.
-              </p>
+          <div class="mode cloud">
+            <div class="lead">
+              <h3>Cloud AI · managed services</h3>
+              <span class="tag">faster to ship</span>
             </div>
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20Local%20AI%20engagement"
-              class="inline-flex items-center justify-between gap-3 bg-parchment text-flag-red px-5 py-4 rounded-xl text-sm font-medium hover:bg-flag-ivory whitespace-nowrap transition-colors"
-            >
-              <span>Hire us for Local AI</span>
-              <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                <path
-                  fill-rule="evenodd"
-                  d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- PRACTICE 2 · ENTERPRISE AI                   -->
-      <!-- ============================================ -->
-      <section id="enterprise" class="relative overflow-hidden bg-flag-navy text-parchment border-t-4 border-flag-ivory/30">
-        <!-- Embedding scatter + filament network on a dark canvas -->
-        <div class="bg-decor opacity-[0.10]">
-          <div class="absolute inset-0 bg-scatter text-parchment"></div>
-          <div class="absolute right-0 top-0 w-[55%] h-full bg-filament opacity-[0.85]"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 pt-20 pb-6 content-front">
-          <div class="grid lg:grid-cols-12 gap-10 items-end">
-            <div class="lg:col-span-7">
-              <div class="flex items-center gap-3 mb-3">
-                <span class="inline-block w-2 h-2 rounded-full bg-flag-ivory"></span>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/80 font-medium">
-                  Path B · Cloud AI
-                </p>
-              </div>
-              <h2 class="font-display text-3xl sm:text-5xl tracking-tight">
-                Building and shipping models on AWS, end to end.
-              </h2>
-              <p class="mt-4 text-parchment/75 max-w-2xl">
-                Four years inside Accenture Federal Services' MLE Group taught
-                us how AI actually lands in production: SageMaker endpoints,
-                vector stores, federated search, ACID-compliant retrieval,
-                FastAPI routers, latency budgets legal and security both sign
-                off on. Same engineer brings that to your team.
-              </p>
-            </div>
-            <div class="lg:col-span-5">
-              <div class="rounded-xl ring-1 ring-flag-ivory/30 bg-white/5 p-5">
-                <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-flag-ivory mb-3">
-                  Is this you?
-                </div>
-                <ul class="space-y-2 text-sm text-parchment/85">
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> "We have a
-                    notebook. We need an endpoint."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> "Retrieval
-                    quality is the bottleneck, not the model."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> "Security
-                    and legal need to sign off before we ship."
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> "Hiring a
-                    senior MLE would take a year we don't have."
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASE STUDY 04 · ACCENTURE FEDERAL SERVICES -->
-      <section class="bg-flag-navy text-parchment">
-        <div class="mx-auto max-w-6xl px-6 pb-12 pt-4">
-          <div class="rounded-2xl ring-1 ring-white/15 bg-white/[0.04] p-8">
-            <div class="flex items-baseline justify-between mb-6 flex-wrap gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-2">
-                  Case Study 04 · Accenture Federal Services
-                </p>
-                <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                  Federated search + GenAI at 100k-user federal scale
-                </h3>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-1 ring-1 ring-white/20 rounded-full text-parchment/70">
-                AFS · MLE Group · 2021–2025
-              </span>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-5 text-sm">
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Problem
-                </div>
-                <p class="text-parchment/80">
-                  Data platform serving 100k+ federal users with
-                  intelligence-community-grade reliability and access control —
-                  plus a mandate to introduce GenAI without breaking either.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Approach
-                </div>
-                <p class="text-parchment/80">
-                  Co-architected an ACID-compliant federated search
-                  architecture — JDBC ingestion · NLP enrichment · Elasticsearch
-                  · fine-grained access control. Layered applied-GenAI
-                  prototyping with retrieval systems, vector DBs, and LLM
-                  workflow integration. Co-authored enterprise LLM deployment
-                  guidance for IC environments.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Outcome
-                </div>
-                <p class="text-parchment/80">
-                  <strong>99.9%</strong> SLOs sustained ·
-                  <strong>~40%</strong> p95 latency reduction ·
-                  <strong>+20%</strong> Recall@10 after retrieval tuning ·
-                  <strong>~87%</strong> faster internal prototyping via the
-                  serverless AWS pattern (earlier 2M+ pension-tracking user
-                  work).
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-5 flex flex-wrap gap-1.5 text-[10px] font-mono text-parchment/70">
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">AWS</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">Lambda</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">Elasticsearch</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">JDBC</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">vector DB</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">RBAC</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">GenAI guidance</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASE STUDY 05 · VISIONSEARCH SPOTLIGHT -->
-      <section class="bg-flag-navy text-parchment">
-        <div class="mx-auto max-w-6xl px-6 pb-20">
-          <div class="rounded-2xl ring-2 ring-flag-ivory/40 bg-gradient-to-br from-white/[0.10] to-flag-ivory/[0.04] p-10 sm:p-12">
-            <div class="flex items-baseline justify-between mb-8 flex-wrap gap-4">
-              <div>
-                <p
-                  class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-2"
-                >
-                  Case Study 05 · VisionSearch
-                </p>
-                <h3 class="font-display text-3xl sm:text-4xl tracking-tight">
-                  Multimodal retrieval that pays for itself.
-                </h3>
-                <p class="mt-3 text-parchment/80 max-w-2xl">
-                  CLIP on SageMaker, HNSW index, FastAPI router. The retrieval
-                  substrate we ship on customer infrastructure —
-                  embedding-based retrieval over generative RAG, picked
-                  deliberately for latency, determinism, and a price tag the
-                  CFO understands.
-                </p>
-              </div>
-              <span
-                class="text-[10px] font-mono px-2 py-1 ring-1 ring-white/20 rounded-full text-parchment/70"
-                >github.com/mertall/VisionSearch</span
-              >
-            </div>
-
-            <!-- METRICS STRIP -->
-            <div class="grid sm:grid-cols-3 gap-3 mb-8">
-              <div class="rounded-lg ring-1 ring-flag-ivory/30 bg-flag-navy/40 p-4">
-                <div class="font-mono text-2xl text-flag-ivory">≤80ms</div>
-                <div class="text-xs text-parchment/70 mt-1">
-                  p50 endpoint latency · SageMaker autoscaled
-                </div>
-              </div>
-              <div class="rounded-lg ring-1 ring-flag-ivory/30 bg-flag-navy/40 p-4">
-                <div class="font-mono text-2xl text-flag-ivory">+20%</div>
-                <div class="text-xs text-parchment/70 mt-1">
-                  Recall@10 lift after contrastive fine-tune
-                </div>
-              </div>
-              <div class="rounded-lg ring-1 ring-flag-ivory/30 bg-flag-navy/40 p-4">
-                <div class="font-mono text-2xl text-flag-ivory">text ↔ image</div>
-                <div class="text-xs text-parchment/70 mt-1">
-                  one embedding space, bidirectional retrieval
-                </div>
-              </div>
-            </div>
-
-            <!-- ROW · architecture flow + Recall@K -->
-            <div class="grid lg:grid-cols-5 gap-8 items-stretch">
-              <div class="lg:col-span-3 flex flex-col">
-                <div class="text-xs font-mono text-parchment/55 mb-2">
-                  architecture · request flow
-                </div>
-                <div
-                  class="relative flex-1 min-h-[280px] rounded-xl ring-1 ring-white/15 overflow-hidden bg-flag-navy/60"
-                >
-                  <svg id="enterprise-arch" class="w-full h-full"></svg>
-                </div>
-                <p class="mt-3 text-xs text-parchment/55 font-mono">
-                  HuggingFace CLIP model packaged → S3 → SageMaker endpoint
-                  serving both vision/text embeddings → FastAPI ingestion
-                  pipeline → hnswlib index → RAG retrieval at query time
-                </p>
-              </div>
-
-              <div class="lg:col-span-2 flex flex-col">
-                <div class="text-xs font-mono text-parchment/55 mb-2">
-                  retrieval quality · Recall@K
-                </div>
-                <div
-                  class="rounded-xl ring-1 ring-white/15 p-4 bg-flag-navy/60 flex-1 min-h-[220px]"
-                >
-                  <svg id="recall-curve" class="w-full h-full"></svg>
-                </div>
-                <div class="mt-3 flex items-center gap-4 text-xs text-parchment/70">
-                  <span class="inline-flex items-center gap-1">
-                    <span
-                      class="w-3 h-0.5 bg-parchment/50 inline-block"
-                    ></span>
-                    pretrained CLIP
-                  </span>
-                  <span class="inline-flex items-center gap-1">
-                    <span class="w-3 h-0.5 bg-flag-red inline-block"></span>
-                    fine-tuned
-                  </span>
-                </div>
-                <p class="mt-2 text-[11px] font-mono text-parchment/50">
-                  measured on our own VisionSearch fine-tune experiment ·
-                  contrastive CLIP fine-tune on CIFAR-10 · HNSW retrieval
-                </p>
-              </div>
-            </div>
-
-            <!-- ROW · embedding space query demo -->
-            <div class="mt-10">
-              <div class="text-xs font-mono text-parchment/55 mb-2">
-                embedding space · live query &amp; nearest neighbors
-              </div>
-              <div class="rounded-xl ring-1 ring-white/15 overflow-hidden bg-flag-navy/60 min-h-[260px]">
-                <svg id="embedding-space" class="w-full h-full"></svg>
-              </div>
-              <p class="mt-3 text-xs text-parchment/55 font-mono" id="embedding-space-caption">
-                query → 5 nearest matches · synthetic 4-class space, ~120 points
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASE STUDY 06 · TRANSFORMER TRAINING · PATCHTST + HNSW -->
-      <section class="bg-flag-navy text-parchment">
-        <div class="mx-auto max-w-6xl px-6 pb-12">
-          <div class="rounded-2xl ring-1 ring-white/15 bg-white/[0.04] p-8">
-            <div class="flex items-baseline justify-between mb-6 flex-wrap gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-2">
-                  Case Study 06 · Transformer Training
-                </p>
-                <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                  PatchTST + HNSW — retrievable time-series embeddings
-                </h3>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-1 ring-1 ring-white/20 rounded-full text-parchment/70">
-                github.com/mertall · patchtst_and_hnsw
-              </span>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-5 text-sm">
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Problem
-                </div>
-                <p class="text-parchment/80">
-                  Time-series forecasting that produces retrievable embeddings —
-                  so similar historical windows can be looked up at query time,
-                  not just point-predicted.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Approach
-                </div>
-                <p class="text-parchment/80">
-                  Lightweight PatchTST — 8 heads · 2 layers · patch length 16 ·
-                  128-dim — on the Australian electricity demand series. Sliding
-                  96-step input / 24-step target windows, leak-free
-                  chronological split. Trained inside a 10-hour budget. Index
-                  the train-window embeddings in HNSW (M=16, ef_construction=200).
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Outcome
-                </div>
-                <p class="text-parchment/80">
-                  Brute-force KNN vs HNSW benchmarked top-5 retrieval on test
-                  embeddings — the same retrieval substrate (transformer
-                  embeddings + HNSW) we deploy at customer scale, validated on
-                  a small CPU-budget run.
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-5 flex flex-wrap gap-1.5 text-[10px] font-mono text-parchment/70">
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">PyTorch</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">transformers</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">PatchTST</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">hnswlib</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">time-series</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CASE STUDY 07 · DEEP-AGENT-COGNEE -->
-      <section class="bg-flag-navy text-parchment border-b border-white/10">
-        <div class="mx-auto max-w-6xl px-6 pb-12">
-          <div class="rounded-2xl ring-1 ring-white/15 bg-white/[0.04] p-8">
-            <div class="flex items-baseline justify-between mb-6 flex-wrap gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-2">
-                  Case Study 07 · deep-agent-cognee
-                </p>
-                <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                  Graph-aware deep agents over operational data
-                </h3>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-1 ring-1 ring-white/20 rounded-full text-parchment/70">
-                three-tier · skunkworks
-              </span>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-5 text-sm">
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Problem
-                </div>
-                <p class="text-parchment/80">
-                  Operational data — CRM, financial ops, scheduling — is hostile
-                  to standalone LLM agents. No shared memory, no graph context,
-                  no audit trail. Standard RAG flattens what the business
-                  actually knows.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Approach
-                </div>
-                <p class="text-parchment/80">
-                  Three-tier skunkworks — Express + Prisma backend for the
-                  relational layer, React frontend for human-in-the-loop
-                  control, Python AI service running cognee-style graph-aware
-                  memory and tool-using agents over the same data fabric.
-                </p>
-              </div>
-              <div class="rounded-xl ring-1 ring-flag-ivory/20 bg-flag-navy/40 p-5">
-                <div class="font-mono text-[11px] uppercase tracking-[0.15em] text-flag-ivory mb-2">
-                  Outcome
-                </div>
-                <p class="text-parchment/80">
-                  A blueprint for graph-aware deep agents on enterprise CRM and
-                  ops data — the architecture pattern we'd reuse on a real
-                  customer engagement, with the seams already drawn.
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-5 flex flex-wrap gap-1.5 text-[10px] font-mono text-parchment/70">
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">Express</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">Prisma</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">React</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">Python</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">cognee</span>
-              <span class="px-2 py-0.5 ring-1 ring-white/20 rounded-full">graph memory</span>
-            </div>
-          </div>
-
-          <!-- SELECTED OTHER CLOUD AI WORK -->
-          <div class="mt-10 rounded-2xl ring-1 ring-white/15 bg-white/[0.03] p-6">
-            <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
-              <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70">
-                Selected other Cloud AI work
-              </p>
-              <span class="text-[10px] font-mono text-parchment/50">
-                github.com/mertall
-              </span>
-            </div>
-            <ul class="grid md:grid-cols-2 gap-5 text-sm text-parchment/85">
-              <li class="rounded-xl ring-1 ring-white/15 bg-flag-navy/50 p-4">
-                <div class="font-display text-base mb-1">Fellowship Finder</div>
-                <p class="text-parchment/75 text-[13px]">
-                  Full-stack search assistant for graduate fellowships at
-                  UChicago. FastAPI backend swaps between OpenAI and a local
-                  Mistral-7B behind the same router — one config line flips
-                  cloud / local.
-                </p>
-              </li>
-              <li class="rounded-xl ring-1 ring-white/15 bg-flag-navy/50 p-4">
-                <div class="font-display text-base mb-1">CLIP fine-tune · CIFAR-10</div>
-                <p class="text-parchment/75 text-[13px]">
-                  Contrastive fine-tuning of CLIP with augmented image / text
-                  pairs, HNSW-indexed embeddings, retrieval evaluated against
-                  the pretrained baseline. ~+6% retrieval accuracy lift.
-                </p>
-              </li>
+            <ul>
+              <li>Pre-built integrations with managed AI services (OpenAI, Anthropic, Google).</li>
+              <li>Same workflow categories as Local AI — delivered through managed AI, faster to stand up.</li>
+              <li>Endpoint-by-endpoint map: you know which service sees which part of your data.</li>
+              <li>PII stripped or pseudonymized before egress · plain-SQL audit log of every cloud call.</li>
             </ul>
           </div>
-
-          <!-- Path B · closing CTA -->
-          <div class="mt-14 rounded-2xl bg-flag-ivory text-flag-navy p-8 sm:p-10 flex flex-col sm:flex-row sm:items-end gap-6 justify-between">
-            <div>
-              <p class="text-[11px] uppercase tracking-[0.22em] text-flag-navy/60 mb-2">
-                End of Path B
-              </p>
-              <h3 class="font-display text-2xl sm:text-3xl tracking-tight">
-                Bring us in for the Cloud AI work.
-              </h3>
-              <p class="mt-2 text-flag-navy/85 max-w-xl text-sm">
-                One-week paid scoping sprint, deliverable on day five. We come
-                out with an architecture diagram, a deployment plan, and an
-                honest read on the latency / security / cost trade-offs you'll
-                actually face on AWS.
-              </p>
+          <div class="mode custom">
+            <div class="lead">
+              <h3>Custom application · full-stack build</h3>
+              <span class="tag">3–6 mo · production</span>
             </div>
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20Cloud%20AI%20engagement"
-              class="inline-flex items-center justify-between gap-3 bg-flag-navy text-parchment px-5 py-4 rounded-xl text-sm font-medium hover:bg-ink whitespace-nowrap transition-colors"
-            >
-              <span>Hire us for Cloud AI</span>
-              <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                <path
-                  fill-rule="evenodd"
-                  d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div class="mt-10 text-sm text-parchment/65">
-            Full engagement detail in the
-            <a href="#experience" class="underline decoration-flag-ivory/40 hover:text-flag-ivory">
-              experience timeline
-            </a>
-            below.
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================================ -->
-      <!-- ENGAGEMENT MODEL · CUSTOM SOFTWARE ENGINEERING -->
-      <!-- ============================================ -->
-      <section id="engineering" class="relative overflow-hidden bg-ink text-parchment border-t-4 border-flag-ivory/30">
-        <div class="bg-decor opacity-[0.08]">
-          <div class="absolute inset-0 bg-dot-grid-tight text-parchment"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 py-20 content-front">
-          <div class="grid lg:grid-cols-12 gap-10 items-end mb-12">
-            <div class="lg:col-span-7">
-              <div class="flex items-center gap-3 mb-3">
-                <span class="inline-block w-2 h-2 rounded-full bg-flag-ivory"></span>
-                <p class="text-xs uppercase tracking-[0.22em] text-flag-ivory/80 font-medium">
-                  Engagement model · Custom software engineering
-                </p>
-              </div>
-              <h2 class="font-display text-3xl sm:text-5xl tracking-tight">
-                Prototype to production. <span class="italic">3 to 6 months.</span>
-              </h2>
-              <p class="mt-4 text-parchment/75 max-w-2xl">
-                Custom full-stack cloud software engineering. The same
-                discipline that holds at 100k federal users, sized for a
-                startup or a single-customer deployment. We architect, build,
-                ship, and hand off — with runbooks.
-              </p>
-            </div>
-            <div class="lg:col-span-5">
-              <div class="rounded-xl ring-1 ring-flag-ivory/30 bg-white/[0.04] p-5">
-                <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-flag-ivory mb-3">
-                  What we ship
-                </div>
-                <ul class="space-y-2 text-sm text-parchment/85">
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> Full-stack
-                    apps — Node / TypeScript / Python · GraphQL / FastAPI /
-                    Flask · React
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> Storage &amp;
-                    retrieval — Prisma / Postgres · Elasticsearch · vector DBs ·
-                    Redis
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> Serverless
-                    AWS + IaC patterns inherited from federal-scale work
-                  </li>
-                  <li class="flex gap-2">
-                    <span class="text-flag-ivory font-mono">›</span> Auth, RBAC,
-                    audit trails, observability, runbooks — the boring parts
-                    nobody else finishes
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- THREE-STAGE TIMELINE -->
-          <div class="grid md:grid-cols-3 gap-5 mb-10">
-            <div class="rounded-xl ring-1 ring-flag-ivory/30 bg-white/[0.04] p-6">
-              <div class="flex items-baseline justify-between mb-3">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-flag-ivory/80">
-                  Stage 01
-                </p>
-                <span class="font-mono text-2xl text-flag-ivory">4–6 wk</span>
-              </div>
-              <h3 class="font-display text-xl">Prototype sprint</h3>
-              <p class="mt-2 text-sm text-parchment/80">
-                Working demo, clear scope, hard cost estimate. Enough to put in
-                front of a customer or an internal stakeholder and watch what
-                they react to.
-              </p>
-            </div>
-            <div class="rounded-xl ring-1 ring-flag-ivory/30 bg-white/[0.04] p-6">
-              <div class="flex items-baseline justify-between mb-3">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-flag-ivory/80">
-                  Stage 02
-                </p>
-                <span class="font-mono text-2xl text-flag-ivory">~3 mo</span>
-              </div>
-              <h3 class="font-display text-xl">MVP shipped</h3>
-              <p class="mt-2 text-sm text-parchment/80">
-                Customer-shippable system in <em>your</em> cloud account.
-                Instrumented, observable, sized for actual usage, with a
-                deployment story your team can run.
-              </p>
-            </div>
-            <div class="rounded-xl ring-1 ring-flag-ivory/30 bg-white/[0.04] p-6">
-              <div class="flex items-baseline justify-between mb-3">
-                <p class="text-[11px] uppercase tracking-[0.18em] text-flag-ivory/80">
-                  Stage 03
-                </p>
-                <span class="font-mono text-2xl text-flag-ivory">~6 mo</span>
-              </div>
-              <h3 class="font-display text-xl">Production hardening</h3>
-              <p class="mt-2 text-sm text-parchment/80">
-                SLOs, on-call runbooks, rollback paths, security review,
-                handoff. The point where we exit and your team owns it
-                cleanly.
-              </p>
-            </div>
-          </div>
-
-          <!-- EVIDENCE + CTA -->
-          <div class="grid lg:grid-cols-12 gap-6 items-stretch">
-            <div class="lg:col-span-7 rounded-xl ring-1 ring-flag-ivory/30 bg-white/[0.04] p-6">
-              <div class="text-[11px] font-mono uppercase tracking-[0.18em] text-flag-ivory mb-3">
-                Track record
-              </div>
-              <ul class="space-y-3 text-sm text-parchment/85">
-                <li>
-                  <strong>Accenture Federal Services · 4 years</strong> — co-architected a 100k-user
-                  serverless platform at 99.9% SLOs, ~40% p95 latency reduction,
-                  ~87% faster internal prototyping.
-                </li>
-                <li>
-                  <strong>Multimodal Works · in flight</strong> —
-                  4-month prototype-to-production cycle on construction-services
-                  brokerage workflows: QuickBooks Online integration, custom
-                  reporting, GraphQL / Node.js backend with Python / Flask AI
-                  microservices.
-                </li>
-              </ul>
-            </div>
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20software%20engineering%20engagement&body=Project%20snapshot%3A%0A%0AWhat%20you%27re%20trying%20to%20build%3A%0ATarget%20timeline%3A%20%5B6%20weeks%20%2F%203%20months%20%2F%206%20months%5D%0ACloud%20account%20%5BAWS%20%2F%20GCP%20%2F%20Azure%5D%3A%0AUsers%20%2F%20scale%20expected%3A%0ACompliance%20constraints%3A%0A"
-              class="lg:col-span-5 group rounded-xl bg-flag-ivory text-flag-navy p-7 hover:shadow-xl transition-all flex flex-col justify-between"
-            >
-              <div>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-navy/60 mb-2">
-                  Engagement
-                </p>
-                <h3 class="font-display text-2xl">
-                  Talk to us about a build engagement
-                </h3>
-                <p class="mt-3 text-sm text-flag-navy/85">
-                  Opens an email pre-filled with the timeline, cloud account,
-                  and scale fields we ask about first.
-                </p>
-              </div>
-              <div class="mt-5 pt-4 border-t border-flag-navy/20 flex items-center justify-between">
-                <span class="font-mono text-xs text-flag-navy/80">
-                  mridul@multimodalworks.io
-                </span>
-                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 group-hover:translate-x-1 transition-transform">
-                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- CAPABILITIES -->
-      <section id="capabilities" class="relative overflow-hidden bg-white border-y border-ink/10">
-        <div class="bg-decor opacity-[0.05] text-ink">
-          <div class="absolute inset-0 bg-dot-grid"></div>
-        </div>
-        <div class="mx-auto max-w-6xl px-6 py-20 content-front">
-          <div class="max-w-3xl">
-            <p class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2">
-              Capabilities
-            </p>
-            <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
-              What you actually get when you hire us
-            </h2>
-            <p class="mt-4 text-ink/70">
-              One operator, full ownership of the work, on either end of the
-              stack. We bring research instincts, production engineering
-              habits, and four years of federal-scale data-platform muscle
-              memory.
-            </p>
-          </div>
-
-          <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Local AI column -->
-            <div class="rounded-2xl ring-1 ring-ink/10 p-6 bg-parchment/50">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-flag-red"></span>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-red">
-                  Local AI
-                </p>
-              </div>
-              <h3 class="font-display text-2xl">
-                Cloud chatbot UX, on your network
-              </h3>
-              <ul class="mt-4 space-y-3 text-sm text-ink/75">
-                <li>
-                  <span class="font-mono text-xs text-ink/50">01</span>
-                  <strong>Local AI Station</strong> — 128 GB unified-memory workstation
-                  build: Hermes agent, LiteLLM routing, Ollama, three-tier
-                  memory (Postgres + AGE + Qdrant), Caddy reverse proxy.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-ink/50">02</span>
-                  <strong>Cloud-parity latency</strong> — model routing,
-                  quantization, retrieval offloading targeted at sub-second
-                  first-token on local hardware.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-ink/50">03</span>
-                  <strong>Same data sources</strong> — MCP connectors for
-                  email, calendar, drive, code, CRM. The chatbot's data fabric,
-                  rebuilt locally.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-ink/50">04</span>
-                  <strong>Edge &amp; quantum, too</strong> — when the
-                  constraint shifts to Pis, laptops, or 60-qubit circuits, the
-                  same engineer covers it.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Enterprise column -->
-            <div class="rounded-2xl ring-1 ring-flag-navy/30 p-6 bg-flag-navy text-parchment">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-flag-ivory"></span>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-ivory/80">
-                  Cloud AI
-                </p>
-              </div>
-              <h3 class="font-display text-2xl">
-                Build it, ship it on AWS
-              </h3>
-              <ul class="mt-4 space-y-3 text-sm text-parchment/85">
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">01</span>
-                  Model packaging &amp; SageMaker endpoints — HuggingFace
-                  artifacts, custom <span class="font-mono">inference.py</span>,
-                  S3, autoscaling.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">02</span>
-                  Retrieval architectures — HNSW, Elasticsearch / OpenSearch,
-                  federated search, ACID-compliant access control.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">03</span>
-                  LLM integration into enterprise workflows — agentic flows,
-                  evaluation harnesses, legal / security alignment.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">04</span>
-                  Serverless infrastructure — AWS Lambda, GraphQL, FastAPI,
-                  Flask microservices. 99.9% SLOs at 100k-user scale.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Custom software engineering column -->
-            <div class="rounded-2xl ring-1 ring-ink/15 p-6 bg-ink text-parchment md:col-span-2 lg:col-span-1">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-flag-ivory"></span>
-                <p class="text-[11px] uppercase tracking-[0.22em] text-flag-ivory/80">
-                  Custom software engineering
-                </p>
-              </div>
-              <h3 class="font-display text-2xl">
-                Prototype to production · 3–6 months
-              </h3>
-              <ul class="mt-4 space-y-3 text-sm text-parchment/85">
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">01</span>
-                  Full-stack cloud apps — Node / TypeScript / Python · FastAPI
-                  / GraphQL / React.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">02</span>
-                  Storage &amp; retrieval — Prisma / Postgres · Elasticsearch ·
-                  vector DBs · Redis.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">03</span>
-                  Serverless AWS + IaC patterns inherited from federal-scale
-                  work.
-                </li>
-                <li>
-                  <span class="font-mono text-xs text-parchment/55">04</span>
-                  Auth, RBAC, audit trails, runbooks — the boring parts nobody
-                  else finishes.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="mt-6 rounded-xl ring-1 ring-ink/10 p-5 bg-white">
-            <div class="font-mono text-xs text-ink/50 mb-2">
-              Common across all three
-            </div>
-            <p class="text-sm text-ink/75">
-              Math-frontend interfaces — embeddings,
-              force-directed graphs, decision surfaces. When the data is the
-              product, the visualization is the spec. Test-driven where it
-              matters. Notes and runbooks, not just code.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- EXPERIENCE -->
-      <section id="experience" class="bg-parchment">
-        <div class="mx-auto max-w-6xl px-6 py-20">
-          <div class="mb-10 flex items-baseline justify-between flex-wrap gap-4">
-            <div>
-              <p class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2">
-                Experience
-              </p>
-              <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
-                Production ML systems · enterprise to SMB
-              </h2>
-              <p class="mt-3 text-ink/70 max-w-3xl">
-                Four years architecting AI-enabled platforms inside federal and
-                private-equity-backed environments, now bringing the same rigor
-                to founder-led companies through Multimodal Works.
-              </p>
-            </div>
-            <a
-              href="https://www.linkedin.com/in/mridul-s-56738a149"
-              class="text-sm border border-ink/25 px-4 py-2 rounded-full hover:border-flag-red hover:text-flag-red transition-colors"
-              >Full résumé / LinkedIn</a
-            >
-          </div>
-
-          <ol class="relative border-l border-ink/15 ml-3 space-y-10">
-            <li class="pl-6">
-              <span
-                class="absolute -left-[7px] w-3.5 h-3.5 rounded-full bg-flag-red ring-4 ring-parchment"
-              ></span>
-              <div class="flex items-baseline justify-between flex-wrap gap-2">
-                <h3 class="font-display text-xl">
-                  Enterprise AI Architect ·
-                  <span class="text-flag-red">Multimodal Works LLC</span>
-                </h3>
-                <span class="font-mono text-xs text-ink/55">
-                  Jul 2025 – Present · Greater Chicago Area
-                </span>
-              </div>
-              <p class="mt-2 text-sm text-ink/75 max-w-3xl">
-                Architecting AI-enabled operational systems for construction
-                services brokerage workflows. Integrating CRM, financial
-                operations, and document tracking into unified production
-                infrastructure.
-              </p>
-              <ul class="mt-3 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-ink/75 list-disc list-inside marker:text-flag-red/70">
-                <li>
-                  Led a 4-month prototype-to-production cycle integrating
-                  QuickBooks Online into reporting and auditability workflows for
-                  private-equity-backed operations.
-                </li>
-                <li>
-                  Designed and maintained a custom backend on GraphQL / Node.js
-                  with Python / Flask microservices for AI tasks.
-                </li>
-                <li>
-                  Building agentic AI workflows for conversational interaction
-                  across CRM opportunity tracking and financial document
-                  management.
-                </li>
-              </ul>
-            </li>
-
-            <li class="pl-6">
-              <span
-                class="absolute -left-[7px] w-3.5 h-3.5 rounded-full bg-flag-navy ring-4 ring-parchment"
-              ></span>
-              <div class="flex items-baseline justify-between flex-wrap gap-2">
-                <h3 class="font-display text-xl">
-                  Senior Software Engineer ·
-                  <span class="text-flag-navy">Accenture Federal Services</span>
-                  <span class="text-ink/50 font-sans text-sm font-normal">
-                    (MLE Group)
-                  </span>
-                </h3>
-                <span class="font-mono text-xs text-ink/55">
-                  Jun 2024 – Jul 2025 · Remote
-                </span>
-              </div>
-              <ul class="mt-3 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-ink/75 list-disc list-inside marker:text-flag-navy/70">
-                <li>
-                  Co-architected an enterprise data platform serving
-                  <strong>100k+ users</strong> at <strong>99.9% SLOs</strong>,
-                  reducing p95 latency by ~40%.
-                </li>
-                <li>
-                  Led applied GenAI prototyping with retrieval systems, vector
-                  databases, and LLM workflow integration — improved
-                  <strong>Recall@10 by ~20%</strong>.
-                </li>
-                <li>
-                  Drove organizational LLM adoption by coordinating legal,
-                  security, and engineering stakeholders on deployment paths.
-                </li>
-                <li>
-                  Co-authored enterprise LLM deployment and use-case guidance
-                  for intelligence-community environments.
-                </li>
-              </ul>
-            </li>
-
-            <li class="pl-6">
-              <span
-                class="absolute -left-[7px] w-3.5 h-3.5 rounded-full bg-ink/40 ring-4 ring-parchment"
-              ></span>
-              <div class="flex items-baseline justify-between flex-wrap gap-2">
-                <h3 class="font-display text-xl">
-                  Software Engineer ·
-                  <span class="text-flag-navy">Accenture Federal Services</span>
-                  <span class="text-ink/50 font-sans text-sm font-normal">
-                    (MLE Group)
-                  </span>
-                </h3>
-                <span class="font-mono text-xs text-ink/55">
-                  Sep 2021 – Jun 2024 · Remote
-                </span>
-              </div>
-              <ul class="mt-3 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-ink/75 list-disc list-inside marker:text-ink/40">
-                <li>
-                  Architected serverless AWS infrastructure that made internal
-                  application prototyping ~<strong>87% faster</strong>.
-                </li>
-                <li>
-                  Built distributed microservices supporting pension-tracking
-                  workflows for <strong>2M+ users</strong>.
-                </li>
-                <li>
-                  Designed an ACID-compliant federated search architecture —
-                  JDBC ingestion pipelines, NLP enrichment, Elasticsearch
-                  indexing, and fine-grained access control.
-                </li>
-              </ul>
-            </li>
-          </ol>
-
-          <div class="mt-14 grid md:grid-cols-2 gap-5">
-            <div class="rounded-xl ring-1 ring-ink/10 bg-white p-5">
-              <div class="font-mono text-xs text-ink/50">Education</div>
-              <p class="mt-2 text-ink/80 text-sm">
-                <span class="font-display text-lg">University of California, Davis</span>
-                <br />
-                B.S. Computational &amp; Scientific Mathematics
-              </p>
-            </div>
-            <div class="rounded-xl ring-1 ring-ink/10 bg-white p-5">
-              <div class="font-mono text-xs text-ink/50">Certifications</div>
-              <ul class="mt-2 text-sm text-ink/80 grid sm:grid-cols-2 gap-x-6 gap-y-1">
-                <li>HuggingFace AI Agents · 2025</li>
-                <li>Databricks GenAI Engineer · 2024</li>
-                <li>CU Boulder Advanced Algorithms · 2024</li>
-                <li>IBM Variational Algorithms · 2024</li>
-                <li>Stanford Machine Learning · 2019</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FOUNDATIONS · earlier original work strip -->
-      <section class="bg-parchment border-t border-ink/10">
-        <div class="mx-auto max-w-6xl px-6 py-12">
-          <div class="rounded-2xl ring-1 ring-ink/10 bg-white/60 p-6">
-            <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
-              <p class="text-xs uppercase tracking-[0.22em] text-ink/55">
-                Foundations · earlier original work
-              </p>
-              <span class="text-[10px] font-mono text-ink/40">
-                github.com/mertall
-              </span>
-            </div>
-            <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-sm text-ink/75">
-              <li>
-                <span class="font-mono text-ink/55">MNIST-CNN</span> ·
-                parameterizing CNN architectures, hypothesizing on the
-                accuracy / efficiency trade
-              </li>
-              <li>
-                <span class="font-mono text-ink/55">PCA</span> · sparse +
-                big-data principal component analysis with truncated SVD
-              </li>
-              <li>
-                <span class="font-mono text-ink/55">opencv_scripts</span> ·
-                face-recognition utilities paired with the HOSVD project
-              </li>
-              <li>
-                <span class="font-mono text-ink/55">flight-software</span> /
-                <span class="font-mono text-ink/55">gnc</span> · early
-                aerospace guidance, navigation, and control reading
-              </li>
-              <li>
-                <span class="font-mono text-ink/55">RTC2RTC</span> · a quick
-                and dirty WebRTC bridge with dummy linking / TURN / STUN
-              </li>
-              <li>
-                <span class="font-mono text-ink/55">Independent-Study</span> ·
-                linear algebra → statistics → ML → deep learning, in a
-                self-paced curriculum
-              </li>
+            <ul>
+              <li>When your problem doesn't fit a workflow template — you need a real application.</li>
+              <li>Full-stack cloud apps: backend (Node / Python · GraphQL / FastAPI), frontend (React), AI service.</li>
+              <li>Auth, RBAC, audit trails, observability — the boring parts nobody else finishes.</li>
+              <li>SLOs and runbooks handed off at the end so your team owns it cleanly.</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- FOUNDER -->
-      <section id="founder" class="bg-white border-y border-ink/10">
-        <div class="mx-auto max-w-6xl px-6 py-20 grid lg:grid-cols-12 gap-10">
-          <div class="lg:col-span-5">
-            <p class="text-xs uppercase tracking-[0.22em] text-flag-red mb-2">
-              Founder
-            </p>
-            <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
-              Mridul Sarkar
-            </h2>
-            <p class="mt-4 text-ink/75">
-              Applied AI Systems Engineer. UC Davis-trained mathematician who
-              spent four years inside Accenture Federal Services' MLE Group
-              shipping production data platforms — retrieval systems, federated
-              search, vector databases, LLM workflows — at federal-scale
-              reliability targets.
-            </p>
-            <p class="mt-4 text-ink/75">
-              I now run Multimodal Works LLC as a one-operator consultancy for
-              teams who need a senior ML pair of hands without the year-long
-              hiring cycle. Most engagements look the same shape: a research
-              idea, a customer waiting, and not enough compute. I take the
-              problem from notebook to a thing your team can run, measure, and
-              extend.
-            </p>
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>The numbers</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="n">$3,000</div>
+            <div class="l">Custom-built local AI station · 128 GB unified memory</div>
           </div>
-          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4 text-sm">
-            <div class="rounded-xl ring-1 ring-parchment p-5 bg-parchment/60">
-              <div class="font-mono text-xs text-ink/50">Recent</div>
-              <ul class="mt-2 space-y-1 text-ink/80">
-                <li>BlueQubit Hackathon — 60q peak circuit</li>
-                <li>Independent study: linear algebra → deep learning</li>
-                <li>qsharp-community contributions</li>
-              </ul>
-            </div>
-            <div class="rounded-xl ring-1 ring-parchment p-5 bg-parchment/60">
-              <div class="font-mono text-xs text-ink/50">Stack</div>
-              <ul class="mt-2 space-y-1 text-ink/80">
-                <li>Python, PyTorch, LangChain, FastAPI</li>
-                <li>Qiskit, Q#, Quimb, cotengra</li>
-                <li>Docker, Postgres + AGE, Qdrant, HNSW</li>
-              </ul>
-            </div>
-            <div class="rounded-xl ring-1 ring-parchment p-5 bg-parchment/60">
-              <div class="font-mono text-xs text-ink/50">Industries</div>
-              <ul class="mt-2 space-y-1 text-ink/80">
-                <li>B2B SaaS · founder-led teams</li>
-                <li>Hardware-adjacent ML</li>
-                <li>Research labs needing a productionizer</li>
-              </ul>
-            </div>
-            <div class="rounded-xl ring-1 ring-parchment p-5 bg-parchment/60">
-              <div class="font-mono text-xs text-ink/50">Working style</div>
-              <ul class="mt-2 space-y-1 text-ink/80">
-                <li>Fixed-scope sprints, weekly demos</li>
-                <li>Test-driven where it matters</li>
-                <li>Notes and runbooks, not just code</li>
-              </ul>
-            </div>
+          <div class="stat">
+            <div class="n">~3 mo</div>
+            <div class="l">Typical local-AI payback vs a $1k/mo cloud LLM bill</div>
+          </div>
+          <div class="stat">
+            <div class="n">3–6 mo</div>
+            <div class="l">Prototype to production · full handoff</div>
           </div>
         </div>
       </section>
 
-      <!-- CONTACT · two paths, one inbox -->
-      <section id="contact" class="relative overflow-hidden bg-ink text-parchment">
-        <div class="bg-decor opacity-[0.08]">
-          <div class="absolute left-0 top-0 w-1/2 h-full bg-dot-grid text-flag-red"></div>
-          <div class="absolute right-0 top-0 w-1/2 h-full bg-scatter text-flag-ivory"></div>
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>Engagement model</h2>
+        <div class="stages">
+          <div class="stage">
+            <span class="when">30 min</span>
+            <span class="what"><strong>Initial consultation. Free.</strong> 30-minute call · scope clarification · is-this-a-fit check.</span>
+          </div>
+          <div class="stage">
+            <span class="when">1 wk</span>
+            <span class="what"><strong>Paid scoping sprint · $5,000 flat.</strong> Working demo against your real data, architecture diagram, hard cost estimate, written runbook if you want to stop here and DIY.</span>
+          </div>
+          <div class="stage">
+            <span class="when">4–6 wk</span>
+            <span class="what"><strong>Prototype.</strong> Customer-shippable, instrumented, in your environment.</span>
+          </div>
+          <div class="stage">
+            <span class="when">~3 mo</span>
+            <span class="what"><strong>MVP shipped.</strong> Production patterns, deployment story your team can run.</span>
+          </div>
+          <div class="stage">
+            <span class="when">~6 mo</span>
+            <span class="what"><strong>Production-hardened.</strong> SLOs, observability, rollback paths, runbooks, handoff.</span>
+          </div>
         </div>
-        <div class="mx-auto max-w-6xl px-6 py-20 content-front">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <p
-              class="text-xs uppercase tracking-[0.22em] text-flag-ivory/70 mb-3"
-            >
-              Start a project
-            </p>
-            <h2 class="font-display text-3xl sm:text-5xl tracking-tight">
-              Pick a path. Hit send.
-            </h2>
-            <p class="mt-4 text-parchment/75">
-              Tell us about the constraint — the hardware, the latency budget,
-              the team you're trying not to hire yet. Engagements start with
-              a one-week paid scoping sprint.
-            </p>
+        <p style="margin-top: 18px; font-size: 13px; color: var(--ink-mute); line-height: 1.5;">
+          Initial consultation is free. The 1-week scoping sprint is
+          <strong style="color: var(--ink);">$5,000 flat</strong> — the only
+          paid commitment before a full engagement is quoted.
+        </p>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section>
+        <h2>Get in touch</h2>
+        <div class="contact-card">
+          <div class="row">
+            <span class="label">Email</span>
+            <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a>
           </div>
-
-          <div class="grid md:grid-cols-2 gap-5">
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20Local%20AI%20engagement&body=Project%20snapshot%3A%0A%0AHardware%20target%3A%20%5Bworkstation%20%2F%20laptop%20%2F%20on-prem%20box%20%2F%20edge%20device%5D%0ATarget%20first-token%20latency%3A%0AData%20sources%20to%20connect%20%5Bemail%20%2F%20drive%20%2F%20code%20%2F%20CRM%20%2F%20etc%5D%3A%0AData%20sensitivity%20%2F%20egress%20constraints%3A%0AWhat%20you%27ve%20already%20tried%3A%0A"
-              class="group rounded-2xl bg-flag-red text-parchment p-7 hover:shadow-xl transition-all flex flex-col"
-            >
-              <p class="text-[11px] uppercase tracking-[0.22em] text-parchment/75 mb-2">
-                Path A
-              </p>
-              <h3 class="font-display text-2xl">Hire us for Local AI</h3>
-              <p class="mt-3 text-sm text-parchment/85">
-                A 128 GB unified-memory workstation stack that matches your cloud
-                chatbot's UX — with your data sources, your network, your
-                budget. Opens an email pre-filled with the fields we'll need.
-              </p>
-              <div class="mt-5 pt-4 border-t border-white/20 flex items-center justify-between">
-                <span class="font-mono text-xs text-parchment/80">
-                  mridul@multimodalworks.io
-                </span>
-                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 group-hover:translate-x-1 transition-transform">
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </a>
-
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20Cloud%20AI%20engagement&body=Project%20snapshot%3A%0A%0ACloud%20account%3A%20%5BAWS%20%2F%20GCP%20%2F%20Azure%20%2F%20on-prem%5D%0ALatency%20budget%20%2F%20user%20scale%3A%0ACompliance%20constraints%20%5BFedRAMP%20%2F%20HIPAA%20%2F%20SOC2%20%2F%20internal%5D%3A%0ANotebook%20%2F%20research%20artifact%20to%20productionize%3A%0A"
-              class="group rounded-2xl bg-flag-ivory text-flag-navy p-7 hover:shadow-xl transition-all flex flex-col"
-            >
-              <p class="text-[11px] uppercase tracking-[0.22em] text-flag-navy/60 mb-2">
-                Path B
-              </p>
-              <h3 class="font-display text-2xl">Hire us for Cloud AI</h3>
-              <p class="mt-3 text-sm text-flag-navy/85">
-                SageMaker endpoints, retrieval / RAG architectures, FastAPI
-                routers, federated search. Opens an email pre-filled with the
-                cloud / compliance fields we'll ask about first.
-              </p>
-              <div class="mt-5 pt-4 border-t border-flag-navy/20 flex items-center justify-between">
-                <span class="font-mono text-xs text-flag-navy/80">
-                  mridul@multimodalworks.io
-                </span>
-                <svg viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 group-hover:translate-x-1 transition-transform">
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </a>
+          <div class="row">
+            <span class="label">GitHub</span>
+            <a href="https://github.com/mertall">github.com/mertall</a>
           </div>
-
-          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-parchment/70">
-            <a
-              href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro"
-              class="underline decoration-parchment/30 hover:text-flag-ivory"
-              >Not sure which path? Just write us.</a
-            >
-            <span class="hidden sm:inline text-parchment/30">·</span>
-            <a
-              href="https://github.com/mertall"
-              class="underline decoration-parchment/30 hover:text-flag-ivory"
-              >GitHub · mertall</a
-            >
-            <span class="hidden sm:inline text-parchment/30">·</span>
-            <a
-              href="https://www.linkedin.com/in/mridul-s-56738a149"
-              class="underline decoration-parchment/30 hover:text-flag-ivory"
-              >LinkedIn</a
-            >
+          <div class="row">
+            <span class="label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/mridul-s-56738a149">mridul-s</a>
+          </div>
+          <div class="row">
+            <span class="label">Based</span>
+            <span>Greater Chicago Area</span>
           </div>
         </div>
       </section>
-    </main>
 
-    <footer class="bg-ink text-parchment/70 border-t border-white/10">
-      <div
-        class="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm"
-      >
-        <div class="flex items-center gap-3">
-          <span class="font-display text-base text-parchment">Multimodal Works LLC</span>
-          <span class="text-parchment/50">·</span>
-          <span>© <span id="year"></span></span>
-        </div>
-        <div class="flex items-center gap-3 text-xs text-parchment/55">
-          <span>Independent · operator-owned · made in the USA</span>
-          <svg
-            viewBox="0 0 1235 650"
-            class="h-4 w-auto rounded-sm ring-1 ring-white/20"
-            aria-hidden="true"
-          >
-            <rect width="1235" height="650" fill="#ffffff" />
-            <g fill="#b31942">
-              <rect y="0" width="1235" height="50" />
-              <rect y="100" width="1235" height="50" />
-              <rect y="200" width="1235" height="50" />
-              <rect y="300" width="1235" height="50" />
-              <rect y="400" width="1235" height="50" />
-              <rect y="500" width="1235" height="50" />
-              <rect y="600" width="1235" height="50" />
-            </g>
-            <rect width="494" height="350" fill="#0a3161" />
-          </svg>
-        </div>
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-    <script src="app.js?v=2026-05-13c"></script>
+      <footer>
+        <span>Multimodal Works LLC · © 2026 · Greater Chicago Area</span>
+        <a href="https://github.com/mertall">github.com/mertall →</a>
+      </footer>
+    </div>
   </body>
 </html>

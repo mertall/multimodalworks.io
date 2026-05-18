@@ -1,14 +1,14 @@
 {
   "schema_version": "1",
   "generated_at": "2026-05-13",
-  "methodology": "Cumulative AI cost over 24 months. Cloud usage tiers calibrated to GPT-4o blended pricing (input $2.50/M, output $10/M, typical input-heavy retrieval workloads land around $5/M blended). Local AI Station: one-time hardware (Strix Halo class · 128 GB unified memory) + ongoing electricity at $0.15/kWh, 200W average.",
+  "methodology": "Cumulative AI cost over 24 months. Cloud usage tiers calibrated to GPT-4o blended pricing (input $2.50/M, output $10/M, typical input-heavy retrieval workloads land around $5/M blended). Local AI Station: one-time hardware (128 GB unified-memory APU build) + ongoing electricity at $0.15/kWh, 200W average.",
   "currency": "USD",
   "horizon_months": 24,
   "local_station": {
     "hardware_cost": 3000,
     "monthly_opex": 25,
-    "spec": "AMD Strix Halo / Ryzen AI Max+ 395 class · 128 GB unified memory",
-    "notes": "Framework Desktop 128GB lands at ~$2,400; HP Z2 Mini G1a Strix Halo 128 GB at ~$3,000–3,500; custom build ~$2,500. $25/mo opex covers electricity at typical SMB rates."
+    "spec": "128 GB unified-memory APU class",
+    "notes": "Comparable consumer + workstation builds land in the $2,400–$3,500 range, depending on chassis and storage. $25/mo opex covers electricity at typical SMB rates."
   },
   "cloud_tiers": [
     {
@@ -40,16 +40,6 @@
     {
       "name": "OpenAI public pricing · GPT-4o",
       "url": "https://openai.com/api/pricing/",
-      "captured": "Q1 2026"
-    },
-    {
-      "name": "Framework Desktop 128GB pricing",
-      "url": "https://frame.work/desktop",
-      "captured": "Q1 2026"
-    },
-    {
-      "name": "HP Z2 Mini G1a Strix Halo spec",
-      "url": "https://www.hp.com",
       "captured": "Q1 2026"
     }
   ]

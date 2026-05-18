@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mridul Sarkar — CV</title>
+    <meta
+      name="description"
+      content="Applied AI Systems Engineer · Multimodal Works LLC · ex-Accenture Federal Services."
+    />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink-soft: #2c3340;
+        --ink-mute: #5a6271;
+        --paper: #ffffff;
+        --rule: #d4d4d8;
+        --red: #b31942;
+        --navy: #0a3161;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.42;
+      }
+      .page {
+        max-width: 7.5in;
+        margin: 0 auto;
+        padding: 0.5in 0.5in 0.5in 0.5in;
+      }
+      h1, h2, h3 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        margin: 0;
+        font-weight: 600;
+      }
+      h1 {
+        font-size: 22pt;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+      h2 {
+        font-size: 11pt;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+      }
+      h3 {
+        font-size: 11pt;
+        line-height: 1.2;
+      }
+      .mono {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 9pt;
+      }
+      .muted { color: var(--ink-mute); }
+      .soft  { color: var(--ink-soft); }
+      a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--ink-mute); }
+      a:hover { color: var(--red); border-color: var(--red); }
+
+      /* Header */
+      header.intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16pt;
+        padding-bottom: 10pt;
+        border-bottom: 1.5pt solid var(--ink);
+      }
+      header.intro .title {
+        font-size: 10.5pt;
+        color: var(--ink-soft);
+        margin-top: 4pt;
+        letter-spacing: 0.02em;
+      }
+      header.intro .contact {
+        font-size: 9pt;
+        text-align: right;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+      header.intro .contact .label {
+        color: var(--ink-mute);
+        margin-right: 4pt;
+      }
+
+      /* Section spacing */
+      section { margin-top: 14pt; break-inside: avoid; page-break-inside: avoid; }
+      section h2 { margin-bottom: 6pt; }
+
+      /* Summary */
+      .summary {
+        font-size: 10.5pt;
+        line-height: 1.5;
+        color: var(--ink-soft);
+        max-width: 6.8in;
+      }
+
+      /* Experience entries */
+      .role { margin-top: 10pt; break-inside: avoid; page-break-inside: avoid; }
+      .role:first-child { margin-top: 4pt; }
+      .role .row1 {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12pt;
+      }
+      .role .where { font-weight: 600; color: var(--ink); }
+      .role .what { color: var(--navy); font-weight: 600; }
+      .role .when { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: 9pt; color: var(--ink-mute); white-space: nowrap; }
+      .role ul {
+        margin: 4pt 0 0 0;
+        padding-left: 14pt;
+        color: var(--ink-soft);
+      }
+      .role li { margin: 1.5pt 0; }
+      .role li strong { color: var(--ink); font-weight: 600; }
+
+      /* Projects */
+      .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt 18pt; }
+      .project { break-inside: avoid; page-break-inside: avoid; }
+      .project .head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8pt;
+      }
+      .project h3 { font-size: 10.5pt; }
+      .project .tag {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 8pt;
+        color: var(--red);
+        white-space: nowrap;
+      }
+      .project p { margin: 3pt 0 4pt; color: var(--ink-soft); font-size: 9.5pt; }
+      .project .stack {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 8.5pt;
+        color: var(--ink-mute);
+        letter-spacing: 0.02em;
+      }
+
+      /* Education + certs row */
+      .footer-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10pt 20pt;
+        margin-top: 14pt;
+      }
+      .footer-row h2 { margin-bottom: 4pt; }
+      .footer-row ul {
+        margin: 0;
+        padding-left: 14pt;
+        color: var(--ink-soft);
+        font-size: 9.5pt;
+      }
+      .footer-row li { margin: 1pt 0; }
+
+      .skills {
+        margin-top: 14pt;
+      }
+      .skills .pills {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 9pt;
+        color: var(--ink-soft);
+        line-height: 1.8;
+      }
+      .skills .pills span {
+        display: inline-block;
+        padding: 1pt 6pt;
+        margin: 1pt 3pt 1pt 0;
+        border: 0.5pt solid var(--rule);
+        border-radius: 3pt;
+      }
+
+      /* Subtle American touch — same red stripe motif as the site */
+      .accent-bar {
+        height: 3pt;
+        margin: 2pt 0 10pt;
+        background: linear-gradient(
+          to right,
+          var(--red) 0 25%,
+          var(--paper) 25% 50%,
+          var(--navy) 50% 75%,
+          var(--paper) 75% 100%
+        );
+      }
+
+      /* PRINT-SPECIFIC */
+      @media print {
+        body { font-size: 9.5pt; }
+        .page { padding: 0; max-width: none; }
+        a { border-bottom: none; }
+        section { margin-top: 11pt; }
+        @page { size: letter; margin: 0.5in; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="intro">
+        <div>
+          <h1>Mridul Sarkar</h1>
+          <div class="title">
+            Applied AI Systems Engineer · Multimodal Works LLC
+          </div>
+        </div>
+        <div class="contact">
+          <div><span class="label">email</span><a href="mailto:mridul@multimodalworks.io">mridul@multimodalworks.io</a></div>
+          <div><span class="label">github</span><a href="https://github.com/mertall">github.com/mertall</a></div>
+          <div><span class="label">linkedin</span><a href="https://www.linkedin.com/in/mridul-s-56738a149">mridul-s-56738a149</a></div>
+          <div><span class="label">location</span>Greater Chicago Area</div>
+        </div>
+      </header>
+
+      <div class="accent-bar"></div>
+
+      <p class="summary">
+        Applied AI engineer architecting production systems that integrate
+        machine learning, retrieval, and operational workflows. Four years at
+        Accenture Federal Services' MLE Group co-architecting a 100k-user
+        federated data platform at 99.9% SLOs. Currently running Multimodal
+        Works LLC — building local-first AI workstations and the custom
+        software engineering that ships them, prototype-to-production in
+        3–6 months.
+      </p>
+
+      <section>
+        <h2>Experience</h2>
+
+        <div class="role">
+          <div class="row1">
+            <div>
+              <span class="where">Multimodal Works LLC</span>
+              <span class="muted"> · </span>
+              <span class="what">Enterprise AI Architect</span>
+            </div>
+            <div class="when">Jul 2025 – Present · Greater Chicago Area</div>
+          </div>
+          <ul>
+            <li>Architecting AI-enabled operational systems for construction-services brokerage workflows.</li>
+            <li>Led a 4-month prototype-to-production cycle integrating QuickBooks Online into reporting and auditability workflows for private-equity-backed operations.</li>
+            <li>Designed and maintained custom backend on GraphQL / Node.js with Python / Flask microservices.</li>
+            <li>Building agentic AI workflows for CRM opportunity tracking and financial document management.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="row1">
+            <div>
+              <span class="where">Accenture Federal Services · MLE Group</span>
+              <span class="muted"> · </span>
+              <span class="what">Senior Software Engineer</span>
+            </div>
+            <div class="when">Jun 2024 – Jul 2025 · Remote</div>
+          </div>
+          <ul>
+            <li>Co-architected an enterprise data platform supporting <strong>100k+ users</strong> at <strong>99.9% SLOs</strong>, reducing p95 latency <strong>~40%</strong>.</li>
+            <li>Led applied GenAI prototyping — retrieval systems, vector databases, LLM workflow integration. Improved <strong>Recall@10 by ~20%</strong>.</li>
+            <li>Drove organizational LLM adoption by coordinating legal, security, and engineering stakeholders on deployment paths.</li>
+            <li>Co-authored enterprise LLM deployment and use-case guidance for intelligence-community environments.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="row1">
+            <div>
+              <span class="where">Accenture Federal Services · MLE Group</span>
+              <span class="muted"> · </span>
+              <span class="what">Software Engineer</span>
+            </div>
+            <div class="when">Sep 2021 – Jun 2024 · Remote</div>
+          </div>
+          <ul>
+            <li>Architected serverless AWS infrastructure that made internal prototyping <strong>~87% faster</strong>.</li>
+            <li>Built distributed microservices supporting pension-tracking workflows for <strong>2M+ users</strong>.</li>
+            <li>Designed an ACID-compliant federated search architecture — JDBC ingestion pipelines, NLP enrichment, Elasticsearch indexing, fine-grained access control.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected Projects</h2>
+        <div class="projects">
+          <div class="project">
+            <div class="head">
+              <h3>Local AI Station</h3>
+              <span class="tag">flagship</span>
+            </div>
+            <p>
+              Production-grade local-first AI workstation stack — full agent
+              layer, three-tier memory (relational + graph + vector),
+              multi-model routing, audit trail. Targets 128 GB unified-memory
+              APU-class hardware to match cloud chatbot UX with zero egress
+              and predictable cost.
+            </p>
+            <div class="stack">
+              LiteLLM · Ollama · Postgres + AGE · Qdrant · Langfuse · LangChain
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="head">
+              <h3>VisionSearch</h3>
+              <span class="tag">retrieval · AWS</span>
+            </div>
+            <p>
+              Multimodal image-text retrieval system. CLIP packaged with
+              custom <span class="mono">inference.py</span> to S3, deployed as
+              a SageMaker endpoint serving vision + text embeddings. FastAPI
+              ingestion → HNSW index → RAG router. <strong>+20% Recall@10</strong>
+              after contrastive fine-tune.
+            </p>
+            <div class="stack">
+              SageMaker · CLIP · HNSW · FastAPI · S3
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="head">
+              <h3>PatchTST + HNSW</h3>
+              <span class="tag">transformers</span>
+            </div>
+            <p>
+              Lightweight PatchTST (8 heads · 2 layers · 128-dim) on
+              Australian electricity demand, trained in a 10-hour budget.
+              HNSW index over learned patch embeddings; brute-force KNN vs
+              HNSW benchmarked for production retrieval substrate.
+            </p>
+            <div class="stack">
+              PyTorch · transformers · hnswlib · time-series
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="head">
+              <h3>Quantum tensor networks</h3>
+              <span class="tag">BlueQubit Hackathon</span>
+            </div>
+            <p>
+              Solved a <strong>60-qubit peak circuit on a laptop</strong> via
+              tensor network simplification (ADCRS sequence), cotengra
+              contraction-path optimization, and gate-by-gate sampling.
+              Bitstring recovered via majority vote.
+            </p>
+            <div class="stack">
+              Quimb · cotengra · Qiskit · NumPy
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="head">
+              <h3>Hardware Agent</h3>
+              <span class="tag">agents · privacy-first</span>
+            </div>
+            <p>
+              LangChain agent that autonomously inspects CPU / GPU / RAM /
+              storage / OS and prescribes a tiered Spotlight-style local
+              chat-search stack. Cross-platform (macOS · Windows · Linux),
+              zero cloud calls.
+            </p>
+            <div class="stack">
+              LangChain · Ollama · LEANN · EmbeddingGemma · Llama 3.2 / Gemma 3n / Qwen3
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="head">
+              <h3>deep-agent-cognee</h3>
+              <span class="tag">graph memory</span>
+            </div>
+            <p>
+              Three-tier deep-agent skunkworks — Express + Prisma backend,
+              React frontend, Python AI service running cognee-style
+              graph-aware memory and tool-using agents over operational
+              CRM / financial data.
+            </p>
+            <div class="stack">
+              Express · Prisma · React · Python · cognee
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-row">
+        <section>
+          <h2>Education</h2>
+          <ul>
+            <li>
+              <strong>B.S. Computational &amp; Scientific Mathematics</strong>
+              <br /><span class="muted">University of California, Davis</span>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Certifications</h2>
+          <ul>
+            <li>HuggingFace AI Agents · 2025</li>
+            <li>Databricks GenAI Engineer · 2024</li>
+            <li>CU Boulder Advanced Algorithms · 2024</li>
+            <li>IBM Variational Algorithms · 2024</li>
+            <li>Stanford Machine Learning · 2019</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="skills">
+        <h2>Technical stack</h2>
+        <div class="pills">
+          <span>Python</span>
+          <span>TypeScript</span>
+          <span>PyTorch</span>
+          <span>HuggingFace</span>
+          <span>LangChain</span>
+          <span>FastAPI</span>
+          <span>GraphQL</span>
+          <span>Node.js</span>
+          <span>Flask</span>
+          <span>AWS · Lambda · SageMaker · S3</span>
+          <span>Elasticsearch / OpenSearch</span>
+          <span>HNSW · Qdrant</span>
+          <span>Postgres · Apache AGE · Prisma</span>
+          <span>Ollama · LiteLLM</span>
+          <span>Qiskit · Q# · Quimb · cotengra</span>
+          <span>Docker · serverless</span>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
