@@ -1,0 +1,2193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Selected work · Multimodal Works</title>
+    <meta
+      name="description"
+      content="Selected work from Multimodal Works LLC — private AI workstations, live job costing tied to QuickBooks, operational AI assistants, visual search, forecasting, right-sizing installers, and quantum simulation on commodity hardware."
+    />
+    <link rel="stylesheet" href="styles.css?v=2026-05-18b" />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink-soft: #2c3340;
+        --ink-mute: #5a6271;
+        --paper: #ffffff;
+        --paper-soft: #faf9f5;
+        --rule: #d4d4d8;
+        --rule-soft: #e6e6ea;
+        --red: #b31942;
+        --navy: #0a3161;
+        --ivory: #f5f2e8;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.005em;
+      }
+      p { margin: 0; }
+      a {
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 1px solid var(--ink-mute);
+      }
+      a:hover { color: var(--red); border-color: var(--red); }
+      .mono {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      /* ============ STICKY HEADER ============ */
+      header.top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: saturate(180%) blur(10px);
+        -webkit-backdrop-filter: saturate(180%) blur(10px);
+        border-bottom: 1px solid var(--rule);
+      }
+      header.top .inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      header.top .wordmark {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      header.top .wordmark .llc {
+        color: var(--ink-mute);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-left: 6px;
+      }
+      header.top .topnav {
+        margin-left: auto;
+        margin-right: 16px;
+        display: flex;
+        gap: 18px;
+      }
+      header.top .topnav a {
+        font-size: 13px;
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.04em;
+        border-bottom: none;
+        color: var(--ink-mute);
+      }
+      header.top .topnav a:hover { color: var(--red); }
+      header.top .flag {
+        height: 22px;
+        width: auto;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ============ PAGE HERO ============ */
+      section.hero {
+        min-height: 78vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 60px 28px;
+      }
+      .hero .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        margin-bottom: 18px;
+      }
+      .hero h1 {
+        font-size: clamp(36px, 6vw, 68px);
+        line-height: 1.02;
+        max-width: 18ch;
+      }
+      .hero .tagline {
+        margin-top: 22px;
+        font-size: clamp(17px, 1.6vw, 21px);
+        line-height: 1.5;
+        color: var(--ink-soft);
+        max-width: 60ch;
+      }
+      .hero .tagline strong { color: var(--ink); font-weight: 600; }
+      .hero .scroll-cue {
+        margin-top: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 12px;
+        color: var(--ink-mute);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .hero .scroll-cue::after {
+        content: "↓";
+        display: inline-block;
+        animation: cue-bob 2s ease-in-out infinite;
+      }
+      @keyframes cue-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+      /* ============ PROJECT SECTIONS ============ */
+      section.project {
+        min-height: 100vh;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 96px 28px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 64px;
+        align-items: center;
+        border-top: 1px solid var(--rule);
+        position: relative;
+      }
+      section.project .project-visual {
+        aspect-ratio: 5 / 4;
+        max-height: 78vh;
+        background: var(--paper-soft);
+        border-radius: 18px;
+        border: 1px solid var(--rule);
+        padding: 28px;
+        overflow: hidden;
+        position: relative;
+      }
+      section.project .project-visual svg,
+      section.project .project-visual img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      section.project .project-visual img { object-fit: contain; }
+      section.project .project-info {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        max-width: 480px;
+      }
+      .project-info .index {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        color: var(--ink-mute);
+      }
+      .project-info .eyebrow {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+      }
+      .project-info .eyebrow .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .project-info .eyebrow .dot.physical { background: var(--red); }
+      .project-info .eyebrow .dot.math { background: var(--navy); }
+      .project-info h2 {
+        font-size: clamp(30px, 4.2vw, 46px);
+        line-height: 1.04;
+      }
+      .project-info .one-liner {
+        font-size: clamp(17px, 1.5vw, 20px);
+        line-height: 1.5;
+        color: var(--ink-soft);
+      }
+      .project-info .one-liner strong { color: var(--ink); font-weight: 600; }
+      .project-info .body {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+      }
+      .project-info .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 2px;
+      }
+      .pill {
+        display: inline-block;
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.02em;
+        color: var(--ink-mute);
+        padding: 3px 9px;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        white-space: nowrap;
+        background: var(--paper);
+      }
+      .project-info .outcome {
+        padding: 14px 16px;
+        border-left: 3px solid var(--red);
+        background: var(--paper-soft);
+        font-size: 14px;
+        color: var(--ink);
+        border-radius: 0 6px 6px 0;
+        line-height: 1.5;
+      }
+      .project-info .outcome strong { color: var(--red); }
+      .project-info .actions {
+        margin-top: 8px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .project-info .deep-dive {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .project-info .deep-dive:hover { background: var(--red); color: var(--paper); }
+      .project-info .deep-dive .arrow { font-size: 14px; transition: transform 200ms; }
+      .project-info .deep-dive:hover .arrow { transform: translateX(3px); }
+
+      /* ============ PAST WORK ============ */
+      section.past-work {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 96px 28px 56px;
+        border-top: 1px solid var(--rule);
+      }
+      .past-header { max-width: 720px; margin-bottom: 32px; }
+      .past-header .eyebrow {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--red);
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      .past-header h2 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: clamp(28px, 3.8vw, 42px);
+        line-height: 1.06;
+        color: var(--ink);
+        text-transform: none;
+        letter-spacing: -0.005em;
+        margin-bottom: 14px;
+      }
+      .past-header .lead {
+        font-size: 16px;
+        color: var(--ink-soft);
+        line-height: 1.55;
+        max-width: 60ch;
+      }
+      .past-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      .past-tile {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 24px;
+        align-items: start;
+        padding: 22px 26px;
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        background: var(--paper);
+        transition: opacity 600ms cubic-bezier(.2,.7,.2,1),
+                    transform 200ms ease,
+                    box-shadow 200ms ease,
+                    border-color 200ms ease;
+      }
+      .past-tile:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(11, 18, 32, 0.06);
+        border-color: var(--ink);
+      }
+      .past-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--paper-soft);
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .past-icon svg { width: 100%; height: 100%; display: block; }
+      .past-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .past-body .years {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        color: var(--ink-mute);
+      }
+      .past-body h3 {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 19px;
+        line-height: 1.3;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .past-body p {
+        font-size: 14.5px;
+        line-height: 1.55;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+      .past-outcome {
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        color: var(--red);
+        padding: 8px 12px;
+        border-left: 3px solid var(--red);
+        background: var(--paper-soft);
+        border-radius: 0 6px 6px 0;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        section.past-work { padding: 64px 18px 40px; }
+        .past-tile { grid-template-columns: 64px 1fr; gap: 14px; padding: 16px 18px; }
+        .past-icon { width: 64px; height: 64px; padding: 8px; }
+        .past-body h3 { font-size: 17px; }
+      }
+
+      /* ============ ANIMATIONS ============ */
+      @media (prefers-reduced-motion: no-preference) {
+        .stagger {
+          opacity: 0;
+          transform: translateY(18px);
+          transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
+        }
+        .stagger.s2 { transition-delay: 80ms; }
+        .stagger.s3 { transition-delay: 160ms; }
+        .stagger.s4 { transition-delay: 240ms; }
+        .stagger.s5 { transition-delay: 320ms; }
+        .stagger.s6 { transition-delay: 400ms; }
+        .stagger.s7 { transition-delay: 480ms; }
+        .stagger.s8 { transition-delay: 560ms; }
+        .is-visible .stagger { opacity: 1; transform: none; }
+
+        .draw {
+          stroke-dasharray: 600;
+          stroke-dashoffset: 600;
+          transition: stroke-dashoffset 1400ms cubic-bezier(.4,0,.2,1) 200ms;
+        }
+        .draw.d2 { transition-delay: 400ms; }
+        .draw.d3 { transition-delay: 600ms; }
+        .draw.d4 { transition-delay: 800ms; }
+        .is-visible .draw { stroke-dashoffset: 0; }
+
+        .fill-bar {
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 900ms cubic-bezier(.2,.7,.2,1);
+        }
+        .fill-bar.b2 { transition-delay: 200ms; }
+        .fill-bar.b3 { transition-delay: 400ms; }
+        .fill-bar.b4 { transition-delay: 600ms; }
+        .is-visible .fill-bar { transform: scaleX(1); }
+
+        .pop {
+          opacity: 0;
+          transform: scale(0.7);
+          transform-origin: center;
+          transform-box: fill-box;
+          transition: opacity 500ms ease, transform 500ms cubic-bezier(.4,1.6,.6,1);
+        }
+        .pop.p2 { transition-delay: 300ms; }
+        .pop.p3 { transition-delay: 500ms; }
+        .pop.p4 { transition-delay: 700ms; }
+        .pop.p5 { transition-delay: 900ms; }
+        .is-visible .pop { opacity: 1; transform: scale(1); }
+
+        .pulse-circle {
+          opacity: 0;
+          transform-origin: center;
+          transform-box: fill-box;
+          animation-fill-mode: forwards;
+        }
+        .is-visible .pulse-circle {
+          opacity: 0.8;
+          animation: pulse-out 2400ms ease-out 800ms infinite;
+        }
+        @keyframes pulse-out {
+          0% { transform: scale(0.4); opacity: 0.7; }
+          80% { transform: scale(2.4); opacity: 0; }
+          100% { transform: scale(2.4); opacity: 0; }
+        }
+
+        /* Past-work tile reveal */
+        .past-tile { opacity: 0; }
+        .past-work.is-visible .past-tile { opacity: 1; }
+        .past-work.is-visible .past-tile:nth-child(1) { transition-delay: 0ms; }
+        .past-work.is-visible .past-tile:nth-child(2) { transition-delay: 100ms; }
+        .past-work.is-visible .past-tile:nth-child(3) { transition-delay: 200ms; }
+        .past-work.is-visible .past-tile:nth-child(4) { transition-delay: 300ms; }
+        .past-work.is-visible .past-tile:nth-child(5) { transition-delay: 400ms; }
+      }
+
+      /* ============ STICKY TOC ============ */
+      .toc {
+        position: fixed;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        z-index: 15;
+        opacity: 0;
+        transition: opacity 350ms ease;
+        pointer-events: none;
+      }
+      .toc.is-active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .toc a {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--ink-mute);
+        opacity: 0.45;
+        transition: opacity 200ms, transform 200ms;
+        border-bottom: none;
+      }
+      .toc a:hover { opacity: 1; transform: scale(1.35); }
+      .toc a.current {
+        background: var(--red);
+        opacity: 1;
+        transform: scale(1.4);
+      }
+      .toc a::after {
+        content: attr(data-label);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--ink);
+        color: var(--paper);
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 200ms;
+        pointer-events: none;
+      }
+      .toc a:hover::after { opacity: 1; }
+
+      /* ============ CONTACT + FOOTER ============ */
+      section.contact {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 96px 28px 48px;
+        border-top: 1px solid var(--rule);
+      }
+      .contact h2 {
+        font-size: clamp(28px, 3.8vw, 42px);
+        line-height: 1.1;
+        max-width: 18ch;
+      }
+      .contact-card {
+        margin-top: 36px;
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        padding: 22px;
+        background: var(--paper-soft);
+        max-width: 580px;
+      }
+      .contact-card .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding: 10px 0;
+        font-size: 15px;
+      }
+      .contact-card .row + .row { border-top: 1px solid var(--rule); }
+      .contact-card .label {
+        color: var(--ink-mute);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      footer {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 24px 28px 36px;
+        border-top: 1px solid var(--rule);
+        font-size: 12px;
+        color: var(--ink-mute);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      footer a { font-size: 12px; border-bottom: 1px solid var(--ink-mute); }
+
+      /* ============ RESPONSIVE ============ */
+      @media (max-width: 880px) {
+        section.project {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          padding: 64px 18px;
+          min-height: auto;
+        }
+        section.project .project-visual {
+          aspect-ratio: 4 / 3;
+          padding: 18px;
+        }
+        section.project .project-info { max-width: none; }
+        .toc { display: none; }
+        header.top .topnav { gap: 12px; margin-right: 10px; }
+        header.top .topnav a { font-size: 12px; }
+        section.hero { padding: 48px 18px; min-height: 60vh; }
+      }
+
+      /* ============ MODAL ============ */
+      dialog#project-modal {
+        border: none;
+        border-radius: 16px;
+        padding: 0;
+        max-width: 820px;
+        width: calc(100vw - 32px);
+        max-height: calc(100vh - 32px);
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 0 30px 80px rgba(11, 18, 32, 0.32);
+        overflow: hidden;
+      }
+      dialog#project-modal::backdrop {
+        background: rgba(11, 18, 32, 0.58);
+        backdrop-filter: blur(2px);
+      }
+      .modal-content {
+        padding: 0 32px 36px;
+        overflow-y: auto;
+        max-height: calc(100vh - 32px);
+        position: relative;
+      }
+      .modal-close {
+        position: sticky;
+        top: 0;
+        margin-left: auto;
+        margin-top: 14px;
+        margin-right: -14px;
+        display: block;
+        width: 34px;
+        height: 34px;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--ink-mute);
+        font-family: inherit;
+      }
+      .modal-close:hover { color: var(--red); }
+      .modal-head {
+        margin-top: -8px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .modal-head .meta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+        margin-bottom: 12px;
+      }
+      .modal-head .meta .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+      .modal-head .meta .dot.physical { background: var(--red); }
+      .modal-head .meta .dot.math { background: var(--navy); }
+      .modal-head h3 {
+        font-size: 28px;
+        line-height: 1.12;
+      }
+      .modal-head .one-liner {
+        margin-top: 10px;
+        color: var(--ink-soft);
+        font-size: 16px;
+      }
+      .modal-visual {
+        margin: 20px -32px;
+        background: var(--paper-soft);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        padding: 22px 32px;
+      }
+      .modal-visual svg,
+      .modal-visual img {
+        width: 100%;
+        max-height: 380px;
+        display: block;
+        object-fit: contain;
+      }
+      .modal-body p {
+        margin: 0 0 14px;
+        font-size: 15.5px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+      }
+      .modal-body p strong { color: var(--ink); font-weight: 600; }
+      .modal-body h4 {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+        margin: 22px 0 8px;
+      }
+      .modal-stack {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .modal-outcome {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border-left: 3px solid var(--red);
+        background: var(--paper-soft);
+        font-size: 14.5px;
+        color: var(--ink);
+        border-radius: 0 6px 6px 0;
+        line-height: 1.55;
+      }
+      .modal-outcome strong { color: var(--red); }
+      .modal-cta {
+        margin-top: 22px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        border-bottom: none;
+      }
+      .modal-cta:hover { background: var(--red); color: var(--paper); }
+
+      @media (max-width: 600px) {
+        .modal-content { padding: 0 22px 28px; }
+        .modal-visual { margin: 16px -22px; padding: 18px 22px; }
+        .modal-head h3 { font-size: 22px; }
+      }
+
+      @media print {
+        body { font-size: 11pt; }
+        header.top, .toc, dialog#project-modal, .scroll-cue { display: none; }
+        section.project { min-height: auto; page-break-inside: avoid; padding: 24px 0; }
+        a { border-bottom: none; }
+        @page { size: letter; margin: 0.5in; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ HEADER ============ -->
+    <header class="top">
+      <div class="inner">
+        <div class="wordmark">
+          Multimodal Works<span class="llc">LLC</span>
+        </div>
+        <nav class="topnav">
+          <a href="index.html">Overview</a>
+        </nav>
+        <svg viewBox="0 0 1235 650" class="flag" role="img" aria-label="Made in the USA">
+          <rect width="1235" height="650" fill="#ffffff"/>
+          <g fill="#b31942">
+            <rect y="0" width="1235" height="50"/>
+            <rect y="100" width="1235" height="50"/>
+            <rect y="200" width="1235" height="50"/>
+            <rect y="300" width="1235" height="50"/>
+            <rect y="400" width="1235" height="50"/>
+            <rect y="500" width="1235" height="50"/>
+            <rect y="600" width="1235" height="50"/>
+          </g>
+          <rect width="494" height="350" fill="#0a3161"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ============ PAGE HERO ============ -->
+    <section class="hero">
+      <p class="eyebrow">Portfolio &middot; selected work</p>
+      <h1>Seven projects, in the spaces they live.</h1>
+      <p class="tagline">
+        Each project is shown in the space it actually inhabits &mdash; the
+        <strong>physical</strong> shape of a customer&rsquo;s workflow, or the
+        <strong>mathematical</strong> shape of the patterns underneath.
+        Scroll to walk through them.
+      </p>
+      <span class="scroll-cue">Begin</span>
+    </section>
+
+    <!-- ============ STICKY TOC ============ -->
+    <nav class="toc" aria-label="Project navigation">
+      <a href="#local-ai" data-label="01 · Private AI Workstation"></a>
+      <a href="#job-costing" data-label="02 · Live Job Costing"></a>
+      <a href="#operational-intelligence" data-label="03 · Operational Intelligence Agent"></a>
+      <a href="#vision-search" data-label="04 · Visual Search Platform"></a>
+      <a href="#demand-forecaster" data-label="05 · Demand Forecaster"></a>
+      <a href="#right-sizing" data-label="06 · Right-Sizing Installer"></a>
+      <a href="#quantum" data-label="07 · Quantum simulation"></a>
+      <a href="#past-work" data-label="08 · Selected past work"></a>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- 01 · PRIVATE AI WORKSTATION                                   -->
+    <!-- ============================================================ -->
+    <section class="project" id="local-ai" data-project="local-ai">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- subtle grid -->
+          <g stroke="#d4d4d8" stroke-width="0.4" opacity="0.5">
+            <line x1="0" y1="120" x2="600" y2="120" stroke-dasharray="2 6"/>
+            <line x1="0" y1="360" x2="600" y2="360" stroke-dasharray="2 6"/>
+          </g>
+
+          <!-- workstation chassis (perspective box) -->
+          <g class="stagger s1">
+            <!-- top face -->
+            <polygon points="100,140 280,140 320,110 140,110" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+            <!-- front face -->
+            <rect x="100" y="140" width="180" height="240" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+            <!-- side face -->
+            <polygon points="280,140 320,110 320,350 280,380" fill="#faf9f5" stroke="#0b1220" stroke-width="2"/>
+            <!-- label badge on top -->
+            <rect x="160" y="115" width="120" height="18" fill="#0b1220" rx="2" transform="skewX(-10)"/>
+            <text x="180" y="128" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · $3K</text>
+            <!-- power LED -->
+            <circle cx="265" cy="158" r="3" fill="#b31942"/>
+          </g>
+
+          <!-- 3 internal layers -->
+          <g class="stagger s2">
+            <rect x="118" y="170" width="148" height="42" rx="4" fill="#f5f2e8" stroke="#b31942" stroke-width="1.6"/>
+            <text x="130" y="190" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Records</text>
+            <text x="256" y="190" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">structured</text>
+            <text x="130" y="205" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">customer + ops</text>
+          </g>
+          <g class="stagger s3">
+            <rect x="118" y="222" width="148" height="42" rx="4" fill="#f5f2e8" stroke="#0a3161" stroke-width="1.6"/>
+            <text x="130" y="242" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Search</text>
+            <text x="256" y="242" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">semantic</text>
+            <text x="130" y="257" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">finds by meaning</text>
+          </g>
+          <g class="stagger s4">
+            <rect x="118" y="274" width="148" height="42" rx="4" fill="#f5f2e8" stroke="#0b1220" stroke-width="1.6"/>
+            <text x="130" y="294" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Audit</text>
+            <text x="256" y="294" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">activity log</text>
+            <text x="130" y="309" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">every call recorded</text>
+          </g>
+
+          <!-- desk underline -->
+          <line x1="60" y1="395" x2="540" y2="395" stroke="#5a6271" stroke-width="1.2"/>
+          <text x="60" y="412" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" letter-spacing="1.5">YOUR DESK · YOUR HARDWARE · YOUR DATA</text>
+
+          <!-- chat monitor on the right -->
+          <g class="stagger s5">
+            <rect x="380" y="160" width="180" height="130" rx="6" fill="#0b1220" stroke="#0b1220" stroke-width="1.6"/>
+            <rect x="388" y="168" width="164" height="114" rx="3" fill="#faf9f5"/>
+            <!-- monitor stand -->
+            <rect x="455" y="290" width="30" height="14" fill="#0b1220"/>
+            <rect x="430" y="304" width="80" height="6" rx="2" fill="#0b1220"/>
+          </g>
+
+          <!-- chat content lines -->
+          <g class="stagger s6">
+            <rect x="396" y="180" width="56" height="8" rx="2" fill="#0a3161" opacity="0.4"/>
+            <rect x="396" y="194" width="120" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+            <rect x="396" y="206" width="100" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+            <rect x="396" y="232" width="48" height="8" rx="2" fill="#b31942" opacity="0.6"/>
+            <rect x="396" y="246" width="136" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+            <rect x="396" y="258" width="92" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+            <rect x="396" y="270" width="64" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+          </g>
+
+          <!-- connection: workstation → monitor -->
+          <path class="draw d2" d="M 280 240 C 320 240, 340 220, 380 220" fill="none" stroke="#0b1220" stroke-width="1.4" stroke-dasharray="0" pathLength="600"/>
+          <!-- arrows in/out -->
+          <g class="stagger s2">
+            <text x="60" y="244" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">question</text>
+          </g>
+          <path class="draw" d="M 70 250 L 110 250" stroke="#b31942" stroke-width="1.6" fill="none" pathLength="600"/>
+          <polygon class="stagger s4" points="110,250 102,246 102,254" fill="#b31942"/>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">01 / 07</span>
+        <span class="eyebrow"><span class="dot physical"></span>Physical &middot; on your desk</span>
+        <h2>Private AI Workstation</h2>
+        <p class="one-liner">A <strong>$3,000 desktop</strong> that runs a full AI assistant on-site &mdash; chat, memory, and an audit trail. Nothing leaves the building.</p>
+        <p class="body">Sized so the chat experience matches what people expect from the cloud, but every byte stays in your office. Pays for itself against a $1,000/month cloud chat bill in roughly three months &mdash; after that, the line item is electricity.</p>
+        <div class="stack">
+          <span class="pill">Private</span>
+          <span class="pill">On-site</span>
+          <span class="pill">Audited</span>
+          <span class="pill">$3K hardware</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> ships fully assembled with a runbook; your team owns it cleanly on day one.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="local-ai">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 02 · LIVE JOB COSTING (industry-agnostic)                    -->
+    <!-- ============================================================ -->
+    <section class="project" id="job-costing" data-project="job-costing">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- LEFT COLUMN: industry sources -->
+          <!-- 1. Construction site -->
+          <g class="stagger s1">
+            <rect x="20" y="60" width="100" height="80" rx="6" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- crane mast -->
+            <line x1="40" y1="130" x2="40" y2="78" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- crane arm -->
+            <line x1="40" y1="78" x2="92" y2="78" stroke="#0b1220" stroke-width="1.4"/>
+            <line x1="40" y1="84" x2="92" y2="78" stroke="#0b1220" stroke-width="1"/>
+            <line x1="76" y1="78" x2="76" y2="92" stroke="#0b1220" stroke-width="1"/>
+            <rect x="68" y="92" width="14" height="14" fill="none" stroke="#0b1220" stroke-width="1"/>
+            <!-- building silhouette -->
+            <polygon points="50,130 50,108 82,108 82,130" fill="none" stroke="#0b1220" stroke-width="1.2"/>
+            <line x1="56" y1="118" x2="62" y2="118" stroke="#0b1220" stroke-width="0.8"/>
+            <line x1="70" y1="118" x2="76" y2="118" stroke="#0b1220" stroke-width="0.8"/>
+            <text x="70" y="156" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">CONSTRUCTION</text>
+          </g>
+
+          <!-- 2. Architecture / drafting (covers AEC firms + rehabs) -->
+          <g class="stagger s2">
+            <rect x="20" y="190" width="100" height="80" rx="6" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- triangle ruler behind -->
+            <polygon points="42,250 96,250 96,210" fill="none" stroke="#0b1220" stroke-width="1.2"/>
+            <line x1="50" y1="244" x2="54" y2="244" stroke="#0b1220" stroke-width="0.8"/>
+            <line x1="58" y1="244" x2="62" y2="244" stroke="#0b1220" stroke-width="0.8"/>
+            <line x1="66" y1="244" x2="70" y2="244" stroke="#0b1220" stroke-width="0.8"/>
+            <line x1="74" y1="244" x2="78" y2="244" stroke="#0b1220" stroke-width="0.8"/>
+            <!-- drafting compass: pivot at top, two legs splayed -->
+            <circle cx="70" cy="210" r="3" fill="#b31942"/>
+            <line x1="70" y1="212" x2="56" y2="254" stroke="#0b1220" stroke-width="1.4"/>
+            <line x1="70" y1="212" x2="84" y2="254" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- arc between compass tips -->
+            <path d="M 56 254 Q 70 262 84 254" fill="none" stroke="#b31942" stroke-width="1" stroke-dasharray="2 2"/>
+            <text x="70" y="286" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">ARCHITECTURE</text>
+          </g>
+
+          <!-- 3. Professional services / consulting / agencies -->
+          <g class="stagger s3">
+            <rect x="20" y="320" width="100" height="80" rx="6" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- folder behind -->
+            <path d="M 30 384 L 30 358 L 50 358 L 54 352 L 78 352 L 82 358 L 110 358 L 110 384 Z" fill="none" stroke="#0b1220" stroke-width="1.1"/>
+            <!-- briefcase body -->
+            <rect x="42" y="350" width="56" height="34" rx="3" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- briefcase handle (arched) -->
+            <path d="M 58 350 Q 58 340 66 340 L 74 340 Q 82 340 82 350" fill="none" stroke="#0b1220" stroke-width="1.4"/>
+            <!-- clasp/lock -->
+            <rect x="66" y="364" width="8" height="5" fill="#b31942"/>
+            <text x="70" y="416" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">CONSULTING</text>
+          </g>
+
+          <text x="70" y="44" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" letter-spacing="1.5">ANY PROJECT-BASED BUSINESS</text>
+
+          <!-- arrows from each industry → work order -->
+          <g stroke="#0b1220" stroke-width="1.4" fill="none">
+            <path class="draw" d="M 124 100 C 150 100, 170 200, 196 220" pathLength="600"/>
+            <path class="draw d2" d="M 124 230 L 196 232" pathLength="600"/>
+            <path class="draw d3" d="M 124 360 C 150 360, 170 260, 196 248" pathLength="600"/>
+          </g>
+
+          <!-- CENTER: Job Work Order card -->
+          <g class="stagger s4">
+            <rect x="200" y="170" width="140" height="120" rx="8" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+            <text x="210" y="190" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">WORK ORDER</text>
+            <line x1="210" y1="196" x2="330" y2="196" stroke="#d4d4d8"/>
+            <text x="210" y="216" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0b1220">Job #4421</text>
+            <text x="210" y="234" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">customer · Acme</text>
+            <text x="210" y="248" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">est. budget · $94,000</text>
+            <text x="210" y="262" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">phase · in progress</text>
+            <rect x="210" y="270" width="60" height="14" rx="2" fill="#b31942"/>
+            <text x="240" y="280" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" letter-spacing="1">JOB-CODE</text>
+          </g>
+
+          <!-- arrow center → invoices -->
+          <path class="draw d4" d="M 342 230 L 388 230" stroke="#0b1220" stroke-width="1.6" fill="none" pathLength="600"/>
+          <polygon class="stagger s5" points="390,230 380,225 380,235" fill="#0b1220"/>
+
+          <!-- STACK: invoice cards -->
+          <g class="stagger s5">
+            <rect x="400" y="186" width="84" height="100" rx="3" fill="#ffffff" stroke="#5a6271" stroke-width="0.9"/>
+          </g>
+          <g class="stagger s6">
+            <rect x="396" y="180" width="84" height="100" rx="3" fill="#ffffff" stroke="#5a6271" stroke-width="0.9"/>
+          </g>
+          <g class="stagger s7">
+            <rect x="392" y="174" width="84" height="100" rx="3" fill="#ffffff" stroke="#b31942" stroke-width="1.4"/>
+            <text x="400" y="188" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">BILL #4421-7</text>
+            <line x1="400" y1="195" x2="468" y2="195" stroke="#d4d4d8"/>
+            <line x1="400" y1="206" x2="468" y2="206" stroke="#d4d4d8"/>
+            <line x1="400" y1="216" x2="468" y2="216" stroke="#d4d4d8"/>
+            <text x="400" y="236" font-family="Iowan Old Style, Georgia, serif" font-size="11" fill="#0b1220">job: <tspan fill="#b31942">#4421</tspan></text>
+            <text x="400" y="252" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0b1220">$ 8,420</text>
+            <text x="400" y="268" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271" letter-spacing="1">PRE-CODED &rarr; QBO</text>
+          </g>
+
+          <text x="434" y="296" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">every cost pre-tagged</text>
+
+          <!-- BOTTOM: live margin dashboard -->
+          <g class="stagger s7">
+            <rect x="160" y="328" width="380" height="120" rx="10" fill="#ffffff" stroke="#0b1220" stroke-width="1.6"/>
+            <text x="172" y="348" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">LIVE JOB MARGIN · #4421</text>
+            <text x="172" y="368" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">Labor</text>
+            <text x="172" y="386" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">Materials</text>
+            <text x="172" y="404" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">Subs</text>
+            <!-- bar backgrounds -->
+            <rect x="230" y="358" width="200" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect x="230" y="376" width="200" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect x="230" y="394" width="200" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <!-- fill bars -->
+            <rect class="fill-bar b1" x="230" y="358" width="146" height="10" rx="2" fill="#0b1220"/>
+            <rect class="fill-bar b2" x="230" y="376" width="108" height="10" rx="2" fill="#0b1220"/>
+            <rect class="fill-bar b3" x="230" y="394" width="172" height="10" rx="2" fill="#b31942"/>
+            <text x="436" y="368" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">$33K</text>
+            <text x="436" y="386" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">$24K</text>
+            <text x="436" y="404" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">$29K</text>
+            <line x1="172" y1="416" x2="528" y2="416" stroke="#d4d4d8"/>
+            <text x="172" y="436" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0b1220">margin <tspan fill="#b31942">8.4%</tspan></text>
+            <text x="528" y="436" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">visible mid-job</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">02 / 07</span>
+        <span class="eyebrow"><span class="dot physical"></span>Physical &middot; field &rarr; ledger &rarr; dashboard</span>
+        <h2>Live Job Costing</h2>
+        <p class="one-liner">An operations platform that <strong>ties every cost to a job</strong> the moment it enters QuickBooks &mdash; so margin is visible mid-build, not at year-end.</p>
+        <p class="body">Built for any <strong>project-based business</strong> &mdash; construction, architecture rehabs, consulting, field services, agencies, and more. Bills, purchases, payroll, and subcontractor invoices all arrive pre-coded to a job and flow cleanly into the same QuickBooks file your CPA already opens.</p>
+        <div class="stack">
+          <span class="pill">QuickBooks-tied</span>
+          <span class="pill">Job-coded</span>
+          <span class="pill">Live margin</span>
+          <span class="pill">SMB</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> a $5M company saves roughly <strong>$30K/year</strong> in bookkeeping &amp; CPA fees, and thin-margin jobs are caught mid-build &mdash; not after they close.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="job-costing">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 03 · OPERATIONAL INTELLIGENCE AGENT                           -->
+    <!-- ============================================================ -->
+    <section class="project" id="operational-intelligence" data-project="operational-intelligence">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Memory graph (top) -->
+          <g class="stagger s5">
+            <rect x="180" y="40" width="240" height="92" rx="10" fill="#ffffff" stroke="#0a3161" stroke-width="1.6"/>
+            <text x="192" y="58" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0a3161" letter-spacing="1.5">MEMORY GRAPH</text>
+            <!-- nodes inside memory -->
+            <g>
+              <circle cx="218" cy="92" r="14" fill="#0a3161"/>
+              <text x="218" y="96" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff">Acme</text>
+            </g>
+            <g>
+              <circle cx="264" cy="80" r="11" fill="#5a6271"/>
+              <text x="264" y="84" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#ffffff">J.S.</text>
+            </g>
+            <g>
+              <circle cx="304" cy="104" r="11" fill="#5a6271"/>
+              <text x="304" y="108" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="7" fill="#ffffff">Q3-inv</text>
+            </g>
+            <g>
+              <circle cx="350" cy="76" r="11" fill="#5a6271"/>
+              <text x="350" y="80" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="7" fill="#ffffff">call</text>
+            </g>
+            <g>
+              <circle cx="390" cy="100" r="14" fill="#b31942"/>
+              <text x="390" y="104" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff">PO-7</text>
+            </g>
+            <g stroke="#0a3161" stroke-width="0.8" fill="none" opacity="0.5">
+              <line x1="232" y1="92" x2="253" y2="84"/>
+              <line x1="232" y1="92" x2="293" y2="102"/>
+              <line x1="275" y1="80" x2="339" y2="76"/>
+              <line x1="315" y1="104" x2="378" y2="98"/>
+              <line x1="361" y1="76" x2="378" y2="92"/>
+            </g>
+          </g>
+
+          <!-- CRM (left) -->
+          <g class="stagger s1">
+            <rect x="20" y="200" width="130" height="98" rx="10" fill="#ffffff" stroke="#5a6271" stroke-width="1.4"/>
+            <text x="32" y="218" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">CRM &middot; FINANCE</text>
+            <line x1="32" y1="226" x2="138" y2="226" stroke="#d4d4d8"/>
+            <text x="32" y="244" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Acme · $4.2K owed</text>
+            <text x="32" y="258" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Beta · stalled deal</text>
+            <text x="32" y="272" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Delta · new lead</text>
+            <text x="32" y="286" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Gamma · 3 invoices</text>
+          </g>
+
+          <!-- Assistant (center, pulsing) -->
+          <g class="stagger s2">
+            <circle class="pulse-circle" cx="300" cy="250" r="48" fill="#b31942"/>
+            <circle cx="300" cy="250" r="54" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
+            <text x="300" y="247" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0b1220">Assistant</text>
+            <text x="300" y="266" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#b31942">operational</text>
+          </g>
+
+          <!-- Insights (right) -->
+          <g class="stagger s3">
+            <rect x="450" y="200" width="130" height="98" rx="10" fill="#ffffff" stroke="#5a6271" stroke-width="1.4"/>
+            <text x="462" y="218" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">INSIGHTS</text>
+            <line x1="462" y1="226" x2="568" y2="226" stroke="#d4d4d8"/>
+            <circle cx="468" cy="246" r="3" fill="#b31942"/>
+            <text x="478" y="250" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">chase 4 stale POs</text>
+            <circle cx="468" cy="262" r="3" fill="#b31942"/>
+            <text x="478" y="266" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">PO-7 over budget</text>
+            <circle cx="468" cy="278" r="3" fill="#b31942"/>
+            <text x="478" y="282" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">renew Acme MSA</text>
+          </g>
+
+          <!-- Records store (bottom) -->
+          <g class="stagger s4">
+            <rect x="220" y="376" width="160" height="68" rx="10" fill="#ffffff" stroke="#0a3161" stroke-width="1.4"/>
+            <text x="300" y="396" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Records</text>
+            <text x="300" y="412" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0a3161">structured + similarity</text>
+            <text x="300" y="430" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">all customer interactions</text>
+          </g>
+
+          <!-- arrows: data flow -->
+          <g stroke="#0b1220" stroke-width="1.6" fill="none">
+            <path class="draw" d="M 152 250 L 246 250" pathLength="600"/>
+            <polygon class="stagger s4" points="248,250 240,246 240,254" fill="#0b1220"/>
+            <path class="draw d2" d="M 354 250 L 448 250" pathLength="600"/>
+            <polygon class="stagger s5" points="450,250 442,246 442,254" fill="#0b1220"/>
+          </g>
+          <g stroke="#0a3161" stroke-width="1" stroke-dasharray="3 3" fill="none">
+            <path class="draw d3" d="M 300 196 L 300 138" pathLength="600"/>
+            <path class="draw d4" d="M 300 304 L 300 376" pathLength="600"/>
+          </g>
+          <text x="320" y="170" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0a3161">recall</text>
+          <text x="320" y="350" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0a3161">store</text>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">03 / 07</span>
+        <span class="eyebrow"><span class="dot physical"></span>Workflow &middot; CRM &rarr; assistant &rarr; insights</span>
+        <h2>Operational Intelligence Agent</h2>
+        <p class="one-liner">An AI assistant that works directly against your CRM and financial data &mdash; with a memory that <strong>actually remembers</strong>.</p>
+        <p class="body">Memory is treated as a first-class graph: people, accounts, deals, decisions, and past interactions live as connected nodes the assistant can traverse. Every suggestion lands in context, not from scratch.</p>
+        <div class="stack">
+          <span class="pill">Full-stack</span>
+          <span class="pill">Memory graph</span>
+          <span class="pill">Operational</span>
+          <span class="pill">Multi-step</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> an assistant that survives long-running, multi-step business workflows &mdash; not a chatbot that forgets the conversation.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="operational-intelligence">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 04 · VISUAL SEARCH PLATFORM                                   -->
+    <!-- ============================================================ -->
+    <section class="project" id="vision-search" data-project="vision-search">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- 2D feature space (left 2/3) -->
+          <g stroke="#d4d4d8" stroke-width="0.5">
+            <line x1="40" y1="40" x2="40" y2="420"/>
+            <line x1="40" y1="420" x2="420" y2="420"/>
+            <line x1="40" y1="230" x2="420" y2="230" stroke-dasharray="2 4"/>
+            <line x1="230" y1="40" x2="230" y2="420" stroke-dasharray="2 4"/>
+          </g>
+
+          <!-- cluster 1: bottom-left (e.g., shoes) -->
+          <g class="stagger s1" fill="#b31942" opacity="0.55">
+            <circle cx="74" cy="354" r="5"/>
+            <circle cx="90" cy="340" r="5"/>
+            <circle cx="110" cy="370" r="5"/>
+            <circle cx="132" cy="330" r="5"/>
+            <circle cx="148" cy="356" r="5"/>
+            <circle cx="170" cy="386" r="5"/>
+            <circle cx="180" cy="346" r="5"/>
+            <circle cx="100" cy="396" r="5"/>
+          </g>
+
+          <!-- cluster 2: top-right (e.g., outerwear) -->
+          <g class="stagger s2" fill="#0a3161" opacity="0.55">
+            <circle cx="312" cy="104" r="5"/>
+            <circle cx="332" cy="124" r="5"/>
+            <circle cx="356" cy="92" r="5"/>
+            <circle cx="378" cy="118" r="5"/>
+            <circle cx="392" cy="92" r="5"/>
+            <circle cx="402" cy="138" r="5"/>
+            <circle cx="358" cy="148" r="5"/>
+            <circle cx="334" cy="80" r="5"/>
+          </g>
+
+          <!-- cluster 3: top-left (e.g., bags) -->
+          <g class="stagger s3" fill="#5a6271" opacity="0.6">
+            <circle cx="100" cy="98" r="5"/>
+            <circle cx="124" cy="118" r="5"/>
+            <circle cx="76" cy="138" r="5"/>
+            <circle cx="142" cy="92" r="5"/>
+            <circle cx="172" cy="124" r="5"/>
+            <circle cx="200" cy="100" r="5"/>
+            <circle cx="208" cy="138" r="5"/>
+          </g>
+
+          <!-- cluster 4: bottom-right (e.g., accessories) -->
+          <g class="stagger s4" fill="#ad8800" opacity="0.55">
+            <circle cx="320" cy="346" r="5"/>
+            <circle cx="350" cy="368" r="5"/>
+            <circle cx="378" cy="346" r="5"/>
+            <circle cx="404" cy="378" r="5"/>
+            <circle cx="380" cy="392" r="5"/>
+            <circle cx="340" cy="384" r="5"/>
+          </g>
+
+          <!-- 5 nearest neighbours (mid-zone where clusters meet) -->
+          <g class="pop p2" fill="#b31942">
+            <circle cx="220" cy="216" r="6.5"/>
+          </g>
+          <g class="pop p3" fill="#b31942">
+            <circle cx="244" cy="252" r="6.5"/>
+          </g>
+          <g class="pop p4" fill="#b31942">
+            <circle cx="268" cy="216" r="6.5"/>
+          </g>
+          <g class="pop p5" fill="#b31942">
+            <circle cx="208" cy="252" r="6.5"/>
+          </g>
+          <g class="pop p5" fill="#b31942">
+            <circle cx="252" cy="190" r="6.5"/>
+          </g>
+
+          <!-- dashed lines from query to neighbours -->
+          <g stroke="#b31942" stroke-width="1" fill="none" stroke-dasharray="3 3" opacity="0.7">
+            <path class="draw" d="M 234 230 L 220 216" pathLength="600"/>
+            <path class="draw" d="M 234 230 L 244 252" pathLength="600"/>
+            <path class="draw" d="M 234 230 L 268 216" pathLength="600"/>
+            <path class="draw" d="M 234 230 L 208 252" pathLength="600"/>
+            <path class="draw" d="M 234 230 L 252 190" pathLength="600"/>
+          </g>
+
+          <!-- query point with pulse -->
+          <circle class="pulse-circle" cx="234" cy="230" r="12" fill="#0a3161"/>
+          <circle class="stagger s2" cx="234" cy="230" r="11" fill="#0a3161" stroke="#ffffff" stroke-width="2.4"/>
+          <text class="stagger s4" x="244" y="220" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0a3161">your search</text>
+
+          <!-- axis labels -->
+          <text x="36" y="36" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">visual features</text>
+          <text x="416" y="438" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">language features</text>
+
+          <!-- TOP RESULTS panel on right -->
+          <g class="stagger s6">
+            <rect x="450" y="60" width="130" height="384" rx="10" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <text x="462" y="80" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">TOP 5 RESULTS</text>
+            <line x1="462" y1="88" x2="568" y2="88" stroke="#d4d4d8"/>
+          </g>
+
+          <g class="pop p2">
+            <rect x="462" y="100" width="106" height="56" rx="4" fill="#f5f2e8" stroke="#b31942" stroke-width="1.2"/>
+            <rect x="470" y="108" width="36" height="40" fill="#5a6271" opacity="0.3"/>
+            <text x="514" y="122" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #1</text>
+            <text x="514" y="136" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">0.92</text>
+          </g>
+          <g class="pop p3">
+            <rect x="462" y="164" width="106" height="48" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+            <rect x="470" y="172" width="32" height="32" fill="#5a6271" opacity="0.25"/>
+            <text x="510" y="186" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #2</text>
+            <text x="510" y="200" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">0.88</text>
+          </g>
+          <g class="pop p4">
+            <rect x="462" y="220" width="106" height="48" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+            <rect x="470" y="228" width="32" height="32" fill="#5a6271" opacity="0.25"/>
+            <text x="510" y="242" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #3</text>
+            <text x="510" y="256" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">0.84</text>
+          </g>
+          <g class="pop p5">
+            <rect x="462" y="276" width="106" height="48" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+            <rect x="470" y="284" width="32" height="32" fill="#5a6271" opacity="0.25"/>
+            <text x="510" y="298" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #4</text>
+            <text x="510" y="312" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">0.81</text>
+          </g>
+          <g class="pop p5">
+            <rect x="462" y="332" width="106" height="48" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+            <rect x="470" y="340" width="32" height="32" fill="#5a6271" opacity="0.25"/>
+            <text x="510" y="354" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #5</text>
+            <text x="510" y="368" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">0.78</text>
+          </g>
+
+          <text x="234" y="466" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" letter-spacing="1.5">FINDS WHAT YOU MEANT &middot; NOT WHAT YOU TYPED</text>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">04 / 07</span>
+        <span class="eyebrow"><span class="dot math"></span>Mathematical &middot; feature space</span>
+        <h2>Visual Search Platform</h2>
+        <p class="one-liner">Search across <strong>images and text together</strong>. The system finds what customers meant, even when they didn&rsquo;t have the right words.</p>
+        <p class="body">Pictures and descriptions are placed near each other in the same feature space. Tuning the system on the customer&rsquo;s own catalog lifted top-10 results by <strong>20%</strong> over the off-the-shelf baseline.</p>
+        <div class="stack">
+          <span class="pill">Image + text</span>
+          <span class="pill">Managed cloud</span>
+          <span class="pill">+20% recall</span>
+          <span class="pill">Tuned on customer data</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> a search experience customers describe as &ldquo;it just finds what I meant.&rdquo;</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="vision-search">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 05 · DEMAND FORECASTER                                        -->
+    <!-- ============================================================ -->
+    <section class="project" id="demand-forecaster" data-project="demand-forecaster">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- background grid -->
+          <g stroke="#d4d4d8" stroke-width="0.4" opacity="0.5">
+            <line x1="30" y1="80" x2="570" y2="80"/>
+            <line x1="30" y1="140" x2="570" y2="140"/>
+            <line x1="30" y1="200" x2="570" y2="200"/>
+          </g>
+
+          <!-- realistic-looking time series -->
+          <path class="draw" d="M 30 160 L 60 130 L 90 170 L 120 100 L 150 150 L 180 90 L 210 130 L 240 70 L 270 110 L 300 150 L 330 110 L 360 60 L 390 100 L 420 80 L 450 130 L 480 70 L 510 110 L 540 90 L 570 130" stroke="#0b1220" stroke-width="2" fill="none" pathLength="600"/>
+
+          <text class="stagger s1" x="30" y="60" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">DEMAND OVER TIME &middot; HOURLY</text>
+
+          <!-- patch boundaries -->
+          <g stroke="#b31942" stroke-width="1" stroke-dasharray="3 2" opacity="0">
+            <line class="draw d2" x1="120" y1="60" x2="120" y2="220" pathLength="600"/>
+            <line class="draw d2" x1="210" y1="60" x2="210" y2="220" pathLength="600"/>
+            <line class="draw d3" x1="300" y1="60" x2="300" y2="220" pathLength="600"/>
+            <line class="draw d3" x1="390" y1="60" x2="390" y2="220" pathLength="600"/>
+            <line class="draw d4" x1="480" y1="60" x2="480" y2="220" pathLength="600"/>
+          </g>
+          <g class="stagger s3">
+            <text x="570" y="60" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">sliced into segments</text>
+          </g>
+
+          <!-- arrow -->
+          <g class="stagger s4">
+            <line x1="300" y1="232" x2="300" y2="276" stroke="#5a6271" stroke-width="1.6"/>
+            <polygon points="300,278 295,270 305,270" fill="#5a6271"/>
+            <text x="312" y="262" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">fingerprint each segment</text>
+          </g>
+
+          <!-- embedding cells (fingerprints) -->
+          <g class="pop p2">
+            <rect x="80" y="296" width="68" height="72" rx="4" fill="#0a3161"/>
+            <text x="114" y="316" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" opacity="0.8">fp #1</text>
+            <!-- inner pattern hint -->
+            <g stroke="#ffffff" stroke-width="0.6" opacity="0.4">
+              <line x1="86" y1="328" x2="142" y2="328"/>
+              <line x1="86" y1="340" x2="142" y2="340"/>
+              <line x1="86" y1="352" x2="142" y2="352"/>
+            </g>
+          </g>
+          <g class="pop p3">
+            <rect x="170" y="296" width="68" height="72" rx="4" fill="#0a3161"/>
+            <text x="204" y="316" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" opacity="0.8">fp #2</text>
+            <g stroke="#ffffff" stroke-width="0.6" opacity="0.4">
+              <line x1="176" y1="328" x2="232" y2="328"/>
+              <line x1="176" y1="340" x2="232" y2="340"/>
+              <line x1="176" y1="352" x2="232" y2="352"/>
+            </g>
+          </g>
+          <g class="pop p4">
+            <rect x="260" y="296" width="68" height="72" rx="4" fill="#0a3161"/>
+            <text x="294" y="316" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" opacity="0.8">fp #3</text>
+            <g stroke="#ffffff" stroke-width="0.6" opacity="0.4">
+              <line x1="266" y1="328" x2="322" y2="328"/>
+              <line x1="266" y1="340" x2="322" y2="340"/>
+              <line x1="266" y1="352" x2="322" y2="352"/>
+            </g>
+          </g>
+          <g class="pop p4">
+            <rect x="350" y="296" width="68" height="72" rx="4" fill="#0a3161"/>
+            <text x="384" y="316" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" opacity="0.8">fp #4</text>
+            <g stroke="#ffffff" stroke-width="0.6" opacity="0.4">
+              <line x1="356" y1="328" x2="412" y2="328"/>
+              <line x1="356" y1="340" x2="412" y2="340"/>
+              <line x1="356" y1="352" x2="412" y2="352"/>
+            </g>
+          </g>
+          <g class="pop p5">
+            <rect x="440" y="296" width="68" height="72" rx="4" fill="#b31942"/>
+            <text x="474" y="316" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff">MATCH</text>
+            <g stroke="#ffffff" stroke-width="0.6" opacity="0.4">
+              <line x1="446" y1="328" x2="502" y2="328"/>
+              <line x1="446" y1="340" x2="502" y2="340"/>
+              <line x1="446" y1="352" x2="502" y2="352"/>
+            </g>
+            <!-- match indicator -->
+            <path d="M 460 358 L 470 366 L 488 348" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+          </g>
+          <g class="stagger s8">
+            <rect x="520" y="296" width="32" height="72" rx="4" fill="#0a3161" opacity="0.5"/>
+          </g>
+
+          <!-- fast lookup label -->
+          <g class="stagger s7">
+            <line x1="80" y1="396" x2="552" y2="396" stroke="#d4d4d8"/>
+            <text x="80" y="416" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Pattern library</text>
+            <text x="552" y="416" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">new shape &rarr; instant match</text>
+            <text x="80" y="436" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">a known shape returns in microseconds</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">05 / 07</span>
+        <span class="eyebrow"><span class="dot math"></span>Mathematical &middot; pattern space</span>
+        <h2>Demand Forecaster</h2>
+        <p class="one-liner">A compact forecasting engine trained on real demand data inside a <strong>10-hour budget</strong>.</p>
+        <p class="body">Time series gets sliced into segments; each segment becomes a pattern fingerprint stored in a fast-lookup library. When a similar shape shows up later, it&rsquo;s recognized instantly &mdash; sized for edge hardware, not just cloud GPUs.</p>
+        <div class="stack">
+          <span class="pill">Forecasting</span>
+          <span class="pill">Edge-ready</span>
+          <span class="pill">Pattern library</span>
+          <span class="pill">Compact</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> a forecasting + recognition pair sized for edge deployment, not just leaderboards.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="demand-forecaster">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 06 · RIGHT-SIZING INSTALLER                                   -->
+    <!-- ============================================================ -->
+    <section class="project" id="right-sizing" data-project="right-sizing">
+      <div class="project-visual">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- LEFT: machine inspector panel -->
+          <g class="stagger s1">
+            <rect x="30" y="60" width="200" height="360" rx="10" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+            <text x="42" y="84" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#5a6271" letter-spacing="1.5">INSPECTING MACHINE</text>
+            <line x1="42" y1="92" x2="218" y2="92" stroke="#d4d4d8"/>
+          </g>
+
+          <!-- CPU bar -->
+          <g class="stagger s2">
+            <text x="42" y="120" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">CPU</text>
+            <text x="42" y="134" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">8-core · 3.5 GHz</text>
+            <rect x="42" y="142" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect class="fill-bar b1" x="42" y="142" width="128" height="10" rx="2" fill="#0b1220"/>
+          </g>
+
+          <!-- GPU bar -->
+          <g class="stagger s3">
+            <text x="42" y="186" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">GPU</text>
+            <text x="42" y="200" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">integrated</text>
+            <rect x="42" y="208" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect class="fill-bar b2" x="42" y="208" width="92" height="10" rx="2" fill="#0b1220"/>
+          </g>
+
+          <!-- RAM bar -->
+          <g class="stagger s4">
+            <text x="42" y="252" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">RAM</text>
+            <text x="42" y="266" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">32 GB</text>
+            <rect x="42" y="274" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect class="fill-bar b3" x="42" y="274" width="156" height="10" rx="2" fill="#0b1220"/>
+          </g>
+
+          <!-- Storage bar -->
+          <g class="stagger s5">
+            <text x="42" y="318" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">STORAGE</text>
+            <text x="42" y="332" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">SSD · 1 TB</text>
+            <rect x="42" y="340" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+            <rect class="fill-bar b4" x="42" y="340" width="160" height="10" rx="2" fill="#0b1220"/>
+          </g>
+
+          <!-- OS detected -->
+          <g class="stagger s5">
+            <line x1="42" y1="372" x2="218" y2="372" stroke="#d4d4d8"/>
+            <text x="42" y="392" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">OS · macOS 14</text>
+            <text x="42" y="408" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">&#10003; SCAN COMPLETE</text>
+          </g>
+
+          <!-- arrow -->
+          <g class="stagger s6">
+            <line x1="244" y1="240" x2="292" y2="240" stroke="#0b1220" stroke-width="1.8"/>
+            <polygon points="294,240 286,236 286,244" fill="#0b1220"/>
+            <text x="244" y="232" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">right-size</text>
+          </g>
+
+          <!-- RIGHT: tier tree -->
+          <g class="stagger s4">
+            <rect x="310" y="80" width="260" height="80" rx="10" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.2"/>
+            <text x="324" y="104" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#5a6271">Light tier</text>
+            <text x="324" y="124" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick chat &middot; small footprint</text>
+            <text x="324" y="142" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">~2 GB RAM &middot; CPU-only</text>
+          </g>
+
+          <!-- picked tier (balanced) -->
+          <g class="stagger s5">
+            <rect x="310" y="180" width="260" height="80" rx="10" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
+            <text x="324" y="204" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0b1220">Balanced tier</text>
+            <text x="324" y="224" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">PICKED FOR THIS MACHINE</text>
+            <text x="324" y="242" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">~8 GB RAM &middot; integrated GPU</text>
+          </g>
+
+          <g class="stagger s7">
+            <rect x="310" y="280" width="260" height="80" rx="10" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.2"/>
+            <text x="324" y="304" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#5a6271">Full tier</text>
+            <text x="324" y="324" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">heavy reasoning &middot; needs more</text>
+            <text x="324" y="342" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">~32 GB RAM &middot; discrete GPU</text>
+          </g>
+
+          <text x="440" y="404" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">MAC &middot; WINDOWS &middot; LINUX</text>
+          <text x="440" y="424" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">ZERO CLOUD CALLS</text>
+        </svg>
+      </div>
+
+      <div class="project-info">
+        <span class="index">06 / 07</span>
+        <span class="eyebrow"><span class="dot physical"></span>Physical &middot; your machine</span>
+        <h2>Right-Sizing Installer</h2>
+        <p class="one-liner">An assistant that <strong>scans your machine</strong> and installs the private chat experience it can actually run.</p>
+        <p class="body">Starts from the machine and works backwards. Processor, graphics, memory, storage, and OS all get inspected; a tiered always-on chat + search stack gets installed that&rsquo;s matched to what the hardware can really run. Same install path on macOS, Windows, and Linux.</p>
+        <div class="stack">
+          <span class="pill">Private</span>
+          <span class="pill">Cross-platform</span>
+          <span class="pill">Zero cloud</span>
+          <span class="pill">Reproducible install</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> a private-by-default install path that matches the chat experience to the hardware &mdash; not a Notion doc.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="right-sizing">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 07 · QUANTUM SIMULATION                                       -->
+    <!-- ============================================================ -->
+    <section class="project" id="quantum" data-project="quantum">
+      <div class="project-visual">
+        <div class="stagger s1" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;">
+          <img src="assets/img/60qubit_tensor_network.png" alt="Simulation graph for a 60-qubit quantum circuit" loading="lazy" />
+          <div style="font-family:'JetBrains Mono', ui-monospace, Menlo, monospace; font-size:11px; color:var(--ink-mute); letter-spacing:0.18em; text-align:center;">60 QUBITS &middot; ON A LAPTOP</div>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <span class="index">07 / 07</span>
+        <span class="eyebrow"><span class="dot math"></span>Mathematical &middot; simulation graph</span>
+        <h2>Quantum simulation on a laptop</h2>
+        <p class="one-liner">A <strong>60-qubit</strong> quantum circuit simulated on commodity hardware via mathematical simplification.</p>
+        <p class="body">The trick is collapsing the structure of the circuit into something small enough for a laptop to compute, then sampling the answer one step at a time. The interesting result isn&rsquo;t the qubit count &mdash; it&rsquo;s that the right mathematical instinct can replace a supercomputer.</p>
+        <div class="stack">
+          <span class="pill">Research</span>
+          <span class="pill">Commodity hardware</span>
+          <span class="pill">60-qubit</span>
+          <span class="pill">Hackathon</span>
+        </div>
+        <div class="outcome"><strong>Outcome:</strong> the kind of math that lets us replace expensive infrastructure with clever algorithms.</div>
+        <div class="actions">
+          <button class="deep-dive" data-open="quantum">Read full case study <span class="arrow">&rarr;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAST WORK ============ -->
+    <section class="past-work" id="past-work">
+      <div class="past-header">
+        <p class="eyebrow">Past work &middot; Accenture Federal Services &middot; 2021&ndash;2025</p>
+        <h2>Selected past work</h2>
+        <p class="lead">Four years on the hands-on rapid prototyping team inside Accenture Federal Services&rsquo; MLE Group. The arc, every time: build something the customer falls in love with, iterate with them, then roll up sleeves and ship it to production &mdash; the unglamorous part most demos never reach. Customer names omitted; the outcomes are real.</p>
+      </div>
+
+      <div class="past-grid">
+
+        <!-- 1. Enterprise retrieval + records platform -->
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="40" cy="40" r="36" fill="none" stroke="#0b1220" stroke-width="1" opacity="0.3"/>
+              <circle cx="40" cy="40" r="26" fill="none" stroke="#0b1220" stroke-width="1.2" opacity="0.5"/>
+              <circle cx="40" cy="40" r="16" fill="none" stroke="#0b1220" stroke-width="1.4" opacity="0.75"/>
+              <circle cx="40" cy="40" r="6" fill="#b31942"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">2024 &ndash; 2025</span>
+            <h3>Enterprise retrieval + records platform serving 100k users</h3>
+            <p>Co-architected a production platform that combined structured records, semantic retrieval, and an audit-friendly access layer at enterprise scale. The same patterns we now compress and ship to SMBs.</p>
+            <div class="past-outcome"><strong>100k+ users &middot; 99.9% SLOs &middot; p95 latency cut ~40%</strong></div>
+          </div>
+        </article>
+
+        <!-- 2. LLM adoption / governance -->
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="40" y1="40" x2="20" y2="20" stroke="#0b1220" stroke-width="1"/>
+              <line x1="40" y1="40" x2="60" y2="20" stroke="#0b1220" stroke-width="1"/>
+              <line x1="40" y1="40" x2="40" y2="64" stroke="#0b1220" stroke-width="1"/>
+              <circle cx="20" cy="20" r="8" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+              <circle cx="60" cy="20" r="8" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+              <circle cx="40" cy="64" r="8" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+              <circle cx="40" cy="40" r="9" fill="#b31942"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">2024 &ndash; 2025</span>
+            <h3>Drove LLM adoption across legal, security, and engineering</h3>
+            <p>Coordinated the stakeholders who decide whether AI ships at all. Co-authored deployment and use-case guidance for sensitive environments, mapped use cases to clearance levels, and turned a &ldquo;maybe someday&rdquo; stance into a working deployment path.</p>
+            <div class="past-outcome"><strong>From &ldquo;no policy&rdquo; to deployed AI across an enterprise org</strong></div>
+          </div>
+        </article>
+
+        <!-- 3. Prototyping infrastructure -->
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- stopwatch -->
+              <circle cx="44" cy="46" r="20" fill="#ffffff" stroke="#0b1220" stroke-width="1.6"/>
+              <rect x="40" y="18" width="8" height="6" fill="#0b1220"/>
+              <line x1="44" y1="46" x2="44" y2="32" stroke="#0b1220" stroke-width="1.6"/>
+              <line x1="44" y1="46" x2="55" y2="42" stroke="#b31942" stroke-width="1.6"/>
+              <circle cx="44" cy="46" r="2" fill="#0b1220"/>
+              <!-- speed lines -->
+              <line x1="8" y1="38" x2="18" y2="38" stroke="#b31942" stroke-width="1.4"/>
+              <line x1="4" y1="46" x2="16" y2="46" stroke="#b31942" stroke-width="1.4"/>
+              <line x1="8" y1="54" x2="18" y2="54" stroke="#b31942" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">2021 &ndash; 2024</span>
+            <h3>Internal prototyping infrastructure that cut iteration time ~87%</h3>
+            <p>Built the platform plumbing the rapid prototyping team used to ship against customer data &mdash; auth, data access, deployment, observability &mdash; so an engineer could spin up an experiment in hours instead of days, with a path to production from day one.</p>
+            <div class="past-outcome"><strong>~87% faster prototyping across the org</strong></div>
+          </div>
+        </article>
+
+        <!-- 4. Distributed microservices -->
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="26" y1="19" x2="32" y2="19" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="46" y1="19" x2="52" y2="19" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="26" y1="39" x2="32" y2="39" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="46" y1="39" x2="52" y2="39" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="26" y1="59" x2="32" y2="59" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="46" y1="59" x2="52" y2="59" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="19" y1="26" x2="19" y2="32" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="39" y1="26" x2="39" y2="32" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="59" y1="26" x2="59" y2="32" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="19" y1="46" x2="19" y2="52" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="39" y1="46" x2="39" y2="52" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="59" y1="46" x2="59" y2="52" stroke="#5a6271" stroke-width="0.8"/>
+              <rect x="12" y="12" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="32" y="12" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="52" y="12" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="12" y="32" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="32" y="32" width="14" height="14" rx="2" fill="#b31942"/>
+              <rect x="52" y="32" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="12" y="52" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="32" y="52" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="52" y="52" width="14" height="14" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">2021 &ndash; 2024</span>
+            <h3>Distributed workflow microservices serving 2M+ end users</h3>
+            <p>Designed and shipped the distributed services behind a multi-million-user record-keeping workflow. Established the observability and on-call patterns that later platform teams inherited as the default.</p>
+            <div class="past-outcome"><strong>2M+ users &middot; observability + on-call patterns adopted org-wide</strong></div>
+          </div>
+        </article>
+
+        <!-- 5. Federated search -->
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="22" width="36" height="10" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="8" y="36" width="36" height="10" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="8" y="50" width="36" height="10" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <line x1="14" y1="27" x2="22" y2="27" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="14" y1="41" x2="22" y2="41" stroke="#5a6271" stroke-width="0.8"/>
+              <line x1="14" y1="55" x2="22" y2="55" stroke="#5a6271" stroke-width="0.8"/>
+              <circle cx="56" cy="40" r="13" fill="#ffffff" stroke="#b31942" stroke-width="1.8"/>
+              <line x1="65" y1="49" x2="73" y2="57" stroke="#b31942" stroke-width="2"/>
+              <line x1="50" y1="40" x2="62" y2="40" stroke="#b31942" stroke-width="1"/>
+              <line x1="56" y1="34" x2="56" y2="46" stroke="#b31942" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">2021 &ndash; 2024</span>
+            <h3>Federated search across regulated data sources</h3>
+            <p>Designed a search system that joins multiple data sources at ingest time, enriches them with language understanding, and respects fine-grained access controls &mdash; so users only see what they&rsquo;re allowed to, while the index stays unified.</p>
+            <div class="past-outcome"><strong>ACID-compliant ingestion &middot; enrichment + access control unified</strong></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact">
+      <h2>Want one of these in your business?</h2>
+      <div class="contact-card">
+        <div class="row">
+          <span class="label">Email</span>
+          <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Multimodal Works LLC · © 2026 · Greater Chicago Area</span>
+      <a href="index.html">&larr; back to overview</a>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- MODAL DEEP-DIVE PAYLOADS                                      -->
+    <!-- ============================================================ -->
+
+    <template id="proj-local-ai">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot physical"></span>Physical &middot; on your desk</div>
+        <h3>Private AI Workstation</h3>
+        <p class="one-liner">A desktop you can put under a desk that runs a full AI assistant on-site &mdash; no cloud bill, nothing leaving the building.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <polygon points="120,110 320,110 360,80 160,80" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+          <rect x="120" y="110" width="200" height="220" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+          <polygon points="320,110 360,80 360,300 320,330" fill="#faf9f5" stroke="#0b1220" stroke-width="2"/>
+          <rect x="180" y="85" width="130" height="18" fill="#0b1220" rx="2" transform="skewX(-10)"/>
+          <text x="200" y="98" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · $3K</text>
+          <circle cx="305" cy="128" r="3.5" fill="#b31942"/>
+          <rect x="138" y="140" width="164" height="42" rx="4" fill="#f5f2e8" stroke="#b31942" stroke-width="1.6"/>
+          <text x="150" y="160" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Records</text>
+          <text x="292" y="160" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">structured</text>
+          <text x="150" y="175" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">customer + ops data</text>
+          <rect x="138" y="192" width="164" height="42" rx="4" fill="#f5f2e8" stroke="#0a3161" stroke-width="1.6"/>
+          <text x="150" y="212" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Search</text>
+          <text x="292" y="212" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">semantic</text>
+          <text x="150" y="227" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">finds by meaning</text>
+          <rect x="138" y="244" width="164" height="42" rx="4" fill="#f5f2e8" stroke="#0b1220" stroke-width="1.6"/>
+          <text x="150" y="264" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Audit</text>
+          <text x="292" y="264" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">activity log</text>
+          <text x="150" y="279" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" opacity="0.7">every call recorded</text>
+          <rect x="400" y="130" width="180" height="120" rx="6" fill="#0b1220" stroke="#0b1220"/>
+          <rect x="408" y="138" width="164" height="104" rx="3" fill="#faf9f5"/>
+          <rect x="416" y="148" width="56" height="8" rx="2" fill="#0a3161" opacity="0.4"/>
+          <rect x="416" y="162" width="120" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+          <rect x="416" y="174" width="100" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+          <rect x="416" y="196" width="48" height="8" rx="2" fill="#b31942" opacity="0.6"/>
+          <rect x="416" y="210" width="136" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+          <rect x="416" y="222" width="92" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
+          <rect x="475" y="250" width="30" height="14" fill="#0b1220"/>
+          <rect x="450" y="264" width="80" height="6" rx="2" fill="#0b1220"/>
+          <path d="M 320 200 C 360 200, 370 180, 400 180" fill="none" stroke="#0b1220" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Many SMBs want the chat-and-search experience that cloud AI products offer, but can&rsquo;t send their data to a third party &mdash; whether for legal, contractual, or competitive reasons. Existing &ldquo;run AI locally&rdquo; advice usually means a laptop running a small model badly. We close the gap.</p>
+        <p><strong>What we built.</strong> A $3,000 desktop sized for high-memory chat, plus a three-tier memory stack: structured records, semantic search, and an audit log of every interaction. The user-facing chat feels indistinguishable from the cloud; the data never leaves the box.</p>
+        <p><strong>Why it matters.</strong> A $3K hardware bill amortizes against a $1,000/month cloud chat bill in about three months. After that the line item is electricity. Because nothing leaves the office, the deployment survives the strictest data policies without an exception.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>Scope your data &amp; workflows in one 30-minute call, build &amp; ship the workstation pre-assembled, hand off with a runbook and a recorded walkthrough. Total elapsed time: typically two to three weeks from intro to operational.</p>
+        <div class="modal-stack">
+          <span class="pill">Private</span><span class="pill">On-prem</span><span class="pill">Audited</span><span class="pill">$3K hardware</span><span class="pill">Predictable cost</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> the station ships fully assembled with a runbook; your team owns it cleanly on day one.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Private%20AI%20Workstation%20%E2%80%94%20intro">Get one for your office &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-job-costing">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot physical"></span>Physical &middot; field &rarr; ledger &rarr; dashboard</div>
+        <h3>Live Job Costing</h3>
+        <p class="one-liner">An operations platform tied to QuickBooks where every cost lands pre-coded to a job &mdash; so margin is visible mid-build, not at year-end.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <!-- Work order -->
+          <rect x="40" y="120" width="160" height="120" rx="8" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
+          <text x="52" y="140" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">WORK ORDER</text>
+          <line x1="52" y1="146" x2="188" y2="146" stroke="#d4d4d8"/>
+          <text x="52" y="166" font-family="Iowan Old Style, Georgia, serif" font-size="18" fill="#0b1220">Job #4421</text>
+          <text x="52" y="184" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">customer · Acme</text>
+          <text x="52" y="198" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">budget · $94,000</text>
+          <rect x="52" y="208" width="60" height="14" rx="2" fill="#b31942"/>
+          <text x="82" y="218" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff" letter-spacing="1">JOB-CODE</text>
+          <!-- arrow -->
+          <line x1="206" y1="180" x2="252" y2="180" stroke="#0b1220" stroke-width="1.6"/>
+          <polygon points="254,180 246,176 246,184" fill="#0b1220"/>
+          <!-- invoices -->
+          <rect x="272" y="136" width="88" height="100" rx="3" fill="#ffffff" stroke="#5a6271" stroke-width="0.9"/>
+          <rect x="266" y="130" width="88" height="100" rx="3" fill="#ffffff" stroke="#5a6271" stroke-width="0.9"/>
+          <rect x="260" y="124" width="88" height="100" rx="3" fill="#ffffff" stroke="#b31942" stroke-width="1.4"/>
+          <text x="270" y="138" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">BILL #4421-7</text>
+          <line x1="270" y1="145" x2="340" y2="145" stroke="#d4d4d8"/>
+          <line x1="270" y1="156" x2="340" y2="156" stroke="#d4d4d8"/>
+          <line x1="270" y1="166" x2="340" y2="166" stroke="#d4d4d8"/>
+          <text x="270" y="186" font-family="Iowan Old Style, Georgia, serif" font-size="11" fill="#0b1220">job: <tspan fill="#b31942">#4421</tspan></text>
+          <text x="270" y="200" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0b1220">$ 8,420</text>
+          <text x="270" y="216" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#5a6271">PRE-CODED &rarr; QBO</text>
+          <line x1="362" y1="180" x2="408" y2="180" stroke="#0b1220" stroke-width="1.6"/>
+          <polygon points="410,180 402,176 402,184" fill="#0b1220"/>
+          <!-- dashboard -->
+          <rect x="420" y="120" width="160" height="120" rx="8" fill="#ffffff" stroke="#0b1220" stroke-width="1.6"/>
+          <text x="432" y="138" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">LIVE MARGIN</text>
+          <text x="432" y="158" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">Labor</text>
+          <rect x="476" y="151" width="80" height="8" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="476" y="151" width="60" height="8" fill="#0b1220"/>
+          <text x="432" y="176" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">Materials</text>
+          <rect x="476" y="169" width="80" height="8" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="476" y="169" width="42" height="8" fill="#0b1220"/>
+          <text x="432" y="194" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271">Subs</text>
+          <rect x="476" y="187" width="80" height="8" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="476" y="187" width="70" height="8" fill="#b31942"/>
+          <text x="432" y="222" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">margin <tspan fill="#b31942">8.4%</tspan></text>
+          <text x="300" y="280" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">EVERY COST TIED TO A JOB &middot; IN REAL TIME</text>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Project-based businesses &mdash; construction, architecture rehabs, consulting, field services, agencies, and more &mdash; lose visibility the moment a bill arrives in QuickBooks without job context. Bookkeepers spend weeks each month reconciling. Owners only learn a project lost money long after it closed.</p>
+        <p><strong>What we built.</strong> A custom operations platform that sits on top of QuickBooks Online and forces every cost, bill, purchase order, and payment to be tagged to a specific job the moment it enters the system. Estimates from the bidding stage, field costs from the job site, and accounting records all live in one source of truth. The CPA opens the same QuickBooks file they always have &mdash; except now every transaction already has job context baked in.</p>
+        <p><strong>Why it matters.</strong> Project managers see margin slipping <strong>mid-project</strong> and can correct course. Month-end reconciliation work disappears. The example we ship is a $5M construction company that saves roughly <strong>$30,000/year</strong> in bookkeeping and CPA fees &mdash; but the pattern works anywhere work is organized as discrete projects.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>Audit your current job-cost workflow in a 30-minute call, map your custom job-coding scheme onto QuickBooks classes/customers/jobs, ship a working prototype in your first month and a production rollout in roughly three.</p>
+        <div class="modal-stack">
+          <span class="pill">QuickBooks-tied</span><span class="pill">Job-coded</span><span class="pill">Live margin</span><span class="pill">SMB</span><span class="pill">Field &rarr; finance</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> roughly <strong>$30K/year</strong> in bookkeeping &amp; CPA fees back, and thin-margin jobs caught mid-build instead of after they close.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Live%20Job%20Costing%20%E2%80%94%20intro">Talk about your jobs &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-operational-intelligence">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot physical"></span>Workflow &middot; CRM &rarr; assistant &rarr; insights</div>
+        <h3>Operational Intelligence Agent</h3>
+        <p class="one-liner">A full-stack web app where AI assistants work directly against your CRM and financial data &mdash; with a memory that remembers.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <!-- memory graph -->
+          <rect x="170" y="30" width="260" height="80" rx="10" fill="#ffffff" stroke="#0a3161" stroke-width="1.6"/>
+          <text x="182" y="48" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0a3161" letter-spacing="1.5">MEMORY GRAPH</text>
+          <circle cx="208" cy="78" r="13" fill="#0a3161"/>
+          <text x="208" y="82" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff">Acme</text>
+          <circle cx="254" cy="66" r="10" fill="#5a6271"/>
+          <text x="254" y="70" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="8" fill="#ffffff">J.S.</text>
+          <circle cx="294" cy="86" r="10" fill="#5a6271"/>
+          <text x="294" y="90" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="7" fill="#ffffff">inv</text>
+          <circle cx="340" cy="62" r="10" fill="#5a6271"/>
+          <text x="340" y="66" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="7" fill="#ffffff">call</text>
+          <circle cx="380" cy="84" r="13" fill="#b31942"/>
+          <text x="380" y="88" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#ffffff">PO-7</text>
+          <g stroke="#0a3161" stroke-width="0.8" fill="none" opacity="0.5">
+            <line x1="220" y1="78" x2="244" y2="68"/>
+            <line x1="220" y1="78" x2="284" y2="86"/>
+            <line x1="264" y1="66" x2="330" y2="64"/>
+            <line x1="304" y1="86" x2="370" y2="82"/>
+          </g>
+          <!-- CRM -->
+          <rect x="20" y="170" width="130" height="100" rx="10" fill="#ffffff" stroke="#5a6271" stroke-width="1.4"/>
+          <text x="32" y="188" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">CRM &middot; FINANCE</text>
+          <text x="32" y="212" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Acme · $4.2K owed</text>
+          <text x="32" y="228" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Beta · stalled deal</text>
+          <text x="32" y="244" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Delta · new lead</text>
+          <!-- assistant -->
+          <circle cx="300" cy="220" r="46" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
+          <text x="300" y="217" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Assistant</text>
+          <text x="300" y="234" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#b31942">operational</text>
+          <!-- insights -->
+          <rect x="450" y="170" width="130" height="100" rx="10" fill="#ffffff" stroke="#5a6271" stroke-width="1.4"/>
+          <text x="462" y="188" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">INSIGHTS</text>
+          <circle cx="468" cy="216" r="3" fill="#b31942"/>
+          <text x="478" y="220" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">chase 4 stale POs</text>
+          <circle cx="468" cy="232" r="3" fill="#b31942"/>
+          <text x="478" y="236" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">PO-7 over budget</text>
+          <circle cx="468" cy="248" r="3" fill="#b31942"/>
+          <text x="478" y="252" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">renew Acme MSA</text>
+          <!-- arrows -->
+          <line x1="152" y1="220" x2="252" y2="220" stroke="#0b1220" stroke-width="1.6"/>
+          <polygon points="254,220 246,216 246,224" fill="#0b1220"/>
+          <line x1="348" y1="220" x2="448" y2="220" stroke="#0b1220" stroke-width="1.6"/>
+          <polygon points="450,220 442,216 442,224" fill="#0b1220"/>
+          <line x1="300" y1="174" x2="300" y2="120" stroke="#0a3161" stroke-width="1" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Most assistant demos forget what happened yesterday. That makes them useless for operational work, where every interaction needs to be anchored in the actual state of the business &mdash; people, accounts, open deals, past commitments.</p>
+        <p><strong>What we built.</strong> A full-stack web application where an AI assistant works directly against the customer&rsquo;s CRM and financial systems. Memory is treated as a first-class graph: entities, relationships, and past decisions live as connected nodes the assistant can traverse, not as a flat bucket of text. Each suggestion lands in context.</p>
+        <p><strong>Why it matters.</strong> The assistant survives multi-step workflows that take days or weeks &mdash; following up on a stalled deal, chasing a stale PO, prepping a renewal &mdash; because it remembers what happened in step one when it gets to step seven.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>Map your operational systems (CRM, finance, calendar, comms) in a discovery call, identify the two or three workflows where remembering most matters, ship a working prototype against your real data in four to six weeks.</p>
+        <div class="modal-stack">
+          <span class="pill">Full-stack</span><span class="pill">Memory graph</span><span class="pill">Operational</span><span class="pill">Multi-step</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> an assistant that actually helps with the work, instead of a chatbot that forgets the conversation.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Operational%20Intelligence%20Agent%20%E2%80%94%20intro">Talk about your workflows &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-vision-search">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot math"></span>Mathematical &middot; feature space</div>
+        <h3>Visual Search Platform</h3>
+        <p class="one-liner">A search platform that understands both pictures and the words people use to describe them.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <g stroke="#d4d4d8" stroke-width="0.5">
+            <line x1="40" y1="30" x2="40" y2="330"/>
+            <line x1="40" y1="330" x2="430" y2="330"/>
+          </g>
+          <g fill="#b31942" opacity="0.55">
+            <circle cx="74" cy="280" r="4.5"/><circle cx="92" cy="266" r="4.5"/><circle cx="118" cy="294" r="4.5"/>
+            <circle cx="148" cy="258" r="4.5"/><circle cx="168" cy="284" r="4.5"/>
+          </g>
+          <g fill="#0a3161" opacity="0.55">
+            <circle cx="312" cy="84" r="4.5"/><circle cx="334" cy="102" r="4.5"/><circle cx="356" cy="80" r="4.5"/>
+            <circle cx="378" cy="108" r="4.5"/><circle cx="392" cy="84" r="4.5"/>
+          </g>
+          <g fill="#5a6271" opacity="0.6">
+            <circle cx="100" cy="98" r="4.5"/><circle cx="124" cy="118" r="4.5"/><circle cx="76" cy="138" r="4.5"/>
+            <circle cx="172" cy="124" r="4.5"/>
+          </g>
+          <g fill="#ad8800" opacity="0.55">
+            <circle cx="320" cy="276" r="4.5"/><circle cx="350" cy="298" r="4.5"/><circle cx="380" cy="278" r="4.5"/>
+          </g>
+          <g fill="#b31942">
+            <circle cx="220" cy="166" r="6"/><circle cx="244" cy="202" r="6"/>
+            <circle cx="268" cy="166" r="6"/><circle cx="208" cy="202" r="6"/>
+            <circle cx="252" cy="140" r="6"/>
+          </g>
+          <g stroke="#b31942" stroke-width="1" fill="none" stroke-dasharray="3 3" opacity="0.7">
+            <line x1="234" y1="180" x2="220" y2="166"/>
+            <line x1="234" y1="180" x2="244" y2="202"/>
+            <line x1="234" y1="180" x2="268" y2="166"/>
+            <line x1="234" y1="180" x2="208" y2="202"/>
+            <line x1="234" y1="180" x2="252" y2="140"/>
+          </g>
+          <circle cx="234" cy="180" r="11" fill="#0a3161" stroke="#ffffff" stroke-width="2.4"/>
+          <text x="246" y="170" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#0a3161">your search</text>
+          <rect x="450" y="40" width="130" height="280" rx="10" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+          <text x="462" y="60" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">TOP 5 RESULTS</text>
+          <rect x="462" y="76" width="106" height="46" rx="4" fill="#f5f2e8" stroke="#b31942" stroke-width="1.2"/>
+          <rect x="470" y="84" width="30" height="30" fill="#5a6271" opacity="0.3"/>
+          <text x="510" y="100" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #1 · 0.92</text>
+          <rect x="462" y="130" width="106" height="40" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+          <rect x="470" y="138" width="24" height="24" fill="#5a6271" opacity="0.25"/>
+          <text x="504" y="156" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #2 · 0.88</text>
+          <rect x="462" y="178" width="106" height="40" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+          <rect x="470" y="186" width="24" height="24" fill="#5a6271" opacity="0.25"/>
+          <text x="504" y="204" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #3 · 0.84</text>
+          <rect x="462" y="226" width="106" height="40" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+          <rect x="470" y="234" width="24" height="24" fill="#5a6271" opacity="0.25"/>
+          <text x="504" y="252" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #4 · 0.81</text>
+          <rect x="462" y="274" width="106" height="40" rx="4" fill="#ffffff" stroke="#d4d4d8"/>
+          <rect x="470" y="282" width="24" height="24" fill="#5a6271" opacity="0.25"/>
+          <text x="504" y="300" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">item #5 · 0.78</text>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Customers shop by &ldquo;the one that looks like this&rdquo; as much as by exact keywords. Off-the-shelf keyword search misses these queries entirely; the customer leaves without finding the thing.</p>
+        <p><strong>What we built.</strong> A search platform that places pictures and descriptions near each other in the same feature space. A search lights up everything nearby in that space, even when the user&rsquo;s words and the catalog&rsquo;s words don&rsquo;t literally match. The platform is deployed as a managed cloud endpoint so the rest of the system calls it like any other API.</p>
+        <p><strong>Why it matters.</strong> Tuning the model on the customer&rsquo;s own catalog lifted top-10 results by <strong>20%</strong> over the off-the-shelf baseline. The user-visible effect is a search that &ldquo;just finds what I meant&rdquo; instead of returning nothing.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>Audit your current search experience and miss rate in a 30-minute call, identify the categories where visual + text similarity beats keyword, deliver a tuned production endpoint in roughly six to eight weeks.</p>
+        <div class="modal-stack">
+          <span class="pill">Image + text</span><span class="pill">Managed cloud</span><span class="pill">+20% recall</span><span class="pill">Tuned on customer data</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> a search experience customers describe as &ldquo;it just finds what I meant.&rdquo;</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Visual%20Search%20%E2%80%94%20intro">Talk about your catalog &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-demand-forecaster">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot math"></span>Mathematical &middot; pattern space</div>
+        <h3>Demand Forecaster</h3>
+        <p class="one-liner">A compact forecasting engine trained on real electricity demand inside a 10-hour budget.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <path d="M 30 120 L 60 90 L 90 130 L 120 60 L 150 110 L 180 50 L 210 90 L 240 30 L 270 70 L 300 110 L 330 70 L 360 20 L 390 60 L 420 40 L 450 90 L 480 30 L 510 70 L 540 50 L 570 90" stroke="#0b1220" stroke-width="2" fill="none"/>
+          <g stroke="#b31942" stroke-width="1" stroke-dasharray="3 2">
+            <line x1="120" y1="20" x2="120" y2="160"/>
+            <line x1="210" y1="20" x2="210" y2="160"/>
+            <line x1="300" y1="20" x2="300" y2="160"/>
+            <line x1="390" y1="20" x2="390" y2="160"/>
+            <line x1="480" y1="20" x2="480" y2="160"/>
+          </g>
+          <text x="30" y="180" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1">DEMAND OVER TIME &middot; SLICED INTO SEGMENTS</text>
+          <g fill="#0a3161">
+            <rect x="60" y="200" width="76" height="80" rx="4"/>
+            <rect x="160" y="200" width="76" height="80" rx="4"/>
+            <rect x="260" y="200" width="76" height="80" rx="4"/>
+            <rect x="360" y="200" width="76" height="80" rx="4"/>
+            <rect x="460" y="200" width="76" height="80" rx="4" fill="#b31942"/>
+          </g>
+          <g fill="#ffffff" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" opacity="0.85">
+            <text x="98" y="222" text-anchor="middle">fp #1</text>
+            <text x="198" y="222" text-anchor="middle">fp #2</text>
+            <text x="298" y="222" text-anchor="middle">fp #3</text>
+            <text x="398" y="222" text-anchor="middle">fp #4</text>
+            <text x="498" y="222" text-anchor="middle" font-weight="700">MATCH</text>
+          </g>
+          <path d="M 480 250 L 492 262 L 514 240" stroke="#ffffff" stroke-width="2" fill="none"/>
+          <text x="60" y="310" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Pattern library</text>
+          <text x="540" y="310" text-anchor="end" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">new shape &rarr; instant match</text>
+          <text x="60" y="330" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">known shapes return in microseconds</text>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Forecasting is most useful when it doesn&rsquo;t live on a leaderboard but on a piece of edge hardware that has to respond quickly under production load. Most published research optimizes for the leaderboard; we optimized for the deployment.</p>
+        <p><strong>What we built.</strong> A compact forecasting engine trained on Australian electricity demand inside a 10-hour compute budget. The model breaks the time series into overlapping segments and learns a fingerprint for each one. The fingerprints are stored in a fast-lookup library &mdash; when a similar shape shows up later, it&rsquo;s recognized instantly.</p>
+        <p><strong>Why it matters.</strong> The interesting question wasn&rsquo;t &ldquo;does the model learn?&rdquo; &mdash; it was &ldquo;is the learned shape useful at serving time?&rdquo; The benchmark was head-to-head: brute-force lookup vs. the fast-lookup library, on production-sized load.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>If you have a forecasting workload that needs to live close to where the data is generated &mdash; a meter, a sensor, a POS terminal, a manufacturing line &mdash; we can size a model + lookup library for the hardware you actually have.</p>
+        <div class="modal-stack">
+          <span class="pill">Forecasting</span><span class="pill">Edge-ready</span><span class="pill">Pattern library</span><span class="pill">Compact</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> a forecasting + recognition pair sized for edge deployment, not just leaderboards.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Demand%20Forecaster%20%E2%80%94%20intro">Talk about your data &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-right-sizing">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot physical"></span>Physical &middot; your machine</div>
+        <h3>Right-Sizing Installer</h3>
+        <p class="one-liner">An assistant that scans your machine and installs the private chat experience it can actually run.</p>
+      </div>
+      <div class="modal-visual">
+        <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="600" height="360" fill="#faf9f5"/>
+          <rect x="30" y="40" width="200" height="280" rx="10" fill="#ffffff" stroke="#0b1220" stroke-width="1.4"/>
+          <text x="42" y="62" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#5a6271" letter-spacing="1.5">INSPECTING MACHINE</text>
+          <text x="42" y="92" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">CPU</text>
+          <rect x="42" y="100" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="42" y="100" width="128" height="10" rx="2" fill="#0b1220"/>
+          <text x="42" y="136" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">GPU</text>
+          <rect x="42" y="144" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="42" y="144" width="92" height="10" rx="2" fill="#0b1220"/>
+          <text x="42" y="180" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">RAM</text>
+          <rect x="42" y="188" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="42" y="188" width="156" height="10" rx="2" fill="#0b1220"/>
+          <text x="42" y="224" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="11" fill="#0b1220">STORAGE</text>
+          <rect x="42" y="232" width="170" height="10" rx="2" fill="#ffffff" stroke="#5a6271" stroke-width="0.6"/>
+          <rect x="42" y="232" width="160" height="10" rx="2" fill="#0b1220"/>
+          <text x="42" y="282" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">OS · macOS 14</text>
+          <text x="42" y="302" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">&#10003; SCAN COMPLETE</text>
+          <line x1="244" y1="180" x2="290" y2="180" stroke="#0b1220" stroke-width="1.6"/>
+          <polygon points="294,180 286,176 286,184" fill="#0b1220"/>
+          <rect x="310" y="60" width="260" height="64" rx="10" fill="#ffffff" stroke="#d4d4d8"/>
+          <text x="324" y="82" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#5a6271">Light tier</text>
+          <text x="324" y="104" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick chat · small footprint</text>
+          <rect x="310" y="140" width="260" height="64" rx="10" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
+          <text x="324" y="162" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Balanced tier</text>
+          <text x="324" y="184" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">PICKED FOR THIS MACHINE</text>
+          <rect x="310" y="220" width="260" height="64" rx="10" fill="#ffffff" stroke="#d4d4d8"/>
+          <text x="324" y="242" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#5a6271">Full tier</text>
+          <text x="324" y="264" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">heavy reasoning · more hardware</text>
+          <text x="440" y="320" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271" letter-spacing="1.5">CROSS-PLATFORM &middot; ZERO CLOUD CALLS</text>
+        </svg>
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> Most &ldquo;run AI locally&rdquo; advice ignores the machine in front of you and recommends the same setup regardless. The result is either a model that crawls on under-powered hardware, or one that doesn&rsquo;t use the GPU it could.</p>
+        <p><strong>What we built.</strong> An assistant that starts from the machine. It scans the processor, graphics, memory, storage, and operating system, then installs a tiered always-on chat + search experience matched to what the hardware can actually run. Same install path on macOS, Windows, and Linux. Zero cloud calls in the loop.</p>
+        <p><strong>Why it matters.</strong> The output is a reproducible install, not a Notion doc. Two machines with the same spec get the same setup. A machine with double the memory gets the larger tier automatically.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>If you&rsquo;re trying to roll out private AI across a team with different machines, we can package the installer to match your hardware fleet and your security posture.</p>
+        <div class="modal-stack">
+          <span class="pill">Private</span><span class="pill">Cross-platform</span><span class="pill">Zero cloud</span><span class="pill">Reproducible install</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> a private-by-default install path that matches the chat experience to the hardware.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Right-Sizing%20Installer%20%E2%80%94%20intro">Roll this out to your team &rarr;</a>
+      </div>
+    </template>
+
+    <template id="proj-quantum">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-head">
+        <div class="meta"><span class="dot math"></span>Mathematical &middot; simulation graph</div>
+        <h3>Quantum simulation on a laptop</h3>
+        <p class="one-liner">A 60-qubit quantum circuit simulated on commodity hardware via mathematical simplification.</p>
+      </div>
+      <div class="modal-visual">
+        <img src="assets/img/60qubit_tensor_network.png" alt="Simulation graph for a 60-qubit quantum circuit" />
+      </div>
+      <div class="modal-body">
+        <p><strong>The pattern.</strong> A common reflex when a problem looks expensive to compute is to throw bigger infrastructure at it. But for a large class of problems, the right mathematical trick can collapse the work into something a laptop can do.</p>
+        <p><strong>What we built.</strong> A <strong>60-qubit</strong> quantum circuit simulated on a laptop. The structure of the circuit gets collapsed into something small enough for commodity hardware to compute, then the answer is sampled one step at a time. The output bitstring is recovered via majority vote.</p>
+        <p><strong>Why it matters.</strong> The interesting result isn&rsquo;t the qubit count &mdash; it&rsquo;s that the right mathematical instinct can replace a supercomputer. The same instinct (compress the representation, then compute) shows up across the everyday AI work we ship for customers.</p>
+        <h4>What we&rsquo;d do for you</h4>
+        <p>If you have a workload that &ldquo;feels like it needs more hardware,&rdquo; we can often find a representation that doesn&rsquo;t. That work shows up most often in retrieval, forecasting, and large-batch document processing.</p>
+        <div class="modal-stack">
+          <span class="pill">Research</span><span class="pill">Commodity hardware</span><span class="pill">60-qubit</span><span class="pill">Hackathon</span>
+        </div>
+        <div class="modal-outcome"><strong>Outcome:</strong> the kind of math that lets us replace expensive infrastructure with clever algorithms.</div>
+        <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Frontier%20Compute%20%E2%80%94%20intro">Talk about your workload &rarr;</a>
+      </div>
+    </template>
+
+    <!-- Modal shell -->
+    <dialog id="project-modal" aria-labelledby="modal-title">
+      <div class="modal-content"></div>
+    </dialog>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+      (function () {
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var revealTargets = document.querySelectorAll('section.project, section.past-work');
+        var tocTargets = document.querySelectorAll('section.project, section.past-work');
+
+        // Mark sections visible immediately if reduced-motion
+        if (prefersReduced) {
+          revealTargets.forEach(function (s) { s.classList.add('is-visible'); });
+        } else {
+          var revealIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              }
+            });
+          }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+          revealTargets.forEach(function (s) { revealIO.observe(s); });
+        }
+
+        // TOC current section
+        var toc = document.querySelector('.toc');
+        var tocLinks = document.querySelectorAll('.toc a');
+        var currentIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(function (a) {
+                a.classList.toggle('current', a.getAttribute('href') === '#' + entry.target.id);
+              });
+            }
+          });
+        }, { threshold: 0.4 });
+        tocTargets.forEach(function (s) { currentIO.observe(s); });
+
+        // Show TOC after hero exits
+        var hero = document.querySelector('section.hero');
+        if (hero && toc) {
+          var heroIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              toc.classList.toggle('is-active', !entry.isIntersecting);
+            });
+          }, { threshold: 0.1 });
+          heroIO.observe(hero);
+        }
+
+        // Modal
+        var modal = document.getElementById('project-modal');
+        var modalContent = modal.querySelector('.modal-content');
+
+        function openProject(slug) {
+          var tpl = document.getElementById('proj-' + slug);
+          if (!tpl) return;
+          modalContent.replaceChildren(tpl.content.cloneNode(true));
+          modalContent.scrollTop = 0;
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          } else {
+            modal.setAttribute('open', '');
+          }
+          var closeBtn = modalContent.querySelector('.modal-close');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function () { modal.close(); });
+          }
+        }
+
+        document.querySelectorAll('[data-open]').forEach(function (btn) {
+          btn.addEventListener('click', function () { openProject(btn.dataset.open); });
+        });
+
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) modal.close();
+        });
+      })();
+    </script>
+  </body>
+</html>
