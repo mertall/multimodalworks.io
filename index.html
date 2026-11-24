@@ -403,6 +403,23 @@
       .projects .enterprise .client { color: var(--red); background: rgba(179, 25, 66, 0.08); }
       .projects .desc { font-size: 14px; color: var(--ink-soft); margin-top: 4px; line-height: 1.45; }
       .projects .desc a { font-size: 13px; color: var(--ink-mute); }
+      .projects ul.caps { margin-top: 6px; }
+      .projects ul.caps li {
+        border-top: none;
+        padding: 3px 0 3px 14px;
+        position: relative;
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.45;
+      }
+      .projects ul.caps li::before {
+        content: "·";
+        position: absolute;
+        left: 2px;
+        color: var(--red);
+        font-weight: 700;
+      }
+      .projects ul.caps li strong { color: var(--ink); font-weight: 600; }
       .projects .more { margin-top: 16px; font-size: 14px; }
 
       /* Service-pick list in hero */
@@ -546,23 +563,14 @@
           <li class="enterprise">
             <div class="row1">
               <span class="name">AI Sales Agent</span>
-              <span class="client">Global enterprise &middot; Sales</span>
+              <span class="client">Global enterprise</span>
             </div>
-            <p class="desc">An agent that researches accounts, qualifies inbound leads, and drafts personalized outreach and follow-ups &mdash; logging every touch back to the CRM so reps spend their time on conversations, not data entry.</p>
-          </li>
-          <li class="enterprise">
-            <div class="row1">
-              <span class="name">Invoice Collections &amp; Dunning</span>
-              <span class="client">Global enterprise &middot; Finance / AR</span>
-            </div>
-            <p class="desc">Automated collections that reads open receivables, sends staged dunning emails matched to each account&rsquo;s aging and history, and routes replies &mdash; disputes, promises-to-pay, remittance questions &mdash; to the right person.</p>
-          </li>
-          <li class="enterprise">
-            <div class="row1">
-              <span class="name">Legacy Application Integration</span>
-              <span class="client">Global enterprise &middot; Operations</span>
-            </div>
-            <p class="desc">An AI layer that reads from and writes back to a long-running legacy application with no modern API &mdash; so new agents and workflows plug into the system of record without a costly rewrite.</p>
+            <p class="desc">One agent that runs the revenue workflow end to end, from first outreach to cash collected:</p>
+            <ul class="caps">
+              <li><strong>Sales</strong> &mdash; researches accounts, qualifies leads, and drafts personalized outreach and follow-ups.</li>
+              <li><strong>Invoice collections &amp; dunning</strong> &mdash; reads open receivables, sends staged dunning emails matched to each account&rsquo;s aging and history, and routes replies (disputes, promises-to-pay) to the right person.</li>
+              <li><strong>Legacy application integration</strong> &mdash; reads from and writes back to a long-running legacy system of record with no modern API, so nothing needs a rewrite.</li>
+            </ul>
           </li>
         </ul>
 
