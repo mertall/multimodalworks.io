@@ -6,7 +6,7 @@
     <title>Multimodal Works · AI consulting services</title>
     <meta
       name="description"
-      content="AI consulting services for SMBs and enterprises: sales, back-office, and legacy-system agents, local or cloud, plus custom agentic applications. Initial consultation free."
+      content="AI consulting. We build AI agents that do real work inside your business, for SMBs and enterprises. Free initial consultation."
     />
     <style>
       :root {
@@ -14,544 +14,155 @@
         --ink-soft: #2c3340;
         --ink-mute: #5a6271;
         --paper: #ffffff;
-        --paper-soft: #faf9f5;
-        --rule: #d4d4d8;
+        --rule: #e2e2e6;
         --red: #b31942;
         --navy: #0a3161;
         --ivory: #f5f2e8;
+        --serif: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       }
       * { box-sizing: border-box; }
       html, body {
         margin: 0;
-        padding: 0;
         background: var(--paper);
         color: var(--ink);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-family: var(--sans);
         font-size: 16px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
       }
-      .page {
-        max-width: 640px;
-        margin: 0 auto;
-        padding: 24px 20px 56px;
-      }
-      h1, h2, h3 {
-        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
-        margin: 0;
-        font-weight: 600;
-        letter-spacing: -0.005em;
-      }
-      h1 {
-        font-size: 30px;
-        line-height: 1.1;
-      }
-      h2 {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        color: var(--red);
-        font-weight: 600;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
-        margin-bottom: 12px;
-      }
-      h3 {
-        font-size: 17px;
-        line-height: 1.25;
-        margin-bottom: 4px;
-      }
-      p { margin: 0; }
-      .mono {
-        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      }
-      a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-mute); }
-      a:hover { color: var(--red); border-color: var(--red); }
+      p, h1, h2, ul { margin: 0; padding: 0; }
+      a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+      a:hover { color: var(--red); }
 
-      /* Header: brand + flag */
-      header.top {
+      .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+      section { padding: 56px 0; }
+      .ivory { background: var(--ivory); }
+      .dark { background: var(--ink); color: var(--paper); }
+
+      h2 {
+        font-family: var(--serif);
+        font-size: 26px;
+        line-height: 1.15;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+      h2 .num { color: var(--red); margin-right: 10px; }
+
+      /* Header */
+      header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         gap: 16px;
-        padding-bottom: 10px;
+        padding: 20px 0 12px;
         border-bottom: 1.5px solid var(--ink);
       }
-      .topnav {
-        margin-left: auto;
-        margin-right: 16px;
-      }
-      .topnav a {
+      .wordmark { font-family: var(--serif); font-size: 18px; font-weight: 600; }
+      header nav { margin-left: auto; }
+      header nav a {
+        font-family: var(--mono);
         font-size: 13px;
-        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-        letter-spacing: 0.04em;
-        border-bottom: none;
         color: var(--ink-mute);
+        border: none;
+        margin-left: 14px;
       }
-      .topnav a:hover { color: var(--red); }
-      header.top .wordmark {
-        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+      header nav a:hover { color: var(--red); }
+      .flag { height: 18px; width: auto; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15); }
+
+      /* Hero */
+      .hero { padding: 64px 0; }
+      .hero h1 {
+        font-family: var(--serif);
+        font-size: clamp(32px, 6vw, 44px);
+        line-height: 1.08;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .hero p {
+        margin-top: 16px;
         font-size: 18px;
-        font-weight: 600;
-        letter-spacing: -0.005em;
-      }
-      header.top .wordmark .llc {
-        color: var(--ink-mute);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        margin-left: 6px;
-      }
-      header.top .flag {
-        height: 22px;
-        width: auto;
-        border-radius: 2px;
-        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Accent bar between sections */
-      .accent-bar {
-        height: 3px;
-        margin: 22px 0 18px;
-        background: linear-gradient(
-          to right,
-          var(--red) 0 25%,
-          var(--paper) 25% 50%,
-          var(--navy) 50% 75%,
-          var(--paper) 75% 100%
-        );
-      }
-
-      section { margin-top: 4px; }
-
-      /* Hero block */
-      .hero {
-        margin-top: 22px;
-        margin-bottom: 6px;
-      }
-      .hero .eyebrow {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        color: var(--red);
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-      .hero .tagline {
-        margin-top: 10px;
-        font-size: 17px;
-        line-height: 1.45;
         color: var(--ink-soft);
       }
-      .hero .tagline strong { color: var(--ink); font-weight: 600; }
-      .hero .cta {
-        margin-top: 18px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 14px;
-      }
-      .hero .cta a.primary {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+      .btn {
+        display: inline-block;
+        margin-top: 28px;
         background: var(--ink);
         color: var(--paper);
-        padding: 12px 18px;
+        padding: 13px 22px;
         border-radius: 999px;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 500;
         border: none;
       }
-      .hero .cta a.primary:hover {
-        background: var(--red);
-        color: var(--paper);
-      }
-      .hero .cta a.secondary {
-        font-size: 14px;
-        color: var(--ink-mute);
-        border-bottom: 1px solid var(--ink-mute);
-        padding-bottom: 1px;
-      }
-      .hero .cta a.secondary:hover {
-        color: var(--red);
-        border-color: var(--red);
-      }
+      .btn:hover { background: var(--red); color: var(--paper); }
 
-      /* Workflow list */
-      .workflows ul {
+      /* Services */
+      .services li {
         list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .workflows li {
-        display: flex;
-        gap: 14px;
-        padding: 12px 0;
-        border-top: 1px solid var(--rule);
-      }
-      .workflows li:first-child { border-top: none; }
-      .workflows .icon {
-        width: 34px;
-        height: 34px;
-        flex-shrink: 0;
-        border-radius: 50%;
-        background: rgba(179, 25, 66, 0.08);
-        color: var(--red);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .workflows .icon svg { width: 18px; height: 18px; }
-      .workflows .name {
-        font-weight: 600;
-        color: var(--ink);
-        font-size: 15px;
-      }
-      .workflows .desc {
-        font-size: 14px;
-        color: var(--ink-soft);
-        margin-top: 2px;
-        line-height: 1.4;
-      }
-
-      /* Two delivery modes */
-      .modes {
-        display: grid;
-        gap: 14px;
-      }
-      .mode {
-        border: 1px solid var(--rule);
-        border-radius: 10px;
-        padding: 18px 18px 16px;
-      }
-      .mode.local { border-left: 4px solid var(--red); }
-      .mode.cloud { border-left: 4px solid var(--navy); }
-      .mode.custom { border-left: 4px solid var(--ink); }
-      .mode .lead {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 8px;
-        margin-bottom: 8px;
-      }
-      .mode .lead .tag {
-        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
-        font-size: 11px;
-        color: var(--ink-mute);
-        letter-spacing: 0.04em;
-      }
-      .mode.local .lead .tag { color: var(--red); }
-      .mode.cloud .lead .tag { color: var(--navy); }
-      .mode ul {
-        list-style: none;
-        margin: 6px 0 0;
-        padding: 0;
-      }
-      .mode li {
-        display: flex;
-        gap: 8px;
-        padding: 4px 0;
-        font-size: 14px;
-        color: var(--ink-soft);
-        line-height: 1.45;
-      }
-      .mode li::before {
-        content: "·";
-        color: var(--red);
-        font-weight: 700;
-        flex-shrink: 0;
-      }
-      .mode.cloud li::before { color: var(--navy); }
-      .mode.custom li::before { color: var(--ink); }
-
-      /* Stat tiles row */
-      .stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px;
-      }
-      .stat {
-        border: 1px solid var(--rule);
-        border-radius: 8px;
-        padding: 14px 12px;
-        text-align: left;
-        background: var(--paper-soft);
-      }
-      .stat .n {
-        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
-        font-size: 22px;
-        font-weight: 600;
-        color: var(--ink);
-        line-height: 1;
-      }
-      .stat .l {
-        font-size: 11px;
-        color: var(--ink-mute);
-        margin-top: 6px;
-        line-height: 1.35;
-      }
-
-      /* Engagement stages */
-      .stages {
-        display: grid;
-        gap: 10px;
-      }
-      .stage {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 14px;
-        align-items: baseline;
-        padding: 12px 0;
-        border-top: 1px solid var(--rule);
-      }
-      .stage:first-child { border-top: none; padding-top: 4px; }
-      .stage .when {
-        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--red);
-        white-space: nowrap;
-      }
-      .stage .what {
-        font-size: 14.5px;
-        color: var(--ink-soft);
-      }
-      .stage .what strong { color: var(--ink); font-weight: 600; }
-
-      /* Contact block */
-      .contact-card {
-        border: 1px solid var(--rule);
-        border-radius: 10px;
-        padding: 18px;
-        background: var(--paper-soft);
-      }
-      .contact-card .row {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 12px;
-        padding: 8px 0;
-        font-size: 14px;
-      }
-      .contact-card .row + .row { border-top: 1px solid var(--rule); }
-      .contact-card .label {
-        color: var(--ink-mute);
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-      }
-
-      /* Footer */
-      footer {
-        margin-top: 32px;
-        padding-top: 18px;
-        border-top: 1px solid var(--rule);
-        font-size: 12px;
-        color: var(--ink-mute);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      footer a { font-size: 12px; }
-
-      @media (max-width: 480px) {
-        .page { padding: 18px 18px 48px; }
-        h1 { font-size: 26px; }
-        .stats { grid-template-columns: 1fr; }
-        .stat .n { font-size: 20px; }
-        .topnav { margin-right: 10px; }
-        .topnav a { font-size: 12px; }
-      }
-
-      /* Projects list */
-      .projects .group {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--ink-mute);
-        font-weight: 600;
-        margin: 18px 0 2px;
-      }
-      .projects .group:first-of-type { margin-top: 4px; }
-      .projects ul { list-style: none; margin: 0; padding: 0; }
-      .projects li {
         padding: 14px 0;
+        border-top: 1px solid #ddd6c4;
+      }
+      .services li:first-child { border-top: none; padding-top: 0; }
+      .services strong { display: block; font-size: 17px; }
+      .services li span { color: var(--ink-soft); font-size: 15px; }
+
+      /* Projects */
+      .projects li {
+        list-style: none;
+        padding: 16px 0;
         border-top: 1px solid var(--rule);
       }
-      .projects li:first-child { border-top: none; }
-      .projects .row1 {
+      .projects li:first-child { border-top: none; padding-top: 0; }
+      .projects .top {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        gap: 12px;
+        gap: 4px 12px;
         flex-wrap: wrap;
       }
-      .projects .name { font-weight: 600; font-size: 15.5px; color: var(--ink); }
+      .projects .name { font-weight: 600; font-size: 16.5px; }
       .projects .client {
-        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
-        font-size: 11px;
-        letter-spacing: 0.04em;
-        color: var(--navy);
-        background: rgba(10, 49, 97, 0.07);
-        padding: 3px 8px;
-        border-radius: 999px;
-        white-space: nowrap;
-      }
-      .projects .enterprise .client { color: var(--red); background: rgba(179, 25, 66, 0.08); }
-      .projects .desc { font-size: 14px; color: var(--ink-soft); margin-top: 4px; line-height: 1.45; }
-      .projects .desc a { font-size: 13px; color: var(--ink-mute); }
-      .projects ul.caps { margin-top: 6px; }
-      .projects ul.caps li {
-        border-top: none;
-        padding: 3px 0 3px 14px;
-        position: relative;
-        font-size: 14px;
-        color: var(--ink-soft);
-        line-height: 1.45;
-      }
-      .projects ul.caps li::before {
-        content: "·";
-        position: absolute;
-        left: 2px;
+        font-family: var(--mono);
+        font-size: 11.5px;
         color: var(--red);
-        font-weight: 700;
+        letter-spacing: 0.03em;
       }
-      .projects ul.caps li strong { color: var(--ink); font-weight: 600; }
-      .projects .more { margin-top: 16px; font-size: 14px; }
+      .projects p { margin-top: 4px; font-size: 15px; color: var(--ink-soft); }
+      .projects .all { display: inline-block; margin-top: 24px; font-size: 14px; color: var(--ink-mute); }
 
-      /* Service-pick list in hero */
-      .hero .services-inline {
-        margin-top: 14px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .hero .services-inline span {
-        font-size: 12.5px;
-        border: 1px solid var(--rule);
-        border-radius: 999px;
-        padding: 4px 10px;
-        color: var(--ink-soft);
-        background: var(--paper-soft);
+      /* Contact */
+      .dark h2 { color: var(--paper); }
+      .dark h2 .num { color: #ff8aa6; }
+      .contact p { font-size: 17px; color: rgba(255, 255, 255, 0.8); }
+      .contact .lines { margin-top: 20px; font-size: 18px; line-height: 2; }
+      .contact .lines a { color: var(--paper); border-color: rgba(255, 255, 255, 0.4); }
+      .contact .lines a:hover { color: #ff8aa6; }
+      footer {
+        padding: 20px 0 32px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
       }
 
-
-      /* ===== Section bands (full-bleed backgrounds) ===== */
-      section.band {
-        margin: 0;
-        padding: 52px 0 48px;
-        box-shadow: 0 0 0 100vmax var(--band-bg);
-        clip-path: inset(0 -100vmax);
-        background: var(--band-bg);
-        position: relative;
-      }
-      .band-white { --band-bg: var(--paper); }
-      .band-ivory { --band-bg: var(--ivory); }
-      .band-dark  { --band-bg: var(--ink); color: var(--paper); }
-      section.band + section.band { border-top: none; }
-      .band-white + .band-white::before {
-        content: "";
-        position: absolute; left: 0; right: 0; top: 0;
-        border-top: 1px solid var(--rule);
-      }
-      .sec-head {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        column-gap: 14px;
-        align-items: baseline;
-        margin-bottom: 26px;
-      }
-      .sec-head .num {
-        grid-row: span 2;
-        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
-        font-size: 44px;
-        line-height: 0.9;
-        font-weight: 600;
-        color: var(--red);
-        letter-spacing: -0.02em;
-      }
-      .sec-head h2 { margin: 0 0 4px; }
-      .sec-head .sec-title {
-        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
-        font-size: 24px;
-        line-height: 1.15;
-        font-weight: 600;
-        color: var(--ink);
-      }
-      .band-dark .sec-head h2 { color: #ff8aa6; }
-      .band-dark .sec-head .num { color: #ff8aa6; }
-      .band-dark .sec-head .sec-title { color: var(--paper); }
-      .band-dark .stat {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(255, 255, 255, 0.18);
-      }
-      .band-dark .stat .n { color: var(--paper); }
-      .band-dark .stat .l { color: rgba(255, 255, 255, 0.7); }
-      .band-ivory .mode { background: var(--paper); }
-      .band-ivory .stage { border-top-color: #d9d3c2; }
-      .hero { padding-bottom: 44px; }
-      footer { margin-top: 0; }
-
-      /* Project group cards */
-      .pgroup {
-        border: 1px solid var(--rule);
-        border-top: 4px solid var(--g);
-        border-radius: 10px;
-        padding: 14px 18px 6px;
-        margin-top: 18px;
-        background: var(--paper);
-      }
-      .pgroup:first-of-type { margin-top: 0; }
-      .projects .pgroup .group {
-        margin: 0 0 4px;
-        color: var(--g);
-      }
-      .g-enterprise { --g: var(--red); background: #fdf6f8; }
-      .g-startup    { --g: var(--navy); background: #f4f7fb; }
-      .g-own        { --g: var(--ink); background: var(--paper-soft); }
-      .g-smb        { --g: #2f6b4f; background: #f3f8f5; }
-      .g-research   { --g: var(--ink-mute); background: #f6f6f7; }
-      .pgroup .client { color: var(--g) !important; background: rgba(255,255,255,0.8) !important; border: 1px solid currentColor; }
-      .pgroup li { border-top-color: rgba(0,0,0,0.08); }
       @media (max-width: 480px) {
-        section.band { padding: 40px 0 36px; }
-        .sec-head .num { font-size: 36px; }
-        .sec-head .sec-title { font-size: 21px; }
-        .pgroup { padding: 12px 14px 4px; }
-      }
-
-      @media print {
-        body { font-size: 11pt; }
-        .page { max-width: none; padding: 0; }
-        a { border-bottom: none; }
-        .hero .cta { display: none; }
-        .topnav { display: none; }
-        section.band { box-shadow: none; clip-path: none; background: none; color: var(--ink); padding: 18px 0; }
-        @page { size: letter; margin: 0.5in; }
+        section, .hero { padding: 44px 0; }
+        h2 { font-size: 23px; }
+        header { gap: 10px; }
+        header nav a { margin-left: 10px; font-size: 12px; }
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header class="top">
-        <div class="wordmark">
-          Multimodal Works<span class="llc">LLC</span>
-        </div>
-        <nav class="topnav">
-          <a href="#services">Services</a>
-          &nbsp;&nbsp;<a href="#projects">Projects</a>
-          &nbsp;&nbsp;<a href="work.html">Work</a>
+    <div class="wrap">
+      <header>
+        <div class="wordmark">Multimodal Works</div>
+        <nav>
+          <a href="#projects">Projects</a>
+          <a href="work.html">Work</a>
+          <a href="#contact">Contact</a>
         </nav>
-        <!-- USA flag SVG -->
-        <svg
-          viewBox="0 0 1235 650"
-          class="flag"
-          role="img"
-          aria-label="Made in the USA"
-        >
+        <svg viewBox="0 0 1235 650" class="flag" role="img" aria-label="Made in the USA">
           <rect width="1235" height="650" fill="#ffffff" />
           <g fill="#b31942">
             <rect y="0" width="1235" height="50" />
@@ -565,251 +176,78 @@
           <rect width="494" height="350" fill="#0a3161" />
         </svg>
       </header>
-
-      <section class="hero">
-        <p class="eyebrow">AI consulting services</p>
-        <h1>We design, build, and ship AI agents that do real work inside your business.</h1>
-        <p class="tagline">
-          From a single agent to a production agentic application wired
-          into your existing systems &mdash; for small businesses and global
-          enterprises alike. <strong>Initial consultation is free.</strong>
-        </p>
-        <div class="services-inline" aria-label="Services">
-          <span>Sales &amp; revenue agents</span>
-          <span>Back-office agents</span>
-          <span>Legacy-system agents</span>
-          <span>Private / local agents</span>
-          <span>Cloud agents</span>
-          <span>Custom agentic applications</span>
-        </div>
-        <div class="cta">
-          <a
-            class="primary"
-            href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro"
-          >
-            Book a free consultation
-            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
-            </svg>
-          </a>
-          <a class="secondary" href="#projects">See projects we&rsquo;ve built</a>
-        </div>
-      </section>
-
-      <section class="band band-ivory" id="services">
-        <div class="sec-head"><span class="num">01</span><h2>Consulting services</h2><p class="sec-title">Agents, built three ways.</p></div>
-        <div class="modes">
-          <div class="mode local">
-            <div class="lead">
-              <h3>Local agents · custom-built workstation</h3>
-              <span class="tag">$3,000 station</span>
-            </div>
-            <ul>
-              <li>We custom-build a 128 GB unified-memory workstation at $3,000 flat.</li>
-              <li>Open-source agents that run entirely on your hardware.</li>
-              <li>Example agents: inbox triage, calendar, invoice tracking, payment monitoring, estimate follow-up — and anything else your team does by hand.</li>
-              <li>No data egress · no per-token bills · predictable cost line.</li>
-            </ul>
-          </div>
-          <div class="mode cloud">
-            <div class="lead">
-              <h3>Cloud agents · managed AI services</h3>
-              <span class="tag">faster to ship</span>
-            </div>
-            <ul>
-              <li>Agents built on managed AI services (OpenAI, Anthropic, Google).</li>
-              <li>Same agents as the local option — delivered through managed AI, faster to stand up.</li>
-              <li>Endpoint-by-endpoint map: you know which service sees which part of your data.</li>
-              <li>PII stripped or pseudonymized before egress · plain-SQL audit log of every cloud call.</li>
-            </ul>
-          </div>
-          <div class="mode custom">
-            <div class="lead">
-              <h3>Custom agentic application · full-stack build</h3>
-              <span class="tag">3–6 mo · production</span>
-            </div>
-            <ul>
-              <li>When your problem needs more than a single agent — you need a real agentic application.</li>
-              <li>Full-stack cloud apps: backend (Node / Python · GraphQL / FastAPI), frontend (React), agent layer.</li>
-              <li>Auth, RBAC, audit trails, observability — the boring parts nobody else finishes.</li>
-              <li>SLOs and runbooks handed off at the end so your team owns it cleanly.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="band band-white projects" id="projects">
-        <div class="sec-head"><span class="num">02</span><h2>Projects we&rsquo;ve built</h2><p class="sec-title">Agents in production, by client type.</p></div>
-
-        <div class="pgroup g-enterprise">
-        <p class="group">Enterprise engagements</p>
-        <ul>
-          <li class="enterprise">
-            <div class="row1">
-              <span class="name">AI Sales Agent</span>
-              <span class="client">Global enterprise</span>
-            </div>
-            <p class="desc">One agent that runs the revenue workflow end to end, from first outreach to cash collected:</p>
-            <ul class="caps">
-              <li><strong>Sales</strong> &mdash; researches accounts, qualifies leads, and drafts personalized outreach and follow-ups.</li>
-              <li><strong>Invoice collections &amp; dunning</strong> &mdash; reads open receivables, sends staged dunning emails matched to each account&rsquo;s aging and history, and routes replies (disputes, promises-to-pay) to the right person.</li>
-              <li><strong>Legacy application integration</strong> &mdash; reads from and writes back to a long-running legacy system of record with no modern API, so nothing needs a rewrite.</li>
-            </ul>
-          </li>
-        </ul>
-        </div>
-
-        <div class="pgroup g-startup">
-        <p class="group">Startups</p>
-        <ul>
-          <li>
-            <div class="row1">
-              <span class="name">Tegy &middot; Agent Evals &amp; Cost Optimization</span>
-              <span class="client">AI startup</span>
-            </div>
-            <p class="desc">Built evaluations that benchmark AI agents across models on quality and cost, then routed each agent to the cheapest model that still meets the bar &mdash; cutting spend without giving up output quality.</p>
-          </li>
-        </ul>
-        </div>
-
-        <div class="pgroup g-own">
-        <p class="group">Our own products</p>
-        <ul>
-          <li>
-            <div class="row1">
-              <span class="name">PaveERP &middot; Agentic Sales</span>
-              <span class="client">Our own product</span>
-            </div>
-            <p class="desc">PaveERP is our own ERP product, and agents run all of its sales: prospecting, outreach, follow-ups, and pipeline updates, end to end. It&rsquo;s the same agentic setup we build for clients.</p>
-          </li>
-        </ul>
-        </div>
-
-        <div class="pgroup g-smb">
-        <p class="group">Small &amp; mid-sized businesses</p>
-        <ul>
-          <li>
-            <div class="row1">
-              <span class="name">Live Job Costing</span>
-              <span class="client">Project-based SMB</span>
-            </div>
-            <p class="desc">Every bill, purchase, and payroll line coded to a job the moment it hits QuickBooks &mdash; margin visible mid-build, not at year-end. <a href="work.html#job-costing">Case study &rarr;</a></p>
-          </li>
-          <li>
-            <div class="row1">
-              <span class="name">Operational Intelligence Agent</span>
-              <span class="client">CRM-driven SMB</span>
-            </div>
-            <p class="desc">An agent that works directly against CRM and financial data, with a memory graph that actually remembers accounts, deals, and decisions. <a href="work.html#operational-intelligence">Case study &rarr;</a></p>
-          </li>
-          <li>
-            <div class="row1">
-              <span class="name">Private AI Workstation</span>
-              <span class="client">Small office</span>
-            </div>
-            <p class="desc">A $3,000 on-site machine running a full AI agent with memory and an audit trail. Nothing leaves the building. <a href="work.html#local-ai">Case study &rarr;</a></p>
-          </li>
-          <li>
-            <div class="row1">
-              <span class="name">Visual Search Platform</span>
-              <span class="client">Catalog-driven business</span>
-            </div>
-            <p class="desc">Search across images and text together, tuned on the customer&rsquo;s own catalog for a 20% lift in top-10 results. <a href="work.html#vision-search">Case study &rarr;</a></p>
-          </li>
-          <li>
-            <div class="row1">
-              <span class="name">Right-Sizing Installer</span>
-              <span class="client">Individuals &amp; small teams</span>
-            </div>
-            <p class="desc">Scans a machine and installs the private agent stack it can actually run &mdash; macOS, Windows, and Linux. <a href="work.html#right-sizing">Case study &rarr;</a></p>
-          </li>
-        </ul>
-        </div>
-
-        <div class="pgroup g-research">
-        <p class="group">Research &amp; R&amp;D</p>
-        <ul>
-          <li>
-            <div class="row1">
-              <span class="name">Demand Forecaster</span>
-              <span class="client">R&amp;D &middot; edge deployment</span>
-            </div>
-            <p class="desc">A compact forecasting engine trained inside a 10-hour budget, sized for edge hardware. <a href="work.html#demand-forecaster">Case study &rarr;</a></p>
-          </li>
-          <li>
-            <div class="row1">
-              <span class="name">Quantum simulation on a laptop</span>
-              <span class="client">Research &middot; hackathon</span>
-            </div>
-            <p class="desc">A 60-qubit circuit simulated on commodity hardware through mathematical simplification. <a href="work.html#quantum">Case study &rarr;</a></p>
-          </li>
-        </ul>
-        </div>
-
-        <p class="more"><a href="work.html">Full portfolio &amp; past enterprise work &rarr;</a></p>
-      </section>
-
-      <section class="band band-ivory">
-        <div class="sec-head"><span class="num">03</span><h2>Engagement model</h2><p class="sec-title">From free call to production.</p></div>
-        <div class="stages">
-          <div class="stage">
-            <span class="when">30 min</span>
-            <span class="what"><strong>Initial consultation. Free.</strong> 30-minute call · scope clarification · is-this-a-fit check.</span>
-          </div>
-          <div class="stage">
-            <span class="when">1 wk</span>
-            <span class="what"><strong>Paid scoping sprint · $5,000 flat.</strong> Working demo against your real data, architecture diagram, hard cost estimate, written runbook if you want to stop here and DIY.</span>
-          </div>
-          <div class="stage">
-            <span class="when">4–6 wk</span>
-            <span class="what"><strong>Prototype.</strong> Customer-shippable, instrumented, in your environment.</span>
-          </div>
-          <div class="stage">
-            <span class="when">~3 mo</span>
-            <span class="what"><strong>MVP shipped.</strong> Production patterns, deployment story your team can run.</span>
-          </div>
-          <div class="stage">
-            <span class="when">~6 mo</span>
-            <span class="what"><strong>Production-hardened.</strong> SLOs, observability, rollback paths, runbooks, handoff.</span>
-          </div>
-        </div>
-        <p style="margin-top: 18px; font-size: 13px; color: var(--ink-mute); line-height: 1.5;">
-          Initial consultation is free. The 1-week scoping sprint is
-          <strong style="color: var(--ink);">$5,000 flat</strong> — the only
-          paid commitment before a full engagement is quoted.
-        </p>
-      </section>
-
-      <section class="band band-white" id="contact">
-        <div class="sec-head"><span class="num">04</span><h2>Get in touch</h2><p class="sec-title">Start with a free 30-minute call.</p></div>
-        <div class="contact-card">
-          <div class="row">
-            <span class="label">Email</span>
-            <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a>
-          </div>
-          <div class="row">
-            <span class="label">Phone</span>
-            <a href="tel:+13128699705">+1 (312) 869-9705</a>
-          </div>
-          <div class="row">
-            <span class="label">GitHub</span>
-            <a href="https://github.com/mertall">github.com/mertall</a>
-          </div>
-          <div class="row">
-            <span class="label">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/mridul-s-56738a149">mridul-s</a>
-          </div>
-          <div class="row">
-            <span class="label">Based</span>
-            <span>Greater Chicago Area</span>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <span>Multimodal Works LLC · © 2026 · Greater Chicago Area</span>
-        <a href="https://github.com/mertall">github.com/mertall →</a>
-      </footer>
     </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <h1>AI agents that do real work inside your business.</h1>
+        <p>We design, build, and ship them, for small businesses and global enterprises. The first consultation is free.</p>
+        <a class="btn" href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">Book a free consultation &rarr;</a>
+      </div>
+    </section>
+
+    <section class="ivory services">
+      <div class="wrap">
+        <h2><span class="num">01</span>What we build</h2>
+        <ul>
+          <li><strong>Agents</strong><span>Sales, collections, back-office, and operations agents that run alongside your team.</span></li>
+          <li><strong>Agents on your systems</strong><span>Wired into your CRM, ERP, finance tools, and legacy applications. No rewrite needed.</span></li>
+          <li><strong>Private or cloud</strong><span>Run on your own hardware so data never leaves the building, or on managed cloud AI.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="wrap">
+        <h2><span class="num">02</span>Projects we&rsquo;ve built</h2>
+        <ul>
+          <li>
+            <div class="top"><span class="name">AI Sales Agent</span><span class="client">Global enterprise</span></div>
+            <p>Handles sales outreach and invoice collections and dunning, and reads and writes against a legacy system of record.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Agent Evals &amp; Cost Optimization</span><span class="client">Tegy &middot; AI startup</span></div>
+            <p>Benchmarked agents across models, then routed each to the cheapest model that still meets the bar.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Agentic Sales</span><span class="client">PaveERP &middot; our own product</span></div>
+            <p>Agents run all of PaveERP&rsquo;s sales, from prospecting to pipeline.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Live Job Costing</span><span class="client">Project-based SMB</span></div>
+            <p>Every cost coded to a job the moment it hits QuickBooks, so margin is visible mid-build.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Operational Intelligence Agent</span><span class="client">CRM-driven SMB</span></div>
+            <p>An agent on CRM and financial data that remembers accounts, deals, and decisions.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Private AI Workstation</span><span class="client">Small office</span></div>
+            <p>An on-site AI agent with memory and an audit trail. Nothing leaves the building.</p>
+          </li>
+          <li>
+            <div class="top"><span class="name">Visual Search Platform</span><span class="client">Catalog-driven business</span></div>
+            <p>Search across images and text, tuned on the customer&rsquo;s own catalog.</p>
+          </li>
+        </ul>
+        <a class="all" href="work.html">Full portfolio &rarr;</a>
+      </div>
+    </section>
+
+    <section class="dark contact" id="contact">
+      <div class="wrap">
+        <h2><span class="num">03</span>Get in touch</h2>
+        <p>Start with a free 30-minute call.</p>
+        <div class="lines">
+          <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a><br />
+          <a href="tel:+13128699705">+1 (312) 869-9705</a><br />
+          <a href="https://www.linkedin.com/in/mridul-s-56738a149">LinkedIn</a> &middot;
+          <a href="https://github.com/mertall">GitHub</a>
+        </div>
+      </div>
+    </section>
+    <footer class="dark">
+      <div class="wrap">Multimodal Works LLC &middot; Greater Chicago Area &middot; &copy; 2026</div>
+    </footer>
   </body>
 </html>
