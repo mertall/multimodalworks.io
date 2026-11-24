@@ -6,7 +6,7 @@
     <title>Multimodal Works · AI consulting services</title>
     <meta
       name="description"
-      content="AI consulting services for SMBs and enterprises: AI agents, legacy-system integration, local AI, cloud AI, and custom applications. Initial consultation free."
+      content="AI consulting services for SMBs and enterprises: sales, back-office, and legacy-system agents, local or cloud, plus custom agentic applications. Initial consultation free."
     />
     <style>
       :root {
@@ -438,12 +438,98 @@
         background: var(--paper-soft);
       }
 
+
+      /* ===== Section bands (full-bleed backgrounds) ===== */
+      section.band {
+        margin: 0;
+        padding: 52px 0 48px;
+        box-shadow: 0 0 0 100vmax var(--band-bg);
+        clip-path: inset(0 -100vmax);
+        background: var(--band-bg);
+        position: relative;
+      }
+      .band-white { --band-bg: var(--paper); }
+      .band-ivory { --band-bg: var(--ivory); }
+      .band-dark  { --band-bg: var(--ink); color: var(--paper); }
+      section.band + section.band { border-top: none; }
+      .band-white + .band-white::before {
+        content: "";
+        position: absolute; left: 0; right: 0; top: 0;
+        border-top: 1px solid var(--rule);
+      }
+      .sec-head {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 14px;
+        align-items: baseline;
+        margin-bottom: 26px;
+      }
+      .sec-head .num {
+        grid-row: span 2;
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 44px;
+        line-height: 0.9;
+        font-weight: 600;
+        color: var(--red);
+        letter-spacing: -0.02em;
+      }
+      .sec-head h2 { margin: 0 0 4px; }
+      .sec-head .sec-title {
+        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
+        font-size: 24px;
+        line-height: 1.15;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .band-dark .sec-head h2 { color: #ff8aa6; }
+      .band-dark .sec-head .num { color: #ff8aa6; }
+      .band-dark .sec-head .sec-title { color: var(--paper); }
+      .band-dark .stat {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+      .band-dark .stat .n { color: var(--paper); }
+      .band-dark .stat .l { color: rgba(255, 255, 255, 0.7); }
+      .band-ivory .mode { background: var(--paper); }
+      .band-ivory .stage { border-top-color: #d9d3c2; }
+      .hero { padding-bottom: 44px; }
+      footer { margin-top: 0; }
+
+      /* Project group cards */
+      .pgroup {
+        border: 1px solid var(--rule);
+        border-top: 4px solid var(--g);
+        border-radius: 10px;
+        padding: 14px 18px 6px;
+        margin-top: 18px;
+        background: var(--paper);
+      }
+      .pgroup:first-of-type { margin-top: 0; }
+      .projects .pgroup .group {
+        margin: 0 0 4px;
+        color: var(--g);
+      }
+      .g-enterprise { --g: var(--red); background: #fdf6f8; }
+      .g-startup    { --g: var(--navy); background: #f4f7fb; }
+      .g-own        { --g: var(--ink); background: var(--paper-soft); }
+      .g-smb        { --g: #2f6b4f; background: #f3f8f5; }
+      .g-research   { --g: var(--ink-mute); background: #f6f6f7; }
+      .pgroup .client { color: var(--g) !important; background: rgba(255,255,255,0.8) !important; border: 1px solid currentColor; }
+      .pgroup li { border-top-color: rgba(0,0,0,0.08); }
+      @media (max-width: 480px) {
+        section.band { padding: 40px 0 36px; }
+        .sec-head .num { font-size: 36px; }
+        .sec-head .sec-title { font-size: 21px; }
+        .pgroup { padding: 12px 14px 4px; }
+      }
+
       @media print {
         body { font-size: 11pt; }
         .page { max-width: none; padding: 0; }
         a { border-bottom: none; }
         .hero .cta { display: none; }
         .topnav { display: none; }
+        section.band { box-shadow: none; clip-path: none; background: none; color: var(--ink); padding: 18px 0; }
         @page { size: letter; margin: 0.5in; }
       }
     </style>
@@ -482,18 +568,19 @@
 
       <section class="hero">
         <p class="eyebrow">AI consulting services</p>
-        <h1>We design, build, and ship AI that does real work inside your business.</h1>
+        <h1>We design, build, and ship AI agents that do real work inside your business.</h1>
         <p class="tagline">
-          From a single automated workflow to a production application wired
+          From a single agent to a production agentic application wired
           into your existing systems &mdash; for small businesses and global
           enterprises alike. <strong>Initial consultation is free.</strong>
         </p>
         <div class="services-inline" aria-label="Services">
-          <span>AI agents &amp; automation</span>
-          <span>Legacy-system integration</span>
-          <span>Local / private AI</span>
-          <span>Cloud AI</span>
-          <span>Custom applications</span>
+          <span>Sales &amp; revenue agents</span>
+          <span>Back-office agents</span>
+          <span>Legacy-system agents</span>
+          <span>Private / local agents</span>
+          <span>Cloud agents</span>
+          <span>Custom agentic applications</span>
         </div>
         <div class="cta">
           <a
@@ -509,43 +596,41 @@
         </div>
       </section>
 
-      <div class="accent-bar"></div>
-
-      <section id="services">
-        <h2>Consulting services</h2>
+      <section class="band band-ivory" id="services">
+        <div class="sec-head"><span class="num">01</span><h2>Consulting services</h2><p class="sec-title">Agents, built three ways.</p></div>
         <div class="modes">
           <div class="mode local">
             <div class="lead">
-              <h3>Local AI · custom-built workstation</h3>
+              <h3>Local agents · custom-built workstation</h3>
               <span class="tag">$3,000 station</span>
             </div>
             <ul>
               <li>We custom-build a 128 GB unified-memory workstation at $3,000 flat.</li>
-              <li>Open-source AI pipelines that run entirely on your hardware.</li>
-              <li>Examples: inbox triage, calendar automation, invoice tracking, payment monitoring, estimate follow-up — and anything else that fits a workflow.</li>
+              <li>Open-source agents that run entirely on your hardware.</li>
+              <li>Example agents: inbox triage, calendar, invoice tracking, payment monitoring, estimate follow-up — and anything else your team does by hand.</li>
               <li>No data egress · no per-token bills · predictable cost line.</li>
             </ul>
           </div>
           <div class="mode cloud">
             <div class="lead">
-              <h3>Cloud AI · managed services</h3>
+              <h3>Cloud agents · managed AI services</h3>
               <span class="tag">faster to ship</span>
             </div>
             <ul>
-              <li>Pre-built integrations with managed AI services (OpenAI, Anthropic, Google).</li>
-              <li>Same workflow categories as Local AI — delivered through managed AI, faster to stand up.</li>
+              <li>Agents built on managed AI services (OpenAI, Anthropic, Google).</li>
+              <li>Same agents as the local option — delivered through managed AI, faster to stand up.</li>
               <li>Endpoint-by-endpoint map: you know which service sees which part of your data.</li>
               <li>PII stripped or pseudonymized before egress · plain-SQL audit log of every cloud call.</li>
             </ul>
           </div>
           <div class="mode custom">
             <div class="lead">
-              <h3>Custom application · full-stack build</h3>
+              <h3>Custom agentic application · full-stack build</h3>
               <span class="tag">3–6 mo · production</span>
             </div>
             <ul>
-              <li>When your problem doesn't fit a workflow template — you need a real application.</li>
-              <li>Full-stack cloud apps: backend (Node / Python · GraphQL / FastAPI), frontend (React), AI service.</li>
+              <li>When your problem needs more than a single agent — you need a real agentic application.</li>
+              <li>Full-stack cloud apps: backend (Node / Python · GraphQL / FastAPI), frontend (React), agent layer.</li>
               <li>Auth, RBAC, audit trails, observability — the boring parts nobody else finishes.</li>
               <li>SLOs and runbooks handed off at the end so your team owns it cleanly.</li>
             </ul>
@@ -553,11 +638,10 @@
         </div>
       </section>
 
-      <div class="accent-bar"></div>
+      <section class="band band-white projects" id="projects">
+        <div class="sec-head"><span class="num">02</span><h2>Projects we&rsquo;ve built</h2><p class="sec-title">Agents in production, by client type.</p></div>
 
-      <section class="projects" id="projects">
-        <h2>Projects we&rsquo;ve built</h2>
-
+        <div class="pgroup g-enterprise">
         <p class="group">Enterprise engagements</p>
         <ul>
           <li class="enterprise">
@@ -573,29 +657,35 @@
             </ul>
           </li>
         </ul>
+        </div>
 
+        <div class="pgroup g-startup">
         <p class="group">Startups</p>
         <ul>
           <li>
             <div class="row1">
-              <span class="name">Tegy &middot; Skill Evals &amp; Cost Optimization</span>
+              <span class="name">Tegy &middot; Agent Evals &amp; Cost Optimization</span>
               <span class="client">AI startup</span>
             </div>
-            <p class="desc">Built evaluations that benchmark AI skills across models on quality and cost, then used the results to route each skill to the cheapest model that still meets the bar &mdash; cutting spend without giving up output quality.</p>
+            <p class="desc">Built evaluations that benchmark AI agents across models on quality and cost, then routed each agent to the cheapest model that still meets the bar &mdash; cutting spend without giving up output quality.</p>
           </li>
         </ul>
+        </div>
 
+        <div class="pgroup g-own">
         <p class="group">Our own products</p>
         <ul>
           <li>
             <div class="row1">
-              <span class="name">PaveERP &middot; AI Sales Plugin &amp; Skills</span>
+              <span class="name">PaveERP &middot; Agentic Sales</span>
               <span class="client">Our own product</span>
             </div>
-            <p class="desc">PaveERP is our own ERP product, and AI runs all of its sales. We built a sales plugin and a library of AI skills that handle the whole sales process (prospecting, outreach, follow-ups, and pipeline updates) end to end. We use the same setup we build for clients.</p>
+            <p class="desc">PaveERP is our own ERP product, and agents run all of its sales: prospecting, outreach, follow-ups, and pipeline updates, end to end. It&rsquo;s the same agentic setup we build for clients.</p>
           </li>
         </ul>
+        </div>
 
+        <div class="pgroup g-smb">
         <p class="group">Small &amp; mid-sized businesses</p>
         <ul>
           <li>
@@ -610,14 +700,14 @@
               <span class="name">Operational Intelligence Agent</span>
               <span class="client">CRM-driven SMB</span>
             </div>
-            <p class="desc">An assistant that works directly against CRM and financial data, with a memory graph that actually remembers accounts, deals, and decisions. <a href="work.html#operational-intelligence">Case study &rarr;</a></p>
+            <p class="desc">An agent that works directly against CRM and financial data, with a memory graph that actually remembers accounts, deals, and decisions. <a href="work.html#operational-intelligence">Case study &rarr;</a></p>
           </li>
           <li>
             <div class="row1">
               <span class="name">Private AI Workstation</span>
               <span class="client">Small office</span>
             </div>
-            <p class="desc">A $3,000 on-site machine running a full AI assistant with memory and an audit trail. Nothing leaves the building. <a href="work.html#local-ai">Case study &rarr;</a></p>
+            <p class="desc">A $3,000 on-site machine running a full AI agent with memory and an audit trail. Nothing leaves the building. <a href="work.html#local-ai">Case study &rarr;</a></p>
           </li>
           <li>
             <div class="row1">
@@ -631,10 +721,12 @@
               <span class="name">Right-Sizing Installer</span>
               <span class="client">Individuals &amp; small teams</span>
             </div>
-            <p class="desc">Scans a machine and installs the private chat + search stack it can actually run &mdash; macOS, Windows, and Linux. <a href="work.html#right-sizing">Case study &rarr;</a></p>
+            <p class="desc">Scans a machine and installs the private agent stack it can actually run &mdash; macOS, Windows, and Linux. <a href="work.html#right-sizing">Case study &rarr;</a></p>
           </li>
         </ul>
+        </div>
 
+        <div class="pgroup g-research">
         <p class="group">Research &amp; R&amp;D</p>
         <ul>
           <li>
@@ -652,22 +744,21 @@
             <p class="desc">A 60-qubit circuit simulated on commodity hardware through mathematical simplification. <a href="work.html#quantum">Case study &rarr;</a></p>
           </li>
         </ul>
+        </div>
 
         <p class="more"><a href="work.html">Full portfolio &amp; past enterprise work &rarr;</a></p>
       </section>
 
-      <div class="accent-bar"></div>
-
-      <section>
-        <h2>The numbers</h2>
+      <section class="band band-dark">
+        <div class="sec-head"><span class="num">03</span><h2>The numbers</h2><p class="sec-title">What it costs, how fast it ships.</p></div>
         <div class="stats">
           <div class="stat">
             <div class="n">$3,000</div>
-            <div class="l">Custom-built local AI station · 128 GB unified memory</div>
+            <div class="l">Custom-built local agent station · 128 GB unified memory</div>
           </div>
           <div class="stat">
             <div class="n">~3 mo</div>
-            <div class="l">Typical local-AI payback vs a $1k/mo cloud LLM bill</div>
+            <div class="l">Typical local-agent payback vs a $1k/mo cloud LLM bill</div>
           </div>
           <div class="stat">
             <div class="n">3–6 mo</div>
@@ -676,10 +767,8 @@
         </div>
       </section>
 
-      <div class="accent-bar"></div>
-
-      <section>
-        <h2>Engagement model</h2>
+      <section class="band band-ivory">
+        <div class="sec-head"><span class="num">04</span><h2>Engagement model</h2><p class="sec-title">From free call to production.</p></div>
         <div class="stages">
           <div class="stage">
             <span class="when">30 min</span>
@@ -709,10 +798,8 @@
         </p>
       </section>
 
-      <div class="accent-bar"></div>
-
-      <section>
-        <h2>Get in touch</h2>
+      <section class="band band-white" id="contact">
+        <div class="sec-head"><span class="num">05</span><h2>Get in touch</h2><p class="sec-title">Start with a free 30-minute call.</p></div>
         <div class="contact-card">
           <div class="row">
             <span class="label">Email</span>
