@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Multimodal Works · AI consulting for SMBs</title>
+    <title>Multimodal Works · AI consulting services</title>
     <meta
       name="description"
-      content="AI consulting. Three ways to ship AI in your business: Local AI, Cloud AI, Custom application. Initial consultation free."
+      content="AI consulting services for SMBs and enterprises: AI agents, legacy-system integration, local AI, cloud AI, and custom applications. Initial consultation free."
     />
     <style>
       :root {
@@ -366,74 +366,59 @@
         .topnav a { font-size: 12px; }
       }
 
-      /* Hero banner — full-width portfolio promo at top of page */
-      .hero-banner {
-        display: block;
-        background: var(--ink);
-        color: var(--paper);
-        text-decoration: none;
-        border-bottom: none;
-        padding: 56px 28px;
-        position: relative;
-        overflow: hidden;
-        transition: background 300ms ease;
-      }
-      .hero-banner:hover {
-        background: var(--red);
-        color: var(--paper);
-        border-bottom: none;
-      }
-      .hero-banner-inner {
-        max-width: 640px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-      .hero-banner .eyebrow {
+      /* Projects list */
+      .projects .group {
         font-size: 11px;
         text-transform: uppercase;
-        letter-spacing: 0.22em;
-        color: rgba(255, 255, 255, 0.65);
+        letter-spacing: 0.18em;
+        color: var(--ink-mute);
         font-weight: 600;
-        margin: 0 0 14px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+        margin: 18px 0 2px;
       }
-      .hero-banner .headline {
-        font-family: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
-        font-size: clamp(34px, 5.4vw, 56px);
-        line-height: 1.04;
-        font-weight: 600;
-        margin: 0 0 14px;
-        letter-spacing: -0.01em;
-        color: var(--paper);
+      .projects .group:first-of-type { margin-top: 4px; }
+      .projects ul { list-style: none; margin: 0; padding: 0; }
+      .projects li {
+        padding: 14px 0;
+        border-top: 1px solid var(--rule);
       }
-      .hero-banner .headline .arrow {
-        display: inline-block;
-        transition: transform 240ms ease;
-        margin-left: 4px;
+      .projects li:first-child { border-top: none; }
+      .projects .row1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
       }
-      .hero-banner:hover .headline .arrow { transform: translateX(8px); }
-      .hero-banner .sub {
-        font-size: 15px;
-        line-height: 1.55;
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 52ch;
-        margin: 0;
+      .projects .name { font-weight: 600; font-size: 15.5px; color: var(--ink); }
+      .projects .client {
+        font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        color: var(--navy);
+        background: rgba(10, 49, 97, 0.07);
+        padding: 3px 8px;
+        border-radius: 999px;
+        white-space: nowrap;
       }
-      .hero-banner .stripe {
-        position: absolute;
-        right: 0; top: 0; bottom: 0;
-        width: 6px;
-        background: linear-gradient(
-          to bottom,
-          var(--red) 0 33%,
-          var(--paper) 33% 66%,
-          var(--navy) 66% 100%
-        );
-        opacity: 0.85;
+      .projects .enterprise .client { color: var(--red); background: rgba(179, 25, 66, 0.08); }
+      .projects .desc { font-size: 14px; color: var(--ink-soft); margin-top: 4px; line-height: 1.45; }
+      .projects .desc a { font-size: 13px; color: var(--ink-mute); }
+      .projects .more { margin-top: 16px; font-size: 14px; }
+
+      /* Service-pick list in hero */
+      .hero .services-inline {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
-      @media (max-width: 480px) {
-        .hero-banner { padding: 36px 18px; }
+      .hero .services-inline span {
+        font-size: 12.5px;
+        border: 1px solid var(--rule);
+        border-radius: 999px;
+        padding: 4px 10px;
+        color: var(--ink-soft);
+        background: var(--paper-soft);
       }
 
       @media print {
@@ -442,25 +427,20 @@
         a { border-bottom: none; }
         .hero .cta { display: none; }
         .topnav { display: none; }
-        .hero-banner { display: none; }
         @page { size: letter; margin: 0.5in; }
       }
     </style>
   </head>
   <body>
-    <a class="hero-banner" href="work.html" aria-label="Projects we have built">
-      <span class="stripe" aria-hidden="true"></span>
-      <div class="hero-banner-inner">
-        <h2 class="headline">Projects we have built<span class="arrow"> →</span></h2>
-      </div>
-    </a>
     <div class="page">
       <header class="top">
         <div class="wordmark">
           Multimodal Works<span class="llc">LLC</span>
         </div>
         <nav class="topnav">
-          <a href="work.html">Work</a>
+          <a href="#services">Services</a>
+          &nbsp;&nbsp;<a href="#projects">Projects</a>
+          &nbsp;&nbsp;<a href="work.html">Work</a>
         </nav>
         <!-- USA flag SVG -->
         <svg
@@ -484,31 +464,38 @@
       </header>
 
       <section class="hero">
-        <p class="eyebrow">
-          AI consulting · Local AI · Cloud AI · Custom application
-        </p>
-        <h1>Three ways to ship Multimodal Works into your business.</h1>
+        <p class="eyebrow">AI consulting services</p>
+        <h1>We design, build, and ship AI that does real work inside your business.</h1>
         <p class="tagline">
-          Pick the engagement shape that fits your data, your timeline, and
-          your budget. <strong>Initial consultation is free.</strong>
+          From a single automated workflow to a production application wired
+          into your existing systems &mdash; for small businesses and global
+          enterprises alike. <strong>Initial consultation is free.</strong>
         </p>
+        <div class="services-inline" aria-label="Services">
+          <span>AI agents &amp; automation</span>
+          <span>Legacy-system integration</span>
+          <span>Local / private AI</span>
+          <span>Cloud AI</span>
+          <span>Custom applications</span>
+        </div>
         <div class="cta">
           <a
             class="primary"
             href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro"
           >
-            mridul@multimodalworks.io
+            Book a free consultation
             <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
               <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L10.94 10 7.23 6.29a.75.75 0 111.06-1.06l4.24 4.24a.75.75 0 010 1.06l-4.24 4.24a.75.75 0 01-1.08.02z" clip-rule="evenodd" />
             </svg>
           </a>
+          <a class="secondary" href="#projects">See projects we&rsquo;ve built</a>
         </div>
       </section>
 
       <div class="accent-bar"></div>
 
-      <section>
-        <h2>What we do</h2>
+      <section id="services">
+        <h2>Consulting services</h2>
         <div class="modes">
           <div class="mode local">
             <div class="lead">
@@ -547,6 +534,96 @@
             </ul>
           </div>
         </div>
+      </section>
+
+      <div class="accent-bar"></div>
+
+      <section class="projects" id="projects">
+        <h2>Projects we&rsquo;ve built</h2>
+
+        <p class="group">Enterprise engagements</p>
+        <ul>
+          <li class="enterprise">
+            <div class="row1">
+              <span class="name">AI Sales Agent</span>
+              <span class="client">Global enterprise &middot; Sales</span>
+            </div>
+            <p class="desc">An agent that researches accounts, qualifies inbound leads, and drafts personalized outreach and follow-ups &mdash; logging every touch back to the CRM so reps spend their time on conversations, not data entry.</p>
+          </li>
+          <li class="enterprise">
+            <div class="row1">
+              <span class="name">Invoice Collections &amp; Dunning</span>
+              <span class="client">Global enterprise &middot; Finance / AR</span>
+            </div>
+            <p class="desc">Automated collections that reads open receivables, sends staged dunning emails matched to each account&rsquo;s aging and history, and routes replies &mdash; disputes, promises-to-pay, remittance questions &mdash; to the right person.</p>
+          </li>
+          <li class="enterprise">
+            <div class="row1">
+              <span class="name">Legacy Application Integration</span>
+              <span class="client">Global enterprise &middot; Operations</span>
+            </div>
+            <p class="desc">An AI layer that reads from and writes back to a long-running legacy application with no modern API &mdash; so new agents and workflows plug into the system of record without a costly rewrite.</p>
+          </li>
+        </ul>
+
+        <p class="group">Small &amp; mid-sized businesses</p>
+        <ul>
+          <li>
+            <div class="row1">
+              <span class="name">Live Job Costing</span>
+              <span class="client">Project-based SMB</span>
+            </div>
+            <p class="desc">Every bill, purchase, and payroll line coded to a job the moment it hits QuickBooks &mdash; margin visible mid-build, not at year-end. <a href="work.html#job-costing">Case study &rarr;</a></p>
+          </li>
+          <li>
+            <div class="row1">
+              <span class="name">Operational Intelligence Agent</span>
+              <span class="client">CRM-driven SMB</span>
+            </div>
+            <p class="desc">An assistant that works directly against CRM and financial data, with a memory graph that actually remembers accounts, deals, and decisions. <a href="work.html#operational-intelligence">Case study &rarr;</a></p>
+          </li>
+          <li>
+            <div class="row1">
+              <span class="name">Private AI Workstation</span>
+              <span class="client">Small office</span>
+            </div>
+            <p class="desc">A $3,000 on-site machine running a full AI assistant with memory and an audit trail. Nothing leaves the building. <a href="work.html#local-ai">Case study &rarr;</a></p>
+          </li>
+          <li>
+            <div class="row1">
+              <span class="name">Visual Search Platform</span>
+              <span class="client">Catalog-driven business</span>
+            </div>
+            <p class="desc">Search across images and text together, tuned on the customer&rsquo;s own catalog for a 20% lift in top-10 results. <a href="work.html#vision-search">Case study &rarr;</a></p>
+          </li>
+          <li>
+            <div class="row1">
+              <span class="name">Right-Sizing Installer</span>
+              <span class="client">Individuals &amp; small teams</span>
+            </div>
+            <p class="desc">Scans a machine and installs the private chat + search stack it can actually run &mdash; macOS, Windows, and Linux. <a href="work.html#right-sizing">Case study &rarr;</a></p>
+          </li>
+        </ul>
+
+        <p class="group">Research &amp; R&amp;D</p>
+        <ul>
+          <li>
+            <div class="row1">
+              <span class="name">Demand Forecaster</span>
+              <span class="client">R&amp;D &middot; edge deployment</span>
+            </div>
+            <p class="desc">A compact forecasting engine trained inside a 10-hour budget, sized for edge hardware. <a href="work.html#demand-forecaster">Case study &rarr;</a></p>
+          </li>
+          <li>
+            <div class="row1">
+              <span class="name">Quantum simulation on a laptop</span>
+              <span class="client">Research &middot; hackathon</span>
+            </div>
+            <p class="desc">A 60-qubit circuit simulated on commodity hardware through mathematical simplification. <a href="work.html#quantum">Case study &rarr;</a></p>
+          </li>
+        </ul>
+
+        <p class="more"><a href="work.html">Full portfolio &amp; past enterprise work &rarr;</a></p>
       </section>
 
       <div class="accent-bar"></div>
