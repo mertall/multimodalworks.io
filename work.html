@@ -6,7 +6,7 @@
     <title>Selected work · Multimodal Works</title>
     <meta
       name="description"
-      content="Selected work from Multimodal Works LLC — private AI workstations, live job costing tied to QuickBooks, operational AI assistants, visual search, forecasting, right-sizing installers, and quantum simulation on commodity hardware."
+      content="Selected work from Multimodal Works LLC — AI agents for sales, collections, and legacy systems, agent evals and cost optimization, private AI workstations, live job costing tied to QuickBooks, operational agents, visual search, forecasting, and more."
     />
     <link rel="stylesheet" href="styles.css?v=2026-05-18b" />
     <style>
@@ -279,6 +279,7 @@
       .project-info .deep-dive:hover .arrow { transform: translateX(3px); }
 
       /* ============ PAST WORK ============ */
+      section.past-work.recent { border-top: none; padding-top: 72px; }
       section.past-work {
         max-width: 1100px;
         margin: 0 auto;
@@ -528,6 +529,7 @@
         line-height: 1.1;
         max-width: 18ch;
       }
+      .contact .price-line { margin: 0 0 16px; padding-left: 12px; border-left: 3px solid var(--red); font-size: 15px; color: var(--ink); }
       .contact-card {
         margin-top: 36px;
         border: 1px solid var(--rule);
@@ -763,7 +765,7 @@
     <!-- ============ PAGE HERO ============ -->
     <section class="hero">
       <p class="eyebrow">Portfolio &middot; selected work</p>
-      <h1>Seven projects, in the spaces they live.</h1>
+      <h1>Agents we&rsquo;ve built, in the spaces they live.</h1>
       <p class="tagline">
         Each project is shown in the space it actually inhabits &mdash; the
         <strong>physical</strong> shape of a customer&rsquo;s workflow, or the
@@ -775,6 +777,7 @@
 
     <!-- ============ STICKY TOC ============ -->
     <nav class="toc" aria-label="Project navigation">
+      <a href="#recent" data-label="Recent engagements"></a>
       <a href="#local-ai" data-label="01 · Private AI Workstation"></a>
       <a href="#job-costing" data-label="02 · Live Job Costing"></a>
       <a href="#operational-intelligence" data-label="03 · Operational Intelligence Agent"></a>
@@ -784,6 +787,69 @@
       <a href="#quantum" data-label="07 · Quantum simulation"></a>
       <a href="#past-work" data-label="08 · Selected past work"></a>
     </nav>
+
+    <!-- ============ RECENT ENGAGEMENTS ============ -->
+    <section class="past-work recent" id="recent">
+      <div class="past-header">
+        <p class="eyebrow">Recent engagements</p>
+        <h2>Agents running real businesses</h2>
+        <p class="lead">Our latest work: agents that sell, collect, and plug into the systems companies already run on.</p>
+      </div>
+
+      <div class="past-grid">
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="14" width="22" height="16" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="8" y="50" width="22" height="16" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="52" y="32" width="22" height="16" rx="2" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <line x1="30" y1="22" x2="40" y2="40" stroke="#5a6271" stroke-width="1"/>
+              <line x1="30" y1="58" x2="40" y2="40" stroke="#5a6271" stroke-width="1"/>
+              <line x1="40" y1="40" x2="52" y2="40" stroke="#5a6271" stroke-width="1"/>
+              <circle cx="40" cy="40" r="7" fill="#b31942"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">Global enterprise</span>
+            <h3>AI Sales Agent</h3>
+            <p>One agent that runs the revenue workflow end to end. It researches accounts, qualifies leads, and drafts outreach and follow-ups. It handles invoice collections and dunning, sending staged reminders matched to each account&rsquo;s aging and routing replies to the right person. And it reads from and writes back to a legacy system of record with no modern API.</p>
+            <div class="past-outcome"><strong>Sales &middot; collections &amp; dunning &middot; legacy-system integration</strong></div>
+          </div>
+        </article>
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="12" y1="66" x2="70" y2="66" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="16" y="30" width="10" height="36" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="32" y="20" width="10" height="46" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="48" y="44" width="10" height="22" fill="#b31942"/>
+              <circle cx="53" cy="34" r="4" fill="none" stroke="#b31942" stroke-width="1.4"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">Tegy &middot; AI startup</span>
+            <h3>Agent evals &amp; cost optimization</h3>
+            <p>Built evaluations that benchmark agents across models on quality and cost, then routed each agent to the cheapest model that still meets the bar.</p>
+            <div class="past-outcome"><strong>Lower model spend without giving up output quality</strong></div>
+          </div>
+        </article>
+        <article class="past-tile">
+          <div class="past-icon">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M 10 18 L 70 18 L 56 38 L 24 38 Z" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <path d="M 24 38 L 56 38 L 48 54 L 32 54 Z" fill="#ffffff" stroke="#0b1220" stroke-width="1.2"/>
+              <rect x="34" y="54" width="12" height="12" fill="#b31942"/>
+            </svg>
+          </div>
+          <div class="past-body">
+            <span class="years">PaveERP &middot; our own product</span>
+            <h3>Agentic sales</h3>
+            <p>PaveERP is our own ERP product, and agents run all of its sales: prospecting, outreach, follow-ups, and pipeline updates, end to end. It&rsquo;s the same agentic setup we build for clients.</p>
+            <div class="past-outcome"><strong>All of PaveERP&rsquo;s sales, run by agents</strong></div>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <!-- ============================================================ -->
     <!-- 01 · PRIVATE AI WORKSTATION                                   -->
@@ -807,7 +873,7 @@
             <polygon points="280,140 320,110 320,350 280,380" fill="#faf9f5" stroke="#0b1220" stroke-width="2"/>
             <!-- label badge on top -->
             <rect x="160" y="115" width="120" height="18" fill="#0b1220" rx="2" transform="skewX(-10)"/>
-            <text x="180" y="128" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · $3K</text>
+            <text x="180" y="128" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · ON-SITE</text>
             <!-- power LED -->
             <circle cx="265" cy="158" r="3" fill="#b31942"/>
           </g>
@@ -836,7 +902,7 @@
           <line x1="60" y1="395" x2="540" y2="395" stroke="#5a6271" stroke-width="1.2"/>
           <text x="60" y="412" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#5a6271" letter-spacing="1.5">YOUR DESK · YOUR HARDWARE · YOUR DATA</text>
 
-          <!-- chat monitor on the right -->
+          <!-- agent monitor on the right -->
           <g class="stagger s5">
             <rect x="380" y="160" width="180" height="130" rx="6" fill="#0b1220" stroke="#0b1220" stroke-width="1.6"/>
             <rect x="388" y="168" width="164" height="114" rx="3" fill="#faf9f5"/>
@@ -845,7 +911,7 @@
             <rect x="430" y="304" width="80" height="6" rx="2" fill="#0b1220"/>
           </g>
 
-          <!-- chat content lines -->
+          <!-- agent content lines -->
           <g class="stagger s6">
             <rect x="396" y="180" width="56" height="8" rx="2" fill="#0a3161" opacity="0.4"/>
             <rect x="396" y="194" width="120" height="6" rx="2" fill="#5a6271" opacity="0.4"/>
@@ -871,13 +937,13 @@
         <span class="index">01 / 07</span>
         <span class="eyebrow"><span class="dot physical"></span>Physical &middot; on your desk</span>
         <h2>Private AI Workstation</h2>
-        <p class="one-liner">A <strong>$3,000 desktop</strong> that runs a full AI assistant on-site &mdash; chat, memory, and an audit trail. Nothing leaves the building.</p>
-        <p class="body">Sized so the chat experience matches what people expect from the cloud, but every byte stays in your office. Pays for itself against a $1,000/month cloud chat bill in roughly three months &mdash; after that, the line item is electricity.</p>
+        <p class="one-liner">A desktop that runs a full <strong>AI agent on-site</strong> &mdash; memory, search, and an audit trail. Nothing leaves the building.</p>
+        <p class="body">Sized so the agent matches what people expect from the cloud, but every byte stays in your office. No per-token bills and no data leaving the building.</p>
         <div class="stack">
           <span class="pill">Private</span>
           <span class="pill">On-site</span>
           <span class="pill">Audited</span>
-          <span class="pill">$3K hardware</span>
+          <span class="pill">No cloud bill</span>
         </div>
         <div class="outcome"><strong>Outcome:</strong> ships fully assembled with a runbook; your team owns it cleanly on day one.</div>
         <div class="actions">
@@ -1083,11 +1149,11 @@
             <text x="32" y="286" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Gamma · 3 invoices</text>
           </g>
 
-          <!-- Assistant (center, pulsing) -->
+          <!-- Agent (center, pulsing) -->
           <g class="stagger s2">
             <circle class="pulse-circle" cx="300" cy="250" r="48" fill="#b31942"/>
             <circle cx="300" cy="250" r="54" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
-            <text x="300" y="247" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0b1220">Assistant</text>
+            <text x="300" y="247" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#0b1220">Agent</text>
             <text x="300" y="266" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#b31942">operational</text>
           </g>
 
@@ -1130,17 +1196,17 @@
 
       <div class="project-info">
         <span class="index">03 / 07</span>
-        <span class="eyebrow"><span class="dot physical"></span>Workflow &middot; CRM &rarr; assistant &rarr; insights</span>
+        <span class="eyebrow"><span class="dot physical"></span>Workflow &middot; CRM &rarr; agent &rarr; insights</span>
         <h2>Operational Intelligence Agent</h2>
-        <p class="one-liner">An AI assistant that works directly against your CRM and financial data &mdash; with a memory that <strong>actually remembers</strong>.</p>
-        <p class="body">Memory is treated as a first-class graph: people, accounts, deals, decisions, and past interactions live as connected nodes the assistant can traverse. Every suggestion lands in context, not from scratch.</p>
+        <p class="one-liner">An AI agent that works directly against your CRM and financial data &mdash; with a memory that <strong>actually remembers</strong>.</p>
+        <p class="body">Memory is treated as a first-class graph: people, accounts, deals, decisions, and past interactions live as connected nodes the agent can traverse. Every suggestion lands in context, not from scratch.</p>
         <div class="stack">
           <span class="pill">Full-stack</span>
           <span class="pill">Memory graph</span>
           <span class="pill">Operational</span>
           <span class="pill">Multi-step</span>
         </div>
-        <div class="outcome"><strong>Outcome:</strong> an assistant that survives long-running, multi-step business workflows &mdash; not a chatbot that forgets the conversation.</div>
+        <div class="outcome"><strong>Outcome:</strong> an agent that survives long-running, multi-step business workflows &mdash; not a chatbot that forgets the conversation.</div>
         <div class="actions">
           <button class="deep-dive" data-open="operational-intelligence">Read full case study <span class="arrow">&rarr;</span></button>
         </div>
@@ -1484,7 +1550,7 @@
           <g class="stagger s4">
             <rect x="310" y="80" width="260" height="80" rx="10" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.2"/>
             <text x="324" y="104" font-family="Iowan Old Style, Georgia, serif" font-size="16" fill="#5a6271">Light tier</text>
-            <text x="324" y="124" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick chat &middot; small footprint</text>
+            <text x="324" y="124" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick agent &middot; small footprint</text>
             <text x="324" y="142" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">~2 GB RAM &middot; CPU-only</text>
           </g>
 
@@ -1512,15 +1578,15 @@
         <span class="index">06 / 07</span>
         <span class="eyebrow"><span class="dot physical"></span>Physical &middot; your machine</span>
         <h2>Right-Sizing Installer</h2>
-        <p class="one-liner">An assistant that <strong>scans your machine</strong> and installs the private chat experience it can actually run.</p>
-        <p class="body">Starts from the machine and works backwards. Processor, graphics, memory, storage, and OS all get inspected; a tiered always-on chat + search stack gets installed that&rsquo;s matched to what the hardware can really run. Same install path on macOS, Windows, and Linux.</p>
+        <p class="one-liner">An agent that <strong>scans your machine</strong> and installs the private agent stack it can actually run.</p>
+        <p class="body">Starts from the machine and works backwards. Processor, graphics, memory, storage, and OS all get inspected; a tiered always-on agent + search stack gets installed that&rsquo;s matched to what the hardware can really run. Same install path on macOS, Windows, and Linux.</p>
         <div class="stack">
           <span class="pill">Private</span>
           <span class="pill">Cross-platform</span>
           <span class="pill">Zero cloud</span>
           <span class="pill">Reproducible install</span>
         </div>
-        <div class="outcome"><strong>Outcome:</strong> a private-by-default install path that matches the chat experience to the hardware &mdash; not a Notion doc.</div>
+        <div class="outcome"><strong>Outcome:</strong> a private-by-default install path that matches the agent to the hardware &mdash; not a Notion doc.</div>
         <div class="actions">
           <button class="deep-dive" data-open="right-sizing">Read full case study <span class="arrow">&rarr;</span></button>
         </div>
@@ -1695,6 +1761,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="contact">
       <h2>Want one of these in your business?</h2>
+      <p class="price-line"><strong>$5k</strong> for a working prototype. After that, we meet to price the full build. The first consultation is free.</p>
       <div class="contact-card">
         <div class="row">
           <span class="label">Email</span>
@@ -1721,7 +1788,7 @@
       <div class="modal-head">
         <div class="meta"><span class="dot physical"></span>Physical &middot; on your desk</div>
         <h3>Private AI Workstation</h3>
-        <p class="one-liner">A desktop you can put under a desk that runs a full AI assistant on-site &mdash; no cloud bill, nothing leaving the building.</p>
+        <p class="one-liner">A desktop you can put under a desk that runs a full AI agent on-site &mdash; no cloud bill, nothing leaving the building.</p>
       </div>
       <div class="modal-visual">
         <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1730,7 +1797,7 @@
           <rect x="120" y="110" width="200" height="220" fill="#ffffff" stroke="#0b1220" stroke-width="2"/>
           <polygon points="320,110 360,80 360,300 320,330" fill="#faf9f5" stroke="#0b1220" stroke-width="2"/>
           <rect x="180" y="85" width="130" height="18" fill="#0b1220" rx="2" transform="skewX(-10)"/>
-          <text x="200" y="98" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · $3K</text>
+          <text x="200" y="98" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#ffffff" letter-spacing="1.5" transform="skewX(-10)">PRIVATE · ON-SITE</text>
           <circle cx="305" cy="128" r="3.5" fill="#b31942"/>
           <rect x="138" y="140" width="164" height="42" rx="4" fill="#f5f2e8" stroke="#b31942" stroke-width="1.6"/>
           <text x="150" y="160" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Records</text>
@@ -1758,13 +1825,13 @@
         </svg>
       </div>
       <div class="modal-body">
-        <p><strong>The pattern.</strong> Many SMBs want the chat-and-search experience that cloud AI products offer, but can&rsquo;t send their data to a third party &mdash; whether for legal, contractual, or competitive reasons. Existing &ldquo;run AI locally&rdquo; advice usually means a laptop running a small model badly. We close the gap.</p>
-        <p><strong>What we built.</strong> A $3,000 desktop sized for high-memory chat, plus a three-tier memory stack: structured records, semantic search, and an audit log of every interaction. The user-facing chat feels indistinguishable from the cloud; the data never leaves the box.</p>
-        <p><strong>Why it matters.</strong> A $3K hardware bill amortizes against a $1,000/month cloud chat bill in about three months. After that the line item is electricity. Because nothing leaves the office, the deployment survives the strictest data policies without an exception.</p>
+        <p><strong>The pattern.</strong> Many SMBs want the agents that cloud AI products offer, but can&rsquo;t send their data to a third party &mdash; whether for legal, contractual, or competitive reasons. Existing &ldquo;run AI locally&rdquo; advice usually means a laptop running a small model badly. We close the gap.</p>
+        <p><strong>What we built.</strong> A high-memory desktop running an on-site agent, plus a three-tier memory stack: structured records, semantic search, and an audit log of every interaction. The agent feels indistinguishable from the cloud; the data never leaves the box.</p>
+        <p><strong>Why it matters.</strong> No per-token cloud bill. Because nothing leaves the office, the deployment survives the strictest data policies without an exception.</p>
         <h4>What we&rsquo;d do for you</h4>
-        <p>Scope your data &amp; workflows in one 30-minute call, build &amp; ship the workstation pre-assembled, hand off with a runbook and a recorded walkthrough. Total elapsed time: typically two to three weeks from intro to operational.</p>
+        <p>Scope your data &amp; workflows in one 30-minute call, build &amp; ship the workstation pre-assembled, hand off with a runbook and a recorded walkthrough. A working prototype is $5k; after that, we meet to price the full build.</p>
         <div class="modal-stack">
-          <span class="pill">Private</span><span class="pill">On-prem</span><span class="pill">Audited</span><span class="pill">$3K hardware</span><span class="pill">Predictable cost</span>
+          <span class="pill">Private</span><span class="pill">On-prem</span><span class="pill">Audited</span><span class="pill">No cloud bill</span><span class="pill">Predictable cost</span>
         </div>
         <div class="modal-outcome"><strong>Outcome:</strong> the station ships fully assembled with a runbook; your team owns it cleanly on day one.</div>
         <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Private%20AI%20Workstation%20%E2%80%94%20intro">Get one for your office &rarr;</a>
@@ -1827,7 +1894,7 @@
         <p><strong>What we built.</strong> A custom operations platform that sits on top of QuickBooks Online and forces every cost, bill, purchase order, and payment to be tagged to a specific job the moment it enters the system. Estimates from the bidding stage, field costs from the job site, and accounting records all live in one source of truth. The CPA opens the same QuickBooks file they always have &mdash; except now every transaction already has job context baked in.</p>
         <p><strong>Why it matters.</strong> Project managers see margin slipping <strong>mid-project</strong> and can correct course. Month-end reconciliation work disappears. The example we ship is a $5M construction company that saves roughly <strong>$30,000/year</strong> in bookkeeping and CPA fees &mdash; but the pattern works anywhere work is organized as discrete projects.</p>
         <h4>What we&rsquo;d do for you</h4>
-        <p>Audit your current job-cost workflow in a 30-minute call, map your custom job-coding scheme onto QuickBooks classes/customers/jobs, ship a working prototype in your first month and a production rollout in roughly three.</p>
+        <p>Audit your current job-cost workflow in a 30-minute call, map your custom job-coding scheme onto QuickBooks classes/customers/jobs, and ship a working prototype for $5k. After that, we meet to price the full build.</p>
         <div class="modal-stack">
           <span class="pill">QuickBooks-tied</span><span class="pill">Job-coded</span><span class="pill">Live margin</span><span class="pill">SMB</span><span class="pill">Field &rarr; finance</span>
         </div>
@@ -1839,9 +1906,9 @@
     <template id="proj-operational-intelligence">
       <button class="modal-close" aria-label="Close">&times;</button>
       <div class="modal-head">
-        <div class="meta"><span class="dot physical"></span>Workflow &middot; CRM &rarr; assistant &rarr; insights</div>
+        <div class="meta"><span class="dot physical"></span>Workflow &middot; CRM &rarr; agent &rarr; insights</div>
         <h3>Operational Intelligence Agent</h3>
-        <p class="one-liner">A full-stack web app where AI assistants work directly against your CRM and financial data &mdash; with a memory that remembers.</p>
+        <p class="one-liner">A full-stack web app where AI agents work directly against your CRM and financial data &mdash; with a memory that remembers.</p>
       </div>
       <div class="modal-visual">
         <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1871,9 +1938,9 @@
           <text x="32" y="212" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Acme · $4.2K owed</text>
           <text x="32" y="228" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Beta · stalled deal</text>
           <text x="32" y="244" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#0b1220">Delta · new lead</text>
-          <!-- assistant -->
+          <!-- agent -->
           <circle cx="300" cy="220" r="46" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
-          <text x="300" y="217" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Assistant</text>
+          <text x="300" y="217" text-anchor="middle" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Agent</text>
           <text x="300" y="234" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="9" fill="#b31942">operational</text>
           <!-- insights -->
           <rect x="450" y="170" width="130" height="100" rx="10" fill="#ffffff" stroke="#5a6271" stroke-width="1.4"/>
@@ -1893,15 +1960,15 @@
         </svg>
       </div>
       <div class="modal-body">
-        <p><strong>The pattern.</strong> Most assistant demos forget what happened yesterday. That makes them useless for operational work, where every interaction needs to be anchored in the actual state of the business &mdash; people, accounts, open deals, past commitments.</p>
-        <p><strong>What we built.</strong> A full-stack web application where an AI assistant works directly against the customer&rsquo;s CRM and financial systems. Memory is treated as a first-class graph: entities, relationships, and past decisions live as connected nodes the assistant can traverse, not as a flat bucket of text. Each suggestion lands in context.</p>
-        <p><strong>Why it matters.</strong> The assistant survives multi-step workflows that take days or weeks &mdash; following up on a stalled deal, chasing a stale PO, prepping a renewal &mdash; because it remembers what happened in step one when it gets to step seven.</p>
+        <p><strong>The pattern.</strong> Most agent demos forget what happened yesterday. That makes them useless for operational work, where every interaction needs to be anchored in the actual state of the business &mdash; people, accounts, open deals, past commitments.</p>
+        <p><strong>What we built.</strong> A full-stack web application where an AI agent works directly against the customer&rsquo;s CRM and financial systems. Memory is treated as a first-class graph: entities, relationships, and past decisions live as connected nodes the agent can traverse, not as a flat bucket of text. Each suggestion lands in context.</p>
+        <p><strong>Why it matters.</strong> The agent survives multi-step workflows that take days or weeks &mdash; following up on a stalled deal, chasing a stale PO, prepping a renewal &mdash; because it remembers what happened in step one when it gets to step seven.</p>
         <h4>What we&rsquo;d do for you</h4>
-        <p>Map your operational systems (CRM, finance, calendar, comms) in a discovery call, identify the two or three workflows where remembering most matters, ship a working prototype against your real data in four to six weeks.</p>
+        <p>Map your operational systems (CRM, finance, calendar, comms) in a discovery call, identify the two or three workflows where remembering most matters, ship a working prototype against your real data for $5k. After that, we meet to price the full build.</p>
         <div class="modal-stack">
           <span class="pill">Full-stack</span><span class="pill">Memory graph</span><span class="pill">Operational</span><span class="pill">Multi-step</span>
         </div>
-        <div class="modal-outcome"><strong>Outcome:</strong> an assistant that actually helps with the work, instead of a chatbot that forgets the conversation.</div>
+        <div class="modal-outcome"><strong>Outcome:</strong> an agent that actually helps with the work, instead of a chatbot that forgets the conversation.</div>
         <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Operational%20Intelligence%20Agent%20%E2%80%94%20intro">Talk about your workflows &rarr;</a>
       </div>
     </template>
@@ -1973,7 +2040,7 @@
         <p><strong>What we built.</strong> A search platform that places pictures and descriptions near each other in the same feature space. A search lights up everything nearby in that space, even when the user&rsquo;s words and the catalog&rsquo;s words don&rsquo;t literally match. The platform is deployed as a managed cloud endpoint so the rest of the system calls it like any other API.</p>
         <p><strong>Why it matters.</strong> Tuning the model on the customer&rsquo;s own catalog lifted top-10 results by <strong>20%</strong> over the off-the-shelf baseline. The user-visible effect is a search that &ldquo;just finds what I meant&rdquo; instead of returning nothing.</p>
         <h4>What we&rsquo;d do for you</h4>
-        <p>Audit your current search experience and miss rate in a 30-minute call, identify the categories where visual + text similarity beats keyword, deliver a tuned production endpoint in roughly six to eight weeks.</p>
+        <p>Audit your current search experience and miss rate in a 30-minute call, identify the categories where visual + text similarity beats keyword, deliver a working prototype for $5k. After that, we meet to price the full build.</p>
         <div class="modal-stack">
           <span class="pill">Image + text</span><span class="pill">Managed cloud</span><span class="pill">+20% recall</span><span class="pill">Tuned on customer data</span>
         </div>
@@ -2040,7 +2107,7 @@
       <div class="modal-head">
         <div class="meta"><span class="dot physical"></span>Physical &middot; your machine</div>
         <h3>Right-Sizing Installer</h3>
-        <p class="one-liner">An assistant that scans your machine and installs the private chat experience it can actually run.</p>
+        <p class="one-liner">An agent that scans your machine and installs the private agent stack it can actually run.</p>
       </div>
       <div class="modal-visual">
         <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2065,7 +2132,7 @@
           <polygon points="294,180 286,176 286,184" fill="#0b1220"/>
           <rect x="310" y="60" width="260" height="64" rx="10" fill="#ffffff" stroke="#d4d4d8"/>
           <text x="324" y="82" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#5a6271">Light tier</text>
-          <text x="324" y="104" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick chat · small footprint</text>
+          <text x="324" y="104" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#5a6271">quick agent · small footprint</text>
           <rect x="310" y="140" width="260" height="64" rx="10" fill="#ffffff" stroke="#b31942" stroke-width="2.4"/>
           <text x="324" y="162" font-family="Iowan Old Style, Georgia, serif" font-size="14" fill="#0b1220">Balanced tier</text>
           <text x="324" y="184" font-family="JetBrains Mono, ui-monospace, Menlo, monospace" font-size="10" fill="#b31942">PICKED FOR THIS MACHINE</text>
@@ -2077,14 +2144,14 @@
       </div>
       <div class="modal-body">
         <p><strong>The pattern.</strong> Most &ldquo;run AI locally&rdquo; advice ignores the machine in front of you and recommends the same setup regardless. The result is either a model that crawls on under-powered hardware, or one that doesn&rsquo;t use the GPU it could.</p>
-        <p><strong>What we built.</strong> An assistant that starts from the machine. It scans the processor, graphics, memory, storage, and operating system, then installs a tiered always-on chat + search experience matched to what the hardware can actually run. Same install path on macOS, Windows, and Linux. Zero cloud calls in the loop.</p>
+        <p><strong>What we built.</strong> An agent that starts from the machine. It scans the processor, graphics, memory, storage, and operating system, then installs a tiered always-on agent + search stack matched to what the hardware can actually run. Same install path on macOS, Windows, and Linux. Zero cloud calls in the loop.</p>
         <p><strong>Why it matters.</strong> The output is a reproducible install, not a Notion doc. Two machines with the same spec get the same setup. A machine with double the memory gets the larger tier automatically.</p>
         <h4>What we&rsquo;d do for you</h4>
         <p>If you&rsquo;re trying to roll out private AI across a team with different machines, we can package the installer to match your hardware fleet and your security posture.</p>
         <div class="modal-stack">
           <span class="pill">Private</span><span class="pill">Cross-platform</span><span class="pill">Zero cloud</span><span class="pill">Reproducible install</span>
         </div>
-        <div class="modal-outcome"><strong>Outcome:</strong> a private-by-default install path that matches the chat experience to the hardware.</div>
+        <div class="modal-outcome"><strong>Outcome:</strong> a private-by-default install path that matches the agent to the hardware.</div>
         <a class="modal-cta" href="mailto:mridul@multimodalworks.io?subject=Right-Sizing%20Installer%20%E2%80%94%20intro">Roll this out to your team &rarr;</a>
       </div>
     </template>
