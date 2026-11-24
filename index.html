@@ -211,14 +211,15 @@
           <a class="btn" href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">Book a free call &rarr;</a>
         </div>
 
-        <!-- The job, end to end: outreach email -> invoice paid -> record written to the legacy system -->
-        <svg class="hero-art" viewBox="0 0 460 384" role="img" aria-label="An agent sends an outreach email, gets an invoice paid, and writes the result into a legacy system">
+        <!-- A request comes in, the agent works the task list, updates the system of record, and reports back -->
+        <svg class="hero-art" viewBox="0 0 460 384" role="img" aria-label="An agent takes a request, works through the tasks, updates the business system, and reports the result">
           <rect x="34" y="40" width="400" height="316" rx="64" fill="#f5f2e8" />
 
-          <path class="trail" d="M196 96 C 262 50, 326 52, 340 112" />
-          <path class="trail" d="M338 240 C 344 300, 322 308, 280 306" />
+          <path class="trail" d="M196 96 C 262 50, 326 52, 340 96" />
+          <path class="trail" d="M256 168 C 204 166, 152 192, 150 244" />
+          <path class="trail" d="M258 312 C 274 322, 288 320, 306 310" />
 
-          <!-- Email -->
+          <!-- Request -->
           <g transform="rotate(-3 120 80)">
             <rect x="26" y="28" width="200" height="116" rx="12" fill="#0b1220" opacity="0.08" />
             <rect x="20" y="22" width="200" height="116" rx="12" fill="#fff" stroke="#0b1220" stroke-width="2" />
@@ -230,41 +231,54 @@
             <path d="M169 111 H187 M181 105 L187 111 L181 117" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </g>
 
-          <!-- Invoice -->
-          <g transform="rotate(3 340 172)">
-            <rect x="258" y="104" width="176" height="148" rx="12" fill="#0b1220" opacity="0.08" />
-            <rect x="252" y="98" width="176" height="148" rx="12" fill="#fff" stroke="#0b1220" stroke-width="2" />
-            <text x="268" y="124" font-size="10" letter-spacing="2" fill="#5a6271">INVOICE</text>
-            <path d="M268 144 H350 M268 160 H336 M268 176 H344" stroke="#c9c9cf" stroke-width="4" stroke-linecap="round" />
-            <path d="M388 144 H412 M392 160 H412 M384 176 H412" stroke="#c9c9cf" stroke-width="4" stroke-linecap="round" />
-            <path d="M268 196 H412" stroke="#0b1220" stroke-width="1.5" />
-            <path d="M268 216 H306" stroke="#0b1220" stroke-width="4" stroke-linecap="round" />
-            <path d="M376 216 H412" stroke="#0b1220" stroke-width="4" stroke-linecap="round" />
-            <g transform="rotate(-12 344 190)">
-              <rect x="306" y="174" width="76" height="32" rx="6" fill="#fff" fill-opacity="0.85" stroke="#b31942" stroke-width="2.5" />
-              <text x="344" y="196" text-anchor="middle" font-size="17" font-weight="700" letter-spacing="2" fill="#b31942">PAID</text>
+          <!-- Task list -->
+          <g transform="rotate(3 340 154)">
+            <rect x="258" y="90" width="176" height="136" rx="12" fill="#0b1220" opacity="0.08" />
+            <rect x="252" y="84" width="176" height="136" rx="12" fill="#fff" stroke="#0b1220" stroke-width="2" />
+            <text x="268" y="110" font-size="10" letter-spacing="2" fill="#5a6271">TASKS</text>
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <rect x="268" y="124" width="18" height="18" rx="5" fill="#b31942" />
+              <path d="M272.500 133 l3.500 3.500 l6 -7" fill="none" stroke="#fff" stroke-width="2" />
+              <path d="M298 133 H400" stroke="#0b1220" stroke-width="4" />
+              <rect x="268" y="152" width="18" height="18" rx="5" fill="#b31942" />
+              <path d="M272.500 161 l3.500 3.500 l6 -7" fill="none" stroke="#fff" stroke-width="2" />
+              <path d="M298 161 H380" stroke="#0b1220" stroke-width="4" />
+              <rect x="269" y="181" width="16" height="16" rx="4" fill="#fff" stroke="#0b1220" stroke-width="2" />
+              <path d="M298 189 H392" stroke="#c9c9cf" stroke-width="4" />
             </g>
           </g>
 
-          <!-- Legacy terminal -->
-          <g transform="rotate(-2 170 296)">
-            <rect x="58" y="238" width="232" height="126" rx="12" fill="#0b1220" opacity="0.12" />
-            <rect x="52" y="232" width="232" height="126" rx="12" fill="#0b1220" />
-            <circle cx="70" cy="249" r="3.5" fill="#5a6271" /><circle cx="82" cy="249" r="3.5" fill="#5a6271" /><circle cx="94" cy="249" r="3.5" fill="#5a6271" />
+          <!-- System of record -->
+          <g transform="rotate(-2 152 298)">
+            <rect x="46" y="244" width="224" height="120" rx="12" fill="#0b1220" opacity="0.12" />
+            <rect x="40" y="238" width="224" height="120" rx="12" fill="#0b1220" />
+            <circle cx="58" cy="255" r="3.500" fill="#5a6271" /><circle cx="70" cy="255" r="3.500" fill="#5a6271" /><circle cx="82" cy="255" r="3.500" fill="#5a6271" />
             <text font-size="12" fill="#7ce0a3">
-              <tspan x="70" y="282">&gt; READ  ACCT 0447</tspan>
-              <tspan x="70" y="304">&gt; WRITE STATUS=PAID</tspan>
-              <tspan x="70" y="326">OK</tspan>
+              <tspan x="58" y="286">&gt; READ   RECORD 0447</tspan>
+              <tspan x="58" y="308">&gt; UPDATE STATUS=DONE</tspan>
+              <tspan x="58" y="330">OK</tspan>
             </text>
-            <rect class="cursor" x="92" y="315" width="8" height="13" fill="#7ce0a3" />
+            <rect class="cursor" x="80" y="319" width="8" height="13" fill="#7ce0a3" />
+          </g>
+
+          <!-- Report -->
+          <g transform="rotate(2 364 312)">
+            <rect x="310" y="268" width="120" height="96" rx="12" fill="#0b1220" opacity="0.08" />
+            <rect x="304" y="262" width="120" height="96" rx="12" fill="#fff" stroke="#0b1220" stroke-width="2" />
+            <path d="M320 280 H360" stroke="#c9c9cf" stroke-width="4" stroke-linecap="round" />
+            <path d="M320 342 H408" stroke="#0b1220" stroke-width="2" stroke-linecap="round" />
+            <rect x="324" y="322" width="14" height="20" rx="2" fill="#0b1220" />
+            <rect x="346" y="310" width="14" height="32" rx="2" fill="#0b1220" />
+            <rect x="368" y="316" width="14" height="26" rx="2" fill="#0b1220" />
+            <rect x="390" y="294" width="14" height="48" rx="2" fill="#b31942" />
           </g>
 
           <!-- The agent -->
           <g class="moving">
             <circle r="15" fill="#fff" stroke="#b31942" stroke-width="2" />
             <use href="#spark" class="spark" x="-9" y="-9" width="18" height="18" />
-            <animateMotion dur="9s" repeatCount="indefinite" calcMode="linear"
-              path="M196 96 C 262 50, 326 52, 340 112 L 338 240 C 344 300, 322 308, 280 306" />
+            <animateMotion dur="11s" repeatCount="indefinite" calcMode="linear"
+              path="M196 96 C 262 50, 326 52, 340 96 L 332 160 L 256 168 C 204 166, 152 192, 150 244 L 176 304 L 258 312 C 274 322, 288 320, 306 310 L 366 316" />
           </g>
           <g class="still" transform="translate(272 62)">
             <circle r="15" fill="#fff" stroke="#b31942" stroke-width="2" />
