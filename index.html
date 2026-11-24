@@ -13,6 +13,7 @@
         --paper: #ffffff;
         --rule: #e2e2e6;
         --red: #b31942;
+        --navy: #0a3161;
         --ivory: #f5f2e8;
         --serif: "Iowan Old Style", "Apple Garamond", Georgia, Cambria, "Times New Roman", serif;
         --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
@@ -32,17 +33,18 @@
       li { list-style: none; }
       a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
       a:hover { color: var(--red); }
+      svg { display: block; }
 
-      .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
-      section { padding: 48px 0; }
+      .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+      section { padding: 56px 0; }
       .ivory { background: var(--ivory); }
       .dark { background: var(--ink); color: var(--paper); }
 
       h2 {
         font-family: var(--serif);
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
 
       header {
@@ -55,11 +57,18 @@
       .wordmark { font-family: var(--serif); font-size: 18px; font-weight: 600; }
       .flag { height: 18px; width: auto; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.15); }
 
-      .hero { padding: 64px 0; }
+      /* Hero */
+      .hero { padding: 48px 0 56px; }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: center;
+      }
       .hero h1 {
         font-family: var(--serif);
-        font-size: clamp(34px, 6.5vw, 48px);
-        line-height: 1.06;
+        font-size: clamp(36px, 5.6vw, 54px);
+        line-height: 1.04;
         font-weight: 600;
         letter-spacing: -0.01em;
       }
@@ -77,43 +86,58 @@
         border: none;
       }
       .btn:hover { background: var(--red); color: var(--paper); }
+      .hero-art { width: 100%; height: auto; }
+      .flow { stroke-dasharray: 4 6; animation: flow 1.6s linear infinite; }
+      .pulse { transform-origin: 200px 170px; animation: pulse 2.4s ease-in-out infinite; }
+      @keyframes flow { to { stroke-dashoffset: -20; } }
+      @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.35; } 50% { transform: scale(1.25); opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
 
-      .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-      .chips li {
+      /* Tiles (services + projects) */
+      .tiles { display: grid; gap: 14px; }
+      .services .tiles { grid-template-columns: repeat(5, 1fr); }
+      .projects .tiles { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+      .tile {
         background: var(--paper);
-        border: 1px solid #ddd6c4;
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-size: 15px;
-        font-weight: 500;
+        border: 1px solid var(--rule);
+        border-radius: 12px;
+        padding: 18px 16px;
       }
-
-      .projects li {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 4px 16px;
-        flex-wrap: wrap;
-        padding: 12px 0;
-        border-top: 1px solid var(--rule);
-      }
-      .projects li:first-child { border-top: none; padding-top: 0; }
-      .projects .name { font-weight: 600; font-size: 16px; }
-      .projects .name span { display: block; font-weight: 400; font-size: 14px; color: var(--ink-mute); }
-      .projects .client {
+      .services .tile { border-color: #ddd6c4; text-align: center; }
+      .tile svg { width: 56px; height: 56px; margin-bottom: 12px; }
+      .services .tile svg { margin: 0 auto 12px; }
+      .tile .name { font-weight: 600; font-size: 15px; line-height: 1.3; }
+      .tile .client {
+        display: block;
+        margin-top: 6px;
         font-family: var(--mono);
-        font-size: 11.5px;
+        font-size: 11px;
         color: var(--red);
         letter-spacing: 0.03em;
       }
+      .tile.featured { grid-column: span 2; background: #fdf6f8; border-color: #efc9d3; }
+      .tile.featured .sub { display: block; margin-top: 2px; font-size: 13.5px; color: var(--ink-mute); }
 
+      /* Contact */
+      .contact .wrap { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
       .contact .lines { font-size: 18px; line-height: 2; }
       .contact a { color: var(--paper); border-color: rgba(255, 255, 255, 0.4); }
       .contact a:hover { color: #ff8aa6; }
       .contact small { display: block; margin-top: 28px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+      .contact .mark { width: 120px; height: 120px; opacity: 0.9; }
 
-      @media (max-width: 480px) {
-        section, .hero { padding: 40px 0; }
+      @media (max-width: 820px) {
+        .services .tiles { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 640px) {
+        .hero .wrap { grid-template-columns: 1fr; gap: 8px; }
+        .hero-art { max-width: 380px; margin: 0 auto; }
+        .services .tiles { grid-template-columns: repeat(2, 1fr); }
+        .services .tile:last-child { grid-column: 1 / -1; }
+        .projects .tiles { grid-template-columns: 1fr 1fr; }
+        .tile.featured { grid-column: 1 / -1; }
+        .contact .mark { display: none; }
+        section { padding: 44px 0; }
       }
     </style>
   </head>
@@ -137,51 +161,223 @@
       </header>
     </div>
 
+    <!-- Hero -->
     <section class="hero">
       <div class="wrap">
-        <h1>AI agents that do real work.</h1>
-        <p><strong>$5k</strong> for a working prototype. Then we price the full build.</p>
-        <a class="btn" href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">Book a free call &rarr;</a>
+        <div>
+          <h1>AI agents that do real work.</h1>
+          <p><strong>$5k</strong> for a working prototype. Then we price the full build.</p>
+          <a class="btn" href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">Book a free call &rarr;</a>
+        </div>
+
+        <!-- Agent hub wired into business systems -->
+        <svg class="hero-art" viewBox="0 0 400 340" role="img" aria-label="An AI agent connected to email, CRM, invoices, a legacy system, and a database">
+          <g fill="none" stroke="#b31942" stroke-width="1.6">
+            <path class="flow" d="M200 170 L70 60" />
+            <path class="flow" d="M200 170 L330 60" />
+            <path class="flow" d="M200 170 L45 200" />
+            <path class="flow" d="M200 170 L355 200" />
+            <path class="flow" d="M200 170 L200 295" />
+          </g>
+
+          <!-- email -->
+          <g transform="translate(36 32)">
+            <rect width="68" height="56" rx="10" fill="#fff" stroke="#0b1220" stroke-width="1.6" />
+            <rect x="16" y="16" width="36" height="24" rx="2" fill="none" stroke="#0b1220" stroke-width="1.6" />
+            <path d="M16 18 L34 31 L52 18" fill="none" stroke="#0b1220" stroke-width="1.6" />
+          </g>
+          <!-- CRM / people -->
+          <g transform="translate(296 32)">
+            <rect width="68" height="56" rx="10" fill="#fff" stroke="#0b1220" stroke-width="1.6" />
+            <circle cx="27" cy="23" r="6" fill="none" stroke="#0b1220" stroke-width="1.6" />
+            <path d="M16 42 C16 33, 38 33, 38 42" fill="none" stroke="#0b1220" stroke-width="1.6" />
+            <circle cx="45" cy="25" r="5" fill="none" stroke="#b31942" stroke-width="1.6" />
+            <path d="M38 34 C42 31, 54 32, 54 40" fill="none" stroke="#b31942" stroke-width="1.6" />
+          </g>
+          <!-- invoice -->
+          <g transform="translate(10 172)">
+            <rect width="68" height="56" rx="10" fill="#fff" stroke="#0b1220" stroke-width="1.6" />
+            <path d="M22 12 H46 V44 L41 40 L36 44 L31 40 L26 44 L22 40 Z" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linejoin="round" />
+            <text x="34" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#b31942">$</text>
+          </g>
+          <!-- legacy terminal -->
+          <g transform="translate(322 172)">
+            <rect width="68" height="56" rx="10" fill="#fff" stroke="#0b1220" stroke-width="1.6" />
+            <rect x="12" y="12" width="44" height="28" rx="3" fill="#0b1220" />
+            <path d="M18 21 L23 26 L18 31" fill="none" stroke="#7CE0A3" stroke-width="1.6" />
+            <rect x="26" y="29" width="10" height="2.5" fill="#7CE0A3" />
+            <path d="M26 46 H42" stroke="#0b1220" stroke-width="1.6" />
+          </g>
+          <!-- database -->
+          <g transform="translate(166 270)">
+            <rect width="68" height="56" rx="10" fill="#fff" stroke="#0b1220" stroke-width="1.6" />
+            <ellipse cx="34" cy="16" rx="14" ry="5" fill="none" stroke="#0b1220" stroke-width="1.6" />
+            <path d="M20 16 V40 C20 46, 48 46, 48 40 V16" fill="none" stroke="#0b1220" stroke-width="1.6" />
+            <path d="M20 28 C20 34, 48 34, 48 28" fill="none" stroke="#0b1220" stroke-width="1.6" />
+          </g>
+
+          <!-- agent -->
+          <circle class="pulse" cx="200" cy="170" r="46" fill="#b31942" />
+          <circle cx="200" cy="170" r="38" fill="#b31942" />
+          <circle cx="200" cy="170" r="38" fill="none" stroke="#0b1220" stroke-width="1.6" />
+          <g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
+            <rect x="182" y="156" width="36" height="28" rx="8" />
+            <path d="M200 148 V156" />
+            <circle cx="200" cy="146" r="2.5" fill="#fff" />
+          </g>
+          <circle cx="192" cy="169" r="3" fill="#fff" />
+          <circle cx="208" cy="169" r="3" fill="#fff" />
+        </svg>
       </div>
     </section>
 
-    <section class="ivory">
+    <!-- What we do -->
+    <section class="ivory services">
       <div class="wrap">
         <h2>What we do</h2>
-        <ul class="chips">
-          <li>AI agents</li>
-          <li>Legacy-system integration</li>
-          <li>Private or cloud AI</li>
-          <li>Harness engineering</li>
-          <li>Tech architecture</li>
+        <ul class="tiles">
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round">
+              <circle cx="28" cy="28" r="9" fill="#b31942" stroke="none" />
+              <circle cx="10" cy="12" r="4" /><circle cx="46" cy="12" r="4" /><circle cx="10" cy="44" r="4" /><circle cx="46" cy="44" r="4" />
+              <path d="M13 15 L21 22 M43 15 L35 22 M13 41 L21 34 M43 41 L35 34" />
+            </svg>
+            <span class="name">AI agents</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="10" width="30" height="24" rx="3" />
+              <path d="M16 40 H26 M21 34 V40" />
+              <path d="M11 18 L15 22 L11 26" stroke="#b31942" />
+              <path d="M40 18 H50 M46 14 L50 18 L46 22" stroke="#b31942" />
+              <path d="M50 32 H40 M44 28 L40 32 L44 36" stroke="#b31942" />
+            </svg>
+            <span class="name">Legacy-system integration</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 48 V24 L18 16 L30 24 V48 Z" />
+              <rect x="14" y="34" width="8" height="14" />
+              <rect x="20" y="22" width="6" height="7" rx="1" stroke="#b31942" />
+              <path d="M34 22 A7 7 0 0 1 47 19 A6 6 0 0 1 48 31 H36 A5 5 0 0 1 34 22 Z" stroke="#0a3161" />
+            </svg>
+            <span class="name">Private or cloud AI</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="10" y="10" width="36" height="36" rx="8" stroke-dasharray="4 3" />
+              <circle cx="28" cy="28" r="7" fill="#b31942" stroke="none" />
+              <path d="M28 4 V10 M28 46 V52 M4 28 H10 M46 28 H52" />
+              <path d="M38 18 L42 14 M18 38 L14 42" stroke="#b31942" />
+            </svg>
+            <span class="name">Harness engineering</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linejoin="round">
+              <path d="M28 6 L50 16 L28 26 L6 16 Z" fill="#fff" />
+              <path d="M6 26 L28 36 L50 26" stroke="#0a3161" />
+              <path d="M6 36 L28 46 L50 36" stroke="#b31942" />
+            </svg>
+            <span class="name">Tech architecture</span>
+          </li>
         </ul>
       </div>
     </section>
 
+    <!-- Projects -->
     <section class="projects">
       <div class="wrap">
         <h2>Projects</h2>
-        <ul>
-          <li><span class="name">AI Sales Agent<span>Sales, collections, legacy integration</span></span><span class="client">Global enterprise</span></li>
-          <li><span class="name">Agent Evals &amp; Cost Optimization</span><span class="client">Tegy &middot; AI startup</span></li>
-          <li><span class="name">Agentic Sales</span><span class="client">PaveERP &middot; internal tooling</span></li>
-          <li><span class="name">Live Job Costing</span><span class="client">Project-based SMB</span></li>
-          <li><span class="name">Operational Intelligence Agent</span><span class="client">CRM-driven SMB</span></li>
-          <li><span class="name">Private AI Workstation</span><span class="client">Small office</span></li>
-          <li><span class="name">Visual Search Platform</span><span class="client">Catalog-driven business</span></li>
+        <ul class="tiles">
+          <li class="tile featured">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 10 H50 L36 28 V44 L20 50 V28 Z" fill="#fff" />
+              <circle cx="28" cy="18" r="4" fill="#b31942" stroke="none" />
+            </svg>
+            <span class="name">AI Sales Agent<span class="sub">Sales, collections, legacy integration</span></span>
+            <span class="client">Global enterprise</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 48 H50" />
+              <rect x="10" y="26" width="8" height="22" /><rect x="24" y="14" width="8" height="34" /><rect x="38" y="34" width="8" height="14" fill="#b31942" stroke="#b31942" />
+              <path d="M36 22 L40 26 L48 16" stroke="#b31942" />
+            </svg>
+            <span class="name">Agent Evals &amp; Cost Optimization</span>
+            <span class="client">Tegy &middot; AI startup</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 44 L20 30 L30 38 L48 16" stroke="#b31942" />
+              <path d="M38 16 H48 V26" stroke="#b31942" />
+              <path d="M6 50 H50" />
+            </svg>
+            <span class="name">Agentic Sales</span>
+            <span class="client">PaveERP &middot; internal tooling</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 30 A18 18 0 0 1 46 30 Z" fill="#fff" />
+              <path d="M6 30 H50 V34 H6 Z" />
+              <path d="M28 12 V30" />
+              <path d="M16 46 H40" stroke="#b31942" /><path d="M20 52 H36" stroke="#b31942" />
+            </svg>
+            <span class="name">Live Job Costing</span>
+            <span class="client">Project-based SMB</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round">
+              <path d="M14 14 L28 28 L44 18 M28 28 L20 44 M28 28 L44 40" />
+              <circle cx="14" cy="14" r="5" fill="#fff" /><circle cx="44" cy="18" r="5" fill="#fff" /><circle cx="20" cy="44" r="5" fill="#fff" /><circle cx="44" cy="40" r="5" fill="#fff" />
+              <circle cx="28" cy="28" r="7" fill="#b31942" stroke="none" />
+            </svg>
+            <span class="name">Operational Intelligence Agent</span>
+            <span class="client">CRM-driven SMB</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="10" y="6" width="24" height="44" rx="3" fill="#fff" />
+              <path d="M16 14 H28 M16 20 H28" />
+              <circle cx="22" cy="40" r="2" fill="#0b1220" />
+              <rect x="36" y="30" width="14" height="12" rx="2" fill="#b31942" stroke="#b31942" />
+              <path d="M39 30 V26 A4 4 0 0 1 47 26 V30" stroke="#b31942" />
+            </svg>
+            <span class="name">Private AI Workstation</span>
+            <span class="client">Small office</span>
+          </li>
+          <li class="tile">
+            <svg viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="8" width="32" height="26" rx="3" fill="#fff" />
+              <path d="M6 30 L16 20 L24 28 L30 22 L38 30" />
+              <circle cx="28" cy="16" r="2.5" />
+              <circle cx="38" cy="38" r="9" fill="#fff" stroke="#b31942" stroke-width="2" />
+              <path d="M44.5 44.5 L51 51" stroke="#b31942" stroke-width="2.4" />
+            </svg>
+            <span class="name">Visual Search Platform</span>
+            <span class="client">Catalog-driven business</span>
+          </li>
         </ul>
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="dark contact">
       <div class="wrap">
-        <h2>Contact</h2>
-        <div class="lines">
-          <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a><br />
-          <a href="tel:+13128699705">+1 (312) 869-9705</a><br />
-          <a href="https://www.linkedin.com/in/mridul-s-56738a149">LinkedIn</a>
+        <div>
+          <h2>Contact</h2>
+          <div class="lines">
+            <a href="mailto:mridul@multimodalworks.io?subject=Multimodal%20Works%20%E2%80%94%20intro">mridul@multimodalworks.io</a><br />
+            <a href="tel:+13128699705">+1 (312) 869-9705</a><br />
+            <a href="https://www.linkedin.com/in/mridul-s-56738a149">LinkedIn</a>
+          </div>
+          <small>Multimodal Works LLC &middot; Chicago &middot; &copy; 2026</small>
         </div>
-        <small>Multimodal Works LLC &middot; Chicago &middot; &copy; 2026</small>
+        <svg class="mark" viewBox="0 0 120 120" aria-hidden="true" fill="none" stroke-width="1.6">
+          <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.15)" />
+          <circle cx="60" cy="60" r="36" stroke="rgba(255,255,255,0.3)" />
+          <circle cx="60" cy="60" r="20" stroke="rgba(255,255,255,0.55)" />
+          <circle cx="60" cy="60" r="8" fill="#ff8aa6" stroke="none" />
+        </svg>
       </div>
     </section>
   </body>
